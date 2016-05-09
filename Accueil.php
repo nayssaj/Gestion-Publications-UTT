@@ -109,7 +109,7 @@
                     <img src="bootstrap/img/photoCV.jpg" alt="">
                     <div class="caption">
                         <h3>Léo Schneider</h3>
-                        <p>Développeur</p>
+                        <p>Cofondateur/Développeur</p>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                     <img src="http://placehold.it/800x500" alt="">
                     <div class="caption">
                         <h3>Jean-gabriel Le Mercier</h3>
-                        <p>Développeur interim</p> 
+                        <p>Cofondateur/Développeur</p> 
                     </div>
                 </div>
             </div>

@@ -82,7 +82,7 @@
             
             //on écrit le formulaire d'inscription
             echo('<form method="POST" action="Inscription.php">');
-            echo('<div class="col-lg-8">
+            echo('<div class="col-lg-12">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -92,7 +92,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
@@ -110,15 +110,12 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="col-lg-8">
-                                    <div id="morris-bar-chart"></div>
-                                </div>
                             </div>
                         </div>
                     </div>
             </div>');
         //maintenant les infos UTT
-        echo('<div class="col-lg-8">
+        echo('<div class="col-lg-12">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -128,7 +125,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover table-striped">
                                             <thead>
@@ -179,15 +176,12 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="col-lg-8">
-                                    <div id="morris-bar-chart"></div>
-                                </div>
                             </div>
                         </div>
                     </div>
             </div>');
             //Informations du Compte
-            echo('<div class="col-lg-8">
+            echo('<div class="col-lg-12">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -197,7 +191,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
@@ -215,9 +209,6 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="col-lg-8">
-                                    <div id="morris-bar-chart"></div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -225,7 +216,7 @@
             echo('<input type="hidden" name="organisation" value="UTT">');
             echo('<div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div class="table-responsive">
                                         <div class="well well-sm">     <!-- le puis !-->
                                         <table class="table">
@@ -235,7 +226,7 @@
                                             
                                                 <tr>
                                                     <th><div class=""><input class="btn btn-primary btn-large" type="reset" value="Réinitialiser"></div></th>
-                                                    <th><div class=""><input class="btn btn-primary btn-large" type="submit" value="Valider" name="submit"></div></th>
+                                                    <th><div class=""><button class="btn btn-primary btn-large" type="submit" value="Valider" name="submit">Valider<span class="glyphicon glyphicon-chevron-right"></span></button></div></th>
                                                     <th></th>
                                                 </tr>
                                                   <!--<ul class="pager">
@@ -248,9 +239,7 @@
                                 </div>       
                             </div>
                             </div>
-                        </div><div class="col-lg-8">
-                                    <div id="morris-bar-chart"></div>
-                                </div>');                                        
+                        </div>');                                        
             echo("</form>"); //fin du formulaire
                                                     
                   
@@ -259,10 +248,10 @@
                 if(isset($_POST[nom]) && isset($_POST[prenom]) && isset($_POST[equipe]) && isset($_POST[login]) && isset($_POST[mdp])){
                     if(strlen($_POST[mdp])>6 ){ //ajouter les vérif d'existance login,nom et prenom 
                     //créer les éléments dans la BDD
-                    foreach ($_POST as $ele){
-                        echo $ele;
-                        echo ("<br/>");
-                    }
+                   // foreach ($_POST as $ele){
+                   //     echo $ele;
+                   //     echo ("<br/>");
+                   // }
                     }
                 }
                 else{
