@@ -8,7 +8,7 @@
 	private $equipe;
 
         public function __construct ($id,$nom,$prenom,$organisation,$equipe){
-		$this->id = id;		
+		$this->id = $id;		
 		$this->nom = $nom;
 		$this->prenom= $prenom;
 		$this->organisation = $organisation;
