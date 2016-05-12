@@ -13,7 +13,7 @@
 			if(!isset(self::$instance)){
 				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 				try{
-					self::$instance = new PDO("mysql:host=dev-isi.utt.fr;dbname=le_mercj;charset=utf8", "le_mercj", "ZDmh23Jd", $pdo_options);
+					self::$instance = new PDO("mysql:host=localhost;dbname=Gestion_Publication_UTT;charset=utf8", "root", "P16_LO07", $pdo_options);
 				}
 				catch(Exception $e){
 					die('Erreur : ' . $e->getMessage());
