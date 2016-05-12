@@ -30,13 +30,13 @@
 
 	//Retourne les articles écrits par l'auteur	
 	public function getArticles(){
-		require(database.php);
+		require_once 'Database.php';
 		$db = Database::getInstance();
-		$articles = $db->query('SELECT Publication.* FROM Publication, Auteur, redige WHERE Article.id = redige.Publication_id AND redige.Auteur_id =\'' . $id . '\''); 
-		while($donnees = $articles->fetech()){
+		$articles = $db->query('SELECT Publication.* FROM Publication, redige WHERE Publication.id = redige.Publication_id AND redige.Auteur_id =\'' . $this->getId() . '\''); 
+		while($donnees = $articles->fetch()){
 			print_r($donnees);
 		}
-		$articles->closeCursor();		
+		$articles->closeCursor();	
 	}		
     }
 ?>

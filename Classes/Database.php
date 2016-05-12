@@ -1,5 +1,5 @@
 <?php
-	class Db{
+	class Database{
 		
 		//Implémentation suivant le patron singleton
 		
@@ -9,7 +9,7 @@
 
 		private function __clone(){}
 
-		private static function getInstance(){
+		public static function getInstance(){
 			if(!isset(self::$instance)){
 				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 				try{
