@@ -1,6 +1,9 @@
 <?php
-    class Auteur {
+    class Chercheur{
     
+	require_once 'Database.php';
+	require_once 'Publication.php';
+
 	private $id;
         private $nom;
 	private $prenom;
@@ -30,10 +33,14 @@
 
 	//Retourne les articles écrits par l'auteur	
 	public function getArticles(){
-		require_once 'Database.php';
 		$db = Database::getInstance();
-		$articles = $db->query('SELECT Publication.* FROM Publication, redige WHERE Publication.id = redige.Publication_id AND redige.Auteur_id =\'' . $this->getId() . '\''); 
-		while($donnees = $articles->fetch()){
+		$reponse = $db->query('SELECT Publication.* FROM Publication, redige WHERE Publication.id = redige.Publication_id AND redige.Auteur_id =\'' . $this->getId() . '\''); 
+		while($donneesPublication = $reponse->fetch()){
+			$idPublication = $donneesPublication['id'];
+			$reponseAuteurs = $db->query('SELECT Auteur.id FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id =\''. $idPublication . '\''); 
+			$donnesAuteurs = $reponseAuteurs->fetch;
+			echo "id de l'auteur = " . $donnesAuteurs['id'];
+//			$publication = new Publication($donnees[''], $donnees['titre_article'], $donnees['reference_publication'], $donnees['annee'], $donnees['statut'])
 			print_r($donnees);
 		}
 		$articles->closeCursor();	
