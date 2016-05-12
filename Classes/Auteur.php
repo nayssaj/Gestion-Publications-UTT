@@ -15,11 +15,18 @@
 		$this->equipe = $equipe;
         }
 
-        public function getNom(){return ($this->nom);}
+        public function getId(){return ($this->id);}
+	public function setId($id){$this->id= $id;}
+	
+	public function getNom(){return ($this->nom);}
         public function setNom($nom){$this->nom = $nom;}
 
-        public function getDepartement(){return ($this->departement);}
-        public function setDepartement($departement){$this->departement = $departement;}
+
+	public function getPrenom(){return ($this->prenom);}
+        public function setPrenom($prenom){$this->prenom= $prenom;}
+
+        public function getOrganisation(){return ($this->organisation);}
+        public function setOrganisation($organisation){$this->organisation= $organisation;}
 
 	//Retourne les articles écrits par l'auteur	
 	public function getArticles(){
