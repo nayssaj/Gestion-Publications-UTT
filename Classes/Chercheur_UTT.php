@@ -1,23 +1,23 @@
 <?php
-    class Chercheur_UTT extends Auteur{
+    class Chercheur_UTT extends Chercheur{
 
         private $login;
         private $MDP;
     
-        function __construct ($nom, $departement, $login, $MDP){
+        function __construct ($id, $nom, $prenom, $organisation, $equipe, $login, $MDP){
     
         //fonctionnalité de création du compte
-            parent::__construct($nom,$departement);
-            $this->universite = 'UTT';
+            parent::__construct($$id, $nom, $prenom, 'UTT', $equipe);
             $this->login = $login;
             $this->MDP = $MDP;
-    
         }
 
-        function getUniversite(){return ('UTT');}
+	function ajoutPublication($auteurs, $document, $titreArticle, $ref_Publication, $annee, $categorie, $statut){
+		require_once 'Database.php';	
+		$db = Database::getInstance();
 
-        function ajoutPublication(){}
+	}
+
         function modifierPublication(){}
-        function afficherPublications(){}
     }
 ?>
