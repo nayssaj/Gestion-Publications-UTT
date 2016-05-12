@@ -1,5 +1,5 @@
 <?php
-    abstract class Publication {
+    class Publication {
 
         private $auteurs;
         private $titre;
@@ -15,20 +15,20 @@
             $this->statut = $statut;
         }
     
-        function getAuteurs(){return $this->auteurs;}
-        function setAuteurs($auteurs){$this->auteurs = $auteurs;}
+        public function getAuteurs(){return $this->auteurs;}
+        public function setAuteurs($auteurs){$this->auteurs = $auteurs;}
     
-        function getTitre(){return $this->titre;}
-        function setTitre($titre){$this->titre = $titre;}
+        public function getTitre(){return $this->titre;}
+        public function setTitre($titre){$this->titre = $titre;}
 
-        function getRef(){return $this->ref;}
-        function setRef($ref){$this->ref = $ref;}
+        public function getRef(){return $this->ref;}
+        public function setRef($ref){$this->ref = $ref;}
 
-        function getAnnee(){return $this->annee;}
-        function setAnnee($annee){$this->annee = $annee;}
+        public function getAnnee(){return $this->annee;}
+        public function setAnnee($annee){$this->annee = $annee;}
 
-        function getStatut(){return $this->statut;}
-        function setStatut($statut){$this->statut = $statut;}
+        public function getStatut(){return $this->statut;}
+        public function setStatut($statut){$this->statut = $statut;}
 
     }
 ?>
