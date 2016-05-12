@@ -1,8 +1,10 @@
 <?php
-    class Chercheur{
-    
+
 	require_once 'Database.php';
 	require_once 'Publication.php';
+
+    class Chercheur{
+    
 
 	private $id;
         private $nom;
@@ -31,19 +33,27 @@
         public function getOrganisation(){return ($this->organisation);}
         public function setOrganisation($organisation){$this->organisation= $organisation;}
 
-	//Retourne les articles écrits par l'auteur	
+	//Retourne les publication écrits par l'auteur sous forme d'objets	
 	public function getArticles(){
 		$db = Database::getInstance();
+		//On cherche toutes les publications écrites par l'auteur
 		$reponse = $db->query('SELECT Publication.* FROM Publication, redige WHERE Publication.id = redige.Publication_id AND redige.Auteur_id =\'' . $this->getId() . '\''); 
 		while($donneesPublication = $reponse->fetch()){
-			$idPublication = $donneesPublication['id'];
-			$reponseAuteurs = $db->query('SELECT Auteur.id FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id =\''. $idPublication . '\''); 
-			$donnesAuteurs = $reponseAuteurs->fetch;
-			echo "id de l'auteur = " . $donnesAuteurs['id'];
-//			$publication = new Publication($donnees[''], $donnees['titre_article'], $donnees['reference_publication'], $donnees['annee'], $donnees['statut'])
-			print_r($donnees);
+			//On cherche tous les auteurs de la publication trouvée
+			$reponseAuteurs = $db->query('SELECT Auteur.id FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id =\''. $donneesPublication['id'] . '\''); 
+			//On garde en mémoire la liste de tous les auteurs de la publication trouvée
+			//elle servira a créer l'objet publication associée à celle trouvée
+			while($donneesAuteurs = $reponseAuteurs->fetch()){
+				$idAuteurs[] = $donneesAuteurs['id'];
+			}
+			$reponseAuteurs->closeCursor();
+			//On viens créer un objet publication que l'on ajoute aux autres publication 
+			//potentiellement déja trouvées 
+			$publications[] = new Publication($idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut']);
+			unset($idAuteurs);
 		}
-		$articles->closeCursor();	
+		$reponse->closeCursor();	
+		return $publications;
 	}		
     }
 ?>
