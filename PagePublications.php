@@ -182,7 +182,7 @@
             if(is_a($affiche,Publication)){
                $recupAuteurs = $affiche->getauteurs();
                 sort($recupAuteurs);
-            echo('<div class="col-lg-8">
+            echo('<div class="col-lg-12">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -191,7 +191,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-12">
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover table-striped">
                                             <thead>
@@ -215,7 +215,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-12">
                                     <div id="morris-bar-chart"></div>
                                 </div>
                             </div>
