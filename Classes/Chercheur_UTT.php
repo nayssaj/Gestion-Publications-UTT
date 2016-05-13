@@ -99,6 +99,33 @@
 			}
 		}
 
+		public function ajouterAuteur(Publication $publication, Chercheur $chercheur){
+			try{
+				if(!$publication->verificationAuteur($this)){
+					throw new Exception('Vous n\'etes pas auteur de ce fichier');	
+				}
+			}
+			catch(Exception $e){
+				die('Erreur : ' . $e->getMessage());
+			}
+			//On verifie que l'auteur n'est pas déja indiqué dans la liste des auteurs
+			if(!$publication->verificationAuteur($chercheur)){
+				try{
+					$db = Database::getInstance();
+				}
+				catch(Exception $e){
+					die('Erreur : ' . $e->getMessage());
+				}
+				$req = $db->prepare('INSERT INTO redige(Publication_id, Auteur_id) VALUES (:idPublication, :idAuteur)');
+				$idPublication = $publication->getId();
+				$idAuteur = $chercheur->getId();
+				$req->execute(array(
+					'idPublication' => $idPublication,
+				       	'idAuteur' => $idAuteur
+				));	
+			}
+		}
+
 		public function modifierPublication(){}
     	}
 ?>
