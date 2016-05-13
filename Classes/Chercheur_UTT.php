@@ -25,7 +25,6 @@
 				die('Erreur : ' . $e->getMessage());	
 			}
 			$req = $db->prepare('INSERT INTO Publication(id, titre_article, reference_publication, annee, categorie, lieu, statut) VALUES(:id, :titre_article, :reference_publication, :annee, :categorie, :lieu, :statut)');
-			echo 'connecté';
 			$req->execute(array(
 				'id' => NULL,
 				'titre_article' => $titre_article,
@@ -35,7 +34,6 @@
 				'lieu' => $lieu,
 				'statut' => $statut
 			));
-			echo 'jeu ajouté';
 		}
         	public function modifierPublication(){}
     	}
