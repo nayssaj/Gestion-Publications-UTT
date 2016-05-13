@@ -1,22 +1,27 @@
 <?php
     class Publication {
 
-        private $auteurs;
+	private $id;
+        private $auteurs = array();
         private $titre;
         private $ref;
         private $annee;
         private $statut;
     
-        public function __construct($auteurs, $titre, $ref, $annee, $statut) {
-            $this->auteurs = $auteurs;
-            $this->titre = $titre;
-            $this->ref = $ref;
-            $this->annee = $annee;
-            $this->statut = $statut;
+        public function __construct($id, $auteurs, $titre, $ref, $annee, $statut) {
+		$this->id = $id;	
+        	$this->auteurs = $auteurs;
+		$this->titre = $titre;
+		$this->ref = $ref;
+		$this->annee = $annee;
+		$this->statut = $statut;
         }
     
+	public function getId(){return $this->id;}
+	public function setId($id){$this->id = $id;}
+
         public function getAuteurs(){return $this->auteurs;}
-        public function setAuteurs($auteurs){$this->auteurs = $auteurs;}
+	public function setAuteurs($auteur){$this->auteur = $auteur;}
     
         public function getTitre(){return $this->titre;}
         public function setTitre($titre){$this->titre = $titre;}
@@ -30,5 +35,13 @@
         public function getStatut(){return $this->statut;}
         public function setStatut($statut){$this->statut = $statut;}
 
+	public function verificationAuteur(Chercheur $auteurIncertain){
+		foreach($this->getAuteurs() as $auteurCertain){
+			if($auteurCertain->getId() == $auteurIncertain->getId()){
+				return true;
+			}	
+		}
+		return false;
+	}
     }
 ?>
