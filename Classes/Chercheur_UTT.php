@@ -57,7 +57,30 @@
 					'nvStatut' => $statut,
 					'idPublication' => 1 
 				));
-				echo 'ici';
+			}
+		}
+
+		public function modifierTitrePublication(Publication $publication, $titre){
+			try{
+				if(!$publication->verificationAuteur($this)){
+					throw new Exception('Vous n\'etes pas auteur de ce fichier');	
+				}
+			}
+			catch(Exception $e){
+				die('Erreur : ' . $e->getMessage());
+			}	
+			if($publication->getTitre() != $statut){
+				try{
+					$db = Database::getInstance();
+				}
+				catch(Exception $e){
+					die('Erreur : ' . $e->getMessage());	
+				} 
+				$req = $db->prepare('UPDATE Publication SET titre_article = :nvTitre WHERE id = :idPublication');
+				$req->execute(array(
+					'nvTitre' => $titre,
+					'idPublication' => $publication->getId() 
+				));
 			}
 		}
 
