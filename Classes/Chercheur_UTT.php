@@ -12,7 +12,7 @@
         	public function __construct ($id, $nom, $prenom, $organisation, $equipe, $login, $MDP){
     
         	//fonctionnalité de création du compte
-            		parent::__construct($$id, $nom, $prenom, 'UTT', $equipe);
+            		parent::__construct($id, $nom, $prenom, 'UTT', $equipe);
             		$this->login = $login;
             		$this->MDP = $MDP;
         	}
@@ -35,6 +35,7 @@
 				'statut' => $statut
 			));
 		}
+
         	public function modifierPublication(){}
     	}
 ?>
