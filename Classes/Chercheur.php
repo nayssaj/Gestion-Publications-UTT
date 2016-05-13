@@ -54,6 +54,6 @@
 		}
 		$reponse->closeCursor();	
 		return $publications;
-	}		
+	}
     }
 ?>
