@@ -34,7 +34,7 @@
         public function setOrganisation($organisation){$this->organisation= $organisation;}
 
 	//Retourne les publication écrits par l'auteur sous forme d'objets	
-	public function getArticles(){
+	public function getPublication(){
 		$db = Database::getInstance();
 		//On cherche toutes les publications écrites par l'auteur
 		$reponse = $db->query('SELECT Publication.* FROM Publication, redige WHERE Publication.id = redige.Publication_id AND redige.Auteur_id =\'' . $this->getId() . '\''); 
