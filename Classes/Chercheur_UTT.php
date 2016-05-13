@@ -1,7 +1,7 @@
 <?php
 
 	require_once 'Database.php';	
-	//S'assurer nécéssaire de faire ce require
+	//S'assurer qu'il est nécéssaire de faire ce require
 	require_once 'Chercheur.php';
 
 	class Chercheur_UTT extends Chercheur{
@@ -36,6 +36,27 @@
 			));
 		}
 
-        	public function modifierPublication(){}
+		public function modifierPublication(Publication $anciennePublication, Publication $nouvellePublication){
+			try{
+				if(!$publication->verificationAuteur($this)){
+					throw new Exception('Vous n\'etes pas auteur de ce fichier');	
+				}
+			}
+			catch(Exception $e){
+				die('Erreur : ' . $e->getMessage());
+			}	
+			if($nouvellePublication->getTitre() != $anciennePublication->getTitre()){
+				try{
+					$db = Database::getInstance();
+				}
+				catch(Exception $e){
+					die('Erreur : ' . $e->getMessage());	
+				} 		
+				$nouveauTitre= $nouvellePublication->getTitre();
+				$ancienTitre= $anciennePublication->getTitre();
+				$req = $db->prepare('UPDATE Publication SET titre_  
+
+			}
+		}
     	}
 ?>
