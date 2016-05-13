@@ -1,7 +1,7 @@
 <?php
     class Publication {
 
-        private $auteurs;
+        private $auteurs = array();
         private $titre;
         private $ref;
         private $annee;
@@ -16,7 +16,7 @@
         }
     
         public function getAuteurs(){return $this->auteurs;}
-        public function setAuteurs($auteurs){$this->auteurs = $auteurs;}
+	public function setAuteurs($auteur){$this->auteur = $auteur;}
     
         public function getTitre(){return $this->titre;}
         public function setTitre($titre){$this->titre = $titre;}
@@ -30,5 +30,13 @@
         public function getStatut(){return $this->statut;}
         public function setStatut($statut){$this->statut = $statut;}
 
+	public function verificationAuteur(Chercheur $auteurIncertain){
+		foreach($this->getAuteurs() as $auteurCertain){
+			if($auteurCertain->getId() == $auteurIncertain->getId()){
+				return true;
+			}	
+		}
+		return false;
+	}
     }
 ?>
