@@ -17,15 +17,18 @@
             		$this->MDP = $MDP;
         	}
 
-		public function ajoutPublication($titre_article, $reference_publication, $annee, $categorie, $lieu, $statut){
+		public function ajoutPublication($auteurs, $titre_article, $reference_publication, $annee, $categorie, $lieu, $statut){
 			try{
 				$db = Database::getInstance();
 			}
 			catch(Exception $e){
 				die('Erreur : ' . $e->getMessage());	
 			}
-			$req = $db->prepare('INSERT INTO Publication(id, titre_article, reference_publication, annee, categorie, lieu, statut) VALUES(:id, :titre_article, :reference_publication, :annee, :categorie, :lieu, :statut)');
-			$req->execute(array(
+			//On insère d'abord la publication dans la table Publication
+			$reqInsPublication = $db->prepare('INSERT INTO Publication(id, titre_article, reference_publication, annee, categorie, lieu, statut) VALUES(:id, :titre_article, :reference_publication, :annee, :categorie, :lieu, :statut)');
+			$reqInsPublication->execute(array(
+				//Ici id est définit dans la table comme auto-incrémenté, 
+				//sa valeur sera automatiquement attribuée, on indique donc NULL
 				'id' => NULL,
 				'titre_article' => $titre_article,
 				'reference_publication' => $reference_publication,
@@ -34,6 +37,18 @@
 				'lieu' => $lieu,
 				'statut' => $statut
 			));
+			//On récupère l'id de la publication que l'on viens d'inserer
+			$reqIdPublication = $db->query('SELECT LAST_INSERT_ID()'); 
+			$idPublication = $reqIdPublication->fetch()[0];
+			//On insère dans la table rédige les couples idAuteur/idPublication
+			foreach($auteurs as $auteur){
+				$idAuteur = $auteur->getId();
+				$reqInsRedige = $db->prepare('INSERT INTO redige(Publication_id, Auteur_id) VALUES(:idPublication, :idAuteur)'); 
+				$reqInsRedige->execute(array(
+					'idPublication' => $idPublication,
+				       	'idAuteur' => $idAuteur	
+				));	
+			}
 		}
 
 		public function modifierStatutPublication(Publication $publication, $statut){
