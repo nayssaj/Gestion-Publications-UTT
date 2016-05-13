@@ -78,7 +78,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <?php
+           <?php
             
             //on écrit le formulaire d'inscription
             echo('<form method="POST" action="Inscription.php">');

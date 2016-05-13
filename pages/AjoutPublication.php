@@ -78,8 +78,22 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            <script type='text/javascript' >        var div = document.getElementById('champs');
+        function addInput(nam){
+            var input = document.createElement("input");
+            input.name = name;
+            div.appendChild(input);
+        }
+        function addField() {
+            addInput("titre[]");
+            addInput("contenu[]");
+            addInput("description[]");
+            div.appendChild(document.createElement("br"));
+        }
+        </script>
             <?php
             
+            echo('<button type="button" class="btn btn-primary" onclick="addField()" >+</button>');
             //on écrit le formulaire d'inscription
         echo('<form method="POST" action="AjoutPublication.php">');
         
@@ -87,7 +101,7 @@
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                             <i class="fa fa-fw"></i>'); echo('Quelles sont les informations de la Publication ?  
                         </div>
                         <!-- /.panel-heading -->
@@ -140,7 +154,7 @@
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                             <i class="fa fa-fw"></i>'); echo('Informations supplémentaires  
                         </div>
                         <!-- /.panel-heading -->

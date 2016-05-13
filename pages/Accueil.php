@@ -106,7 +106,7 @@
 
             <div class="col-md-3 col-sm-2 hero-feature">
                 <div class="thumbnail">
-                    <img src="bootstrap/img/photoCV.jpg" alt="">
+                    <img src="../bootstrap/img/photoCV.jpg" alt="">
                     <div class="caption">
                         <h3>Léo Schneider</h3>
                         <p>Cofondateur/Développeur</p>
@@ -116,7 +116,7 @@
 
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
+                    <img src="" alt="">
                     <div class="caption">
                         <h3>Jean-gabriel Le Mercier</h3>
                         <p>Cofondateur/Développeur</p> 
