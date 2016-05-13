@@ -1,6 +1,8 @@
 <?php
 
 	require_once 'Database.php';	
+	//S'assurer nécéssaire de faire ce require
+	require_once 'Chercheur.php';
 
 	class Chercheur_UTT extends Chercheur{
 
@@ -15,15 +17,17 @@
             		$this->MDP = $MDP;
         	}
 
-		public function ajoutPublication($auteurs, $titre_article, $reference_publication, $annee, $categorie, $statut){
+		public function ajoutPublication($titre_article, $reference_publication, $annee, $categorie, $lieu, $statut){
 			try{
 				$db = Database::getInstance();
 			}
 			catch(Exception $e){
 				die('Erreur : ' . $e->getMessage());	
 			}
-			$req = $bdd->prepare('INSERT INTO Publication(titre_article, reference_publication, annee, categorie, lieu, statut) VALUES(:titre_article, :reference_publication, :annee, :categorie, :lieu, :statut)');
+			$req = $db->prepare('INSERT INTO Publication(id, titre_article, reference_publication, annee, categorie, lieu, statut) VALUES(:id, :titre_article, :reference_publication, :annee, :categorie, :lieu, :statut)');
+			echo 'connecté';
 			$req->execute(array(
+				'id' => NULL,
 				'titre_article' => $titre_article,
 				'reference_publication' => $reference_publication,
 				'annee' => $annee,
