@@ -36,7 +36,7 @@
 			));
 		}
 
-		public function modifierPublication(Publication $anciennePublication, Publication $nouvellePublication){
+		public function modifierStatutPublication(Publication $publication, $statut){
 			try{
 				if(!$publication->verificationAuteur($this)){
 					throw new Exception('Vous n\'etes pas auteur de ce fichier');	
@@ -45,18 +45,22 @@
 			catch(Exception $e){
 				die('Erreur : ' . $e->getMessage());
 			}	
-			if($nouvellePublication->getTitre() != $anciennePublication->getTitre()){
+			if($publication->getStatut() != $statut){
 				try{
 					$db = Database::getInstance();
 				}
 				catch(Exception $e){
 					die('Erreur : ' . $e->getMessage());	
-				} 		
-				$nouveauTitre= $nouvellePublication->getTitre();
-				$ancienTitre= $anciennePublication->getTitre();
-				$req = $db->prepare('UPDATE Publication SET titre_  
-
+				} 
+				$req = $db->prepare('UPDATE Publication SET statut = :nvStatut WHERE id = :idPublication');
+				$req->execute(array(
+					'nvStatut' => $statut,
+					'idPublication' => 1 
+				));
+				echo 'ici';
 			}
 		}
+
+		public function modifierPublication(){}
     	}
 ?>
