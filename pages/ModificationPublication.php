@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Ajout d'une Publication</title>
+    <title>Modification d'une Publication</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand navbar-inverse" href="AjoutPublication.php">Nouvelle Publication</a>
+                <a class="navbar-brand navbar-inverse" href="ModificationPublication.php">Modification Publication</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -74,7 +74,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Formulaire pour une nouvelle Publication</h1>
+                    <h1 class="page-header">Formulaire pour modifier une Publication</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -96,7 +96,7 @@
             
             echo('<button type="button" class="btn btn-primary" onclick="addField()" >+</button>');
             //on écrit le formulaire d'inscription
-        echo('<form method="POST" action="AjoutPublication.php">');
+        echo('<form method="POST" action="ModificationPublication.php">');
         
             echo('<div class="col-lg-12">
                     <!-- /.panel -->
@@ -120,8 +120,8 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>');echo('<input class="form-control" type="text" value="" name="titre">');echo('</td>
-                                                    <td>');echo('<select class="form-control" name="annee" value="">'
+                                                    <td>');echo('<input class="form-control" type="text" value="'."$_GET[titre]".'" name="titre">');echo('</td>
+                                                    <td>');echo('<select class="form-control" name="annee" value="'."$_GET[equipe]".'">'
                                                             .'<option value ="2016">2016</option>'
                                                             .'<option value ="2017">2017</option>'
                                                             .'<option value ="2018">2018</option>'
@@ -133,13 +133,13 @@
                                                             . '</select>');echo('</td>
                                                     <td>');echo('<div class="btn-group" data-toggle="buttons">
                                                         <label class="btn btn-primary active">
-                                                    <input type="radio" name="statut" value="soumis" autocomplete="off" checked> Soumis
+                                                    <input type="radio" name="statut" value="soumis" autocomplete="off" ');if($_GET['statut'] == 'soumis'){echo("checked='checked'");}echo('> Soumis
                                                       </label>
                                                       <label class="btn btn-warning">
-                                                        <input type="radio" name="statut" value="revision" autocomplete="off"> En révision
+                                                        <input type="radio" name="statut" value="revision" autocomplete="off" ');if($_GET['statut'] == 'revision'){echo("checked='checked'");}echo('> En révision
                                                       </label>
                                                       <label class="btn btn-success">
-                                                        <input type="radio" name="statut" value="publie" autocomplete="off"> Publié
+                                                        <input type="radio" name="statut" value="publie" autocomplete="off" ');if($_GET['statut'] == 'publie'){echo("checked='checked'");}echo('> Publié
                                                       </label>
                                                   </div>');echo('</td>
                                                 </tr>
@@ -172,8 +172,8 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>');echo('<input class="form-control" type="text" value="" name="reference">');echo('</td>
-                                                    <td>');echo('<select class="form-control" name="categorie" value="">'
+                                                    <td>');echo('<input class="form-control" type="text" value="'."$_GET[reference]".'" name="reference">');echo('</td>
+                                                    <td>');echo('<select class="form-control" name="categorie" value="'."$_GET[categorie]".'">'
                                                             .'<option value ="RI">Article dans les revues internationales</option>'
                                                             .'<option value ="RF">Article dans les revues nationales</option>'
                                                             .'<option value ="CI">Article dans les conférences internationales</option>'
