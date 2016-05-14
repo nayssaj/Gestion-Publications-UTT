@@ -24,6 +24,7 @@
     <!-- Custom Fonts -->
     <link href="../bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <link href="../Moncss.css" rel="stylesheet" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -77,7 +78,7 @@
                     <h1 class="page-header">Formulaire pour une nouvelle Publication</h1>
                 </div>
                 <!-- /.col-lg-12 -->
-            </div>
+            </div><!--
             <script type='text/javascript' >
                 var div = document.getElementById('champs');
         function addInput(nam){
@@ -91,7 +92,7 @@
             addInput("description[]");
             div.appendChild(document.createElement("br"));
         }
-        </script>
+        </script>!-->
             <?php
             
             echo('<button type="button" class="btn btn-primary" onclick="addField()" >+</button>');
@@ -168,12 +169,13 @@
                                                 <tr>
                                                     <th>Lien de la publication<br/></th>
                                                     <th>catégorie<br/></th>
+                                                    <th class="conf">lieu</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>');echo('<input class="form-control" type="text" value="" name="reference">');echo('</td>
-                                                    <td>');echo('<select class="form-control" name="categorie" value="">'
+                                                    <td>');echo('<select class="form-control Maclass" name="categorie" value="">'
                                                             .'<option value ="RI">Article dans les revues internationales</option>'
                                                             .'<option value ="RF">Article dans les revues nationales</option>'
                                                             .'<option value ="CI">Article dans les conférences internationales</option>'
@@ -182,8 +184,9 @@
                                                             .'<option value ="TD">Thèse de doctorat</option>'
                                                             .'<option value ="BV">Brevet</option>'
                                                             .'<option value ="AP">Autre production</option>'
-                                                            . '</select>
+                                                            . '</select>     
                                                     </td>
+                                                    <td><input class="form-control conf" type="text" value="" name="lieu"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -196,9 +199,6 @@
             
         echo("</form>"); //fin du formulaire
                                                     
-                  
-            ?>
-            <?php 
                 if(isset($_POST[nom]) && isset($_POST[prenom]) && isset($_POST[equipe]) && isset($_POST[login]) && isset($_POST[mdp])){
                     if(strlen($_POST[mdp])>6 ){ //ajouter les vérif d'existance login,nom et prenom 
                     //créer les éléments dans la BDD
@@ -219,7 +219,7 @@
 
     </div>
     <!-- /#wrapper -->
-
+    
     <!-- jQuery -->
     <script src="../bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -229,6 +229,7 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
+    <script src="../Monjquery.js"></script>
     <!-- Morris Charts JavaScript -->
     <!-- <script src="bootstrap/bower_components/raphael/raphael-min.js"></script>
     <script src="bootstrap/bower_components/morrisjs/morris.min.js"></script>
@@ -236,7 +237,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../bootstrap/dist/js/sb-admin-2.js"></script>
-
+    
 </body>
-
 </html>
