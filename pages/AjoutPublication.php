@@ -267,7 +267,7 @@
                                         <tbody"><tr>
                                             <label class="btn btn-primary submitnojs pagination-centered"><input type="submit" name="valider" class="submitnojs" value="">Valider</label>
                                             
-                                        </td><td></td><td><label class="btn btn-primary submitjs pull-right">Valider</label></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                        </td><td></td><td><label class="btn btn-primary submitjs pull-right" >Valider</label></td><td></td><td></td><td></td><td></td><td></td></tr>
                                         </tbody>
                                         </table>
                                     </div>

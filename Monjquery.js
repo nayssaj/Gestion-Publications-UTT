@@ -27,3 +27,9 @@
     $('.B_aM').on('click', function(){
         $('.auteur-origin').after().text($('.auteur-origin').after().text().slice()); //supprime tout
     });
+    
+    $('.submitjs').on('click', function () {  //c'est ici que l'on vérifie tout avant de laisser l'utilisateur valider.
+    var $btn = $(this).button('loading');
+    // business logic...
+    $btn.button('reset');
+  });
