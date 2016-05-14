@@ -5,3 +5,15 @@
 .Maclass{
     display: inline;
 }
+.B_aP{
+    display : inline;
+}
+.B_aM{
+    display : none;
+}
+.submitjs{
+
+}
+.submitnojs{
+    display : none;
+}

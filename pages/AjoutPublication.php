@@ -95,9 +95,60 @@
         </script>!-->
             <?php
             
-            echo('<button type="button" class="btn btn-primary" onclick="addField()" >+</button>');
+            //echo('<button type="button" class="btn btn-primary" onclick="addField()" >+</button>');
             //on écrit le formulaire d'inscription
-        echo('<form method="POST" action="AjoutPublication.php">');
+        echo('<br/><br/><form method="POST" action="AjoutPublication.php">');
+        
+        echo('<div class="col-lg-12">
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+                            <i class="fa fa-fw"></i>'); echo('Qui sont les Auteurs ?  
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr><td>
+                                                    <div class=" B_a" data-toggle="buttons">
+                                                    <label class="btn btn-primary B_aP glyphicon glyphicon-pencil">+</label>
+                                                    <label class="btn btn-primary B_aM glyphicon glyphicon-trash"></label><div/><td/>
+                                                <tr/>   
+                                                <tr>
+                                                    <th>Nom<br/></th>
+                                                    <th>Prénom<br/></th>
+                                                    <th>Organisation<br/></th>
+                                                    <th>Département<th/>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="auteur-origin" >
+                                            
+                                                <tr>
+                                                    <td>');echo('<input class="form-control" type="text" placeholder="Lemercier" value="" name="nom[]">');echo('</td>
+                                                    <td>');echo('<input class="form-control" type="text" placeholder="Marc" value="" name="prenom[]">');echo('</td>
+                                                    <td>');echo('<input class="form-control" type="text" placeholder="UTT" value="" name="organisation[]">');echo('</td>
+                                                    <td>');echo('<input class="form-control" type="text" placeholder="tech-CICO" value="" name="departement[]">');echo('</td>
+                                                </tr>   
+                                                <!--  affiche à effectuer en plus pour chaque auteur
+                                                <tr>
+                                                    <td>');echo('<input class="form-control" type="text" placeholder="Lemercier" value="" name="nom[]">');echo('</td>
+                                                    <td>');echo('<input class="form-control" type="text" placeholder="Marc" value="" name="prenom[]">');echo('</td>
+                                                    <td>');echo('<input class="form-control" type="text" placeholder="UTT" value="" name="organisation[]">');echo('</td>
+                                                    <td>');echo('<input class="form-control" type="text" placeholder="tech-CICO" value="" name="departement[]">');echo('</td>
+                                                </tr>
+                                                !-->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>');
         
             echo('<div class="col-lg-12">
                     <!-- /.panel -->
@@ -132,7 +183,7 @@
                                                             .'<option value ="2022">2022</option>'
                                                             .'<option value ="2023">2023</option>'
                                                             . '</select>');echo('</td>
-                                                    <td>');echo('<div class="btn-group" data-toggle="buttons">
+                                                    <td>');echo('<div class="" data-toggle="buttons">
                                                         <label class="btn btn-primary active">
                                                     <input type="radio" name="statut" value="soumis" autocomplete="off" checked> Soumis
                                                       </label>
@@ -197,7 +248,35 @@
                         </div>
                     </div>
             </div>');
-            
+            echo('<div class="col-lg-12">
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            <i class="fa fa-fw"></i>'); echo('Avez vous fini ? 
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr></tr>
+                                            </thead>
+                                        <tbody"><tr>
+                                            <label class="btn btn-primary submitnojs pagination-centered"><input type="submit" name="valider" class="submitnojs" value="">Valider</label>
+                                            
+                                        </td><td></td><td><label class="btn btn-primary submitjs pull-right">Valider</label></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>');
+                                                    
         echo("</form>"); //fin du formulaire
                                                     
                 if(isset($_POST[nom]) && isset($_POST[prenom]) && isset($_POST[equipe]) && isset($_POST[login]) && isset($_POST[mdp])){
