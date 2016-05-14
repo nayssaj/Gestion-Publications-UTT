@@ -168,8 +168,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>Lien de la publication<br/></th>
-                                                    <th>catégorie<br/></th>
-                                                    <th class="conf">lieu</th>
+                                                    <th>Catégorie<br/></th>
+                                                    <th class="conf">Lieu</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -186,7 +186,8 @@
                                                             .'<option value ="AP">Autre production</option>'
                                                             . '</select>     
                                                     </td>
-                                                    <td><input class="form-control conf" type="text" value="" name="lieu"></td>
+                                                     <td><input class="form-control conf" type="text" value="" name="lieu">
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
