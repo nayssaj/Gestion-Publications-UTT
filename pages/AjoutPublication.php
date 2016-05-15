@@ -268,9 +268,7 @@
                                         <tr>
                                         <td><label class="btn btn-primary submitjs pull-right" >Vérifier</label></td>
                                         <td><input type="submit" name="valider" class="submitnojs btn btn-primary submitnojs pull-right" disabled="disabled" value="Valider"></td><td></td><td></td><td></td><td></td><td></td></tr>
-                                        
-                                        <tr> 
-                                        
+                                        <tr>
                                               <h4>Vérifications</h4>
                                             <div class="container Maverification">
                                               <div class="alert alert-success Monsucces">
@@ -291,8 +289,7 @@
                             </div>
                         </div>
                     </div>
-            </div>');
-                                                    
+            </div>');                                               
         echo("</form>"); //fin du formulaire
                                                     
                 if(isset($_POST[nom]) && isset($_POST[prenom]) && isset($_POST[equipe]) && isset($_POST[login]) && isset($_POST[mdp])){
@@ -303,11 +300,6 @@
                    //     echo ("<br/>");
                    // }
                     }
-                }
-                else{
-           //         echo('il y a une erreur cliquez ici <a href=inscription.php?nom='."$_POST[nom]".'&prenom='."$_POST[prenom]".'&equipe='."$_POST[equipe]".'&login='."$_POST[login]".'>albezbe</a>'); 
-             //       echo('arg');
-                //header("location : inscription.php?nom="."$_POST[nom]"."&prenom=$_POST[prenom]&equipe=$_POST[equipe]&login=$_POST[login]");
                 }
             ?>
         </div>
