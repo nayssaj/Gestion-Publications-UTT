@@ -14,3 +14,7 @@ $('.Monvalider').on('mouseenter',function(){
     
     
 });
+
+$('.Monreinit').on('click',function(){
+   $('.Monvalider').prop('disabled', true); 
+});

@@ -225,7 +225,7 @@
                                             <body>
                                             
                                                 <tr>
-                                                    <th><div class=""><input class="btn btn-primary btn-large" type="reset" value="Réinitialiser"></div></th>
+                                                    <th><div class=""><input class="btn btn-primary btn-large Monreinit" type="reset" value="Réinitialiser"></div></th>
                                                     <th><div class=""><button class="btn btn-primary btn-large Monvalider" type="submit" value="Valider" name="submit">Valider<span class="glyphicon glyphicon-chevron-right"></span></button></div></th>
                                                     <th></th>
                                                 </tr>
