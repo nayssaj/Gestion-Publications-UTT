@@ -130,7 +130,7 @@
                                                 <tr>
                                                     <td>');echo('<input class="form-control" type="text" placeholder="Lemercier" value="" name="nom[]">');echo('</td>
                                                     <td>');echo('<input class="form-control" type="text" placeholder="Marc" value="" name="prenom[]">');echo('</td>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="UTT" value="" name="organisation[]">');echo('</td>
+                                                    <td>');echo('<input class="form-control Maorga" type="text" placeholder="UTT" value="" name="organisation[]">');echo('</td>
                                                     <td>');echo('<input class="form-control" type="text" placeholder="tech-CICO" value="" name="departement[]">');echo('</td>
                                                 </tr>   
                                                 <!--  affiche à effectuer en plus pour chaque auteur
@@ -264,10 +264,26 @@
                                             <thead>
                                                 <tr></tr>
                                             </thead>
-                                        <tbody"><tr>
-                                            <label class="btn btn-primary submitnojs pagination-centered"><input type="submit" name="valider" class="submitnojs" value="">Valider</label>
-                                            
-                                        </td><td></td><td><label class="btn btn-primary submitjs pull-right" >Valider</label></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                        <tbody">
+                                        <tr>
+                                        <td><label class="btn btn-primary submitjs pull-right" >Vérifier</label></td>
+                                        <td><input type="submit" name="valider" class="submitnojs btn btn-primary submitnojs pull-right" disabled="disabled" value="Valider"></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                        
+                                        <tr> 
+                                        
+                                              <h4>Vérifications</h4>
+                                            <div class="container Maverification">
+                                              <div class="alert alert-success Monsucces">
+                                                <strong>Success!</strong> This alert.
+                                              </div>
+                                              <div class="alert alert-info Moninfo">
+                                                <strong>Info!</strong> This ale.
+                                              </div>
+                                              <div class="alert alert-danger Mondanger">
+                                                <strong>Danger!</strong> This alert .
+                                              </div>
+                                            </div>
+                                        </tr>
                                         </tbody>
                                         </table>
                                     </div>
