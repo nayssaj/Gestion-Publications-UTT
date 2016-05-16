@@ -74,29 +74,55 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Formulaire pour modifier une Publication</h1>
+                    <h1 class="page-header">Modifier une Publication</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <script type='text/javascript' >
-                var div = document.getElementById('champs');
-        function addInput(nam){
-            var input = document.createElement("input");
-            input.name = name;
-            div.appendChild(input);
-        }
-        function addField() {
-            addInput("titre[]");
-            addInput("contenu[]");
-            addInput("description[]");
-            div.appendChild(document.createElement("br"));
-        }
-        </script>
             <?php
-            
-            echo('<button type="button" class="btn btn-primary" onclick="addField()" >+</button>');
             //on écrit le formulaire d'inscription
         echo('<form method="POST" action="ModificationPublication.php">');
+        echo('<div class="col-lg-12">
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+                            <i class="fa fa-fw"></i>'); echo('Qui sont les Auteurs ?  
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr><td>
+                                                    <div class=" B_a" data-toggle="buttons">
+                                                    <label class="btn btn-primary B_aP1 glyphicon glyphicon-pencil">+</label>
+                                                    <label class="btn btn-primary B_aM1 glyphicon glyphicon-trash"></label><div/><td/>
+                                                <tr/>   
+                                                <tr>
+                                                    <th>Nom<br/></th>
+                                                    <th>Prénom<br/></th>
+                                                    <th>Organisation<br/></th>
+                                                    <th>Département<th/>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="auteur-origin" >
+                                            
+                                                <tr>
+                                                    <td>');echo('<input class="form-control" type="text" placeholder="Lemercier" value="'."$_get[nomAuteur1]".'" name="nom[]">');echo('</td>
+                                                    <td>');echo('<input class="form-control" type="text" placeholder="Marc" value="'."$_get[prenomAuteur1]".'" name="prenom[]">');echo('</td>
+                                                    <td>');echo('<input class="form-control Maorga" type="text" placeholder="UTT" value="" name="organisation[]">');echo('</td>
+                                                    <td>');echo('<input class="form-control" type="text" placeholder="tech-CICO" value="" name="departement[]">');echo('</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>');
         
             echo('<div class="col-lg-12">
                     <!-- /.panel -->
@@ -121,7 +147,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td>');echo('<input class="form-control" type="text" value="'."$_GET[titre]".'" name="titre">');echo('</td>
-                                                    <td>');echo('<select class="form-control" name="annee" value="'."$_GET[equipe]".'">'
+                                                    <td>');echo('<select class="form-control" name="annee" value="'."$_GET[annee]".'">'
                                                             .'<option value ="2016">2016</option>'
                                                             .'<option value ="2017">2017</option>'
                                                             .'<option value ="2018">2018</option>'
@@ -131,7 +157,7 @@
                                                             .'<option value ="2022">2022</option>'
                                                             .'<option value ="2023">2023</option>'
                                                             . '</select>');echo('</td>
-                                                    <td>');echo('<div class="btn-group" data-toggle="buttons">
+                                                    <td>');echo('<div class="" data-toggle="buttons">
                                                         <label class="btn btn-primary active">
                                                     <input type="radio" name="statut" value="soumis" autocomplete="off" ');if($_GET['statut'] == 'soumis'){echo("checked='checked'");}echo('> Soumis
                                                       </label>
@@ -168,12 +194,13 @@
                                                 <tr>
                                                     <th>Lien de la publication<br/></th>
                                                     <th>catégorie<br/></th>
+                                                    <th class="conf">Lieu</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>');echo('<input class="form-control" type="text" value="'."$_GET[reference]".'" name="reference">');echo('</td>
-                                                    <td>');echo('<select class="form-control" name="categorie" value="'."$_GET[categorie]".'">'
+                                                    <td>');echo('<select class="form-control Maclass" name="categorie" value="'."$_GET[categorie]".'">'
                                                             .'<option value ="RI">Article dans les revues internationales</option>'
                                                             .'<option value ="RF">Article dans les revues nationales</option>'
                                                             .'<option value ="CI">Article dans les conférences internationales</option>'
@@ -184,6 +211,8 @@
                                                             .'<option value ="AP">Autre production</option>'
                                                             . '</select>
                                                     </td>
+                                                    <td><input class="form-control conf" type="text" value="" name="lieu">
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -192,7 +221,48 @@
                             </div>
                         </div>
                     </div>
-            </div>');
+            </div>');echo('<div class="col-lg-12">
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            <i class="fa fa-fw"></i>'); echo('Avez vous fini ? 
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr></tr>
+                                            </thead>
+                                        <tbody">
+                                        <tr>
+                                        <td><label class="btn btn-primary submitjs pull-right" >Vérifier</label></td>
+                                        <td><input type="submit" name="valider" class="submitnojs btn btn-primary submitnojs pull-right" disabled="disabled" value="Valider"></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                        <tr>
+                                              <h4>Vérifications</h4>
+                                            <div class="container Maverification" style="display:none;">
+                                              <div class="alert alert-success Monsucces">
+                                                <strong>Success!</strong> This alert.
+                                              </div>
+                                              <div class="alert alert-info Moninfo">
+                                                <strong>Info!</strong> This ale.
+                                              </div>
+                                              <div class="alert alert-danger Mondanger">
+                                                <strong>Danger!</strong> This alert .
+                                              </div>
+                                            </div>
+                                        </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>'); 
             
         echo("</form>"); //fin du formulaire
                                                     
@@ -236,7 +306,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../bootstrap/dist/js/sb-admin-2.js"></script>
-
+    <script src="../monjqueryModification.js"></script>
 </body>
 
 </html>

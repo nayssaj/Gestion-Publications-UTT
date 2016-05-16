@@ -78,21 +78,7 @@
                     <h1 class="page-header">Formulaire pour une nouvelle Publication</h1>
                 </div>
                 <!-- /.col-lg-12 -->
-            </div><!--
-            <script type='text/javascript' >
-                var div = document.getElementById('champs');
-        function addInput(nam){
-            var input = document.createElement("input");
-            input.name = name;
-            div.appendChild(input);
-        }
-        function addField() {
-            addInput("titre[]");
-            addInput("contenu[]");
-            addInput("description[]");
-            div.appendChild(document.createElement("br"));
-        }
-        </script>!-->
+            </div>
             <?php
             
             //echo('<button type="button" class="btn btn-primary" onclick="addField()" >+</button>');
