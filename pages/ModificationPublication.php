@@ -1,3 +1,4 @@
+<?php include("../Classes/Database.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +62,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i>Paramètres</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="pages/login.html"><i class="fa fa-sign-out fa-fw"></i>Déconnexion</a>
+                        <li><a href="Accueil.php?deco=oui"><i class="fa fa-sign-out fa-fw"></i>Déconnexion</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

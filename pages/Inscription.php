@@ -1,3 +1,4 @@
+<?php include("../Classes/Database.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Inscription.php">Nouveau Compte</a>
+                <a class="navbar-brand" href="Accueil.php">Accueil</a>
             </div>
             <!-- /.navbar-header -->
 
