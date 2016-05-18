@@ -1,3 +1,5 @@
+<?php include("../Classes/Database.php");
+session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,7 +64,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i>Paramètres</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="pages/login.html"><i class="fa fa-sign-out fa-fw"></i>Déconnexion</a>
+                        <li><a href="Accueil.php?deco=oui"><i class="fa fa-sign-out fa-fw"></i>Déconnexion</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -72,6 +74,27 @@
             <!-- /.navbar-top-links -->
             <!-- /.navbar-static-side -->
         </nav>
+        <?php
+        if(isset($_SESSION["login"]) && isset($_SESSION["mdp"])){
+        //echo("trouvé");
+        }
+    else{
+        if(isset($_POST["login"]) && isset($_POST["mdp"])){
+          //  echo("retrouvé !");
+            $resultatlogin="bobi";
+            $resultatmdp="bobu";
+            //requete SQL savoir si login et mdp sont bons
+            if($_POST['mdp'] == $resultatmdp){
+                $_SESSION["login"]=$resultatlogin;
+                $_SESSION["mdp"]=$resultatmdp;
+            //    echo("connexion en cours !");
+            }
+        }
+        else{
+            //echo("Vous n'étes pas connecté , infâme lepreuxchaun");
+        }
+    }
+    ?>
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -102,7 +125,7 @@
                                                 <tr><td>
                                                     <div class=" B_a" data-toggle="buttons">
                                                     <label class="btn btn-primary B_aP glyphicon glyphicon-pencil">+</label>
-                                                    <label class="btn btn-primary B_aM glyphicon glyphicon-trash"></label><div/><td/>
+                                                    <label class="btn btn-primary B_aM glyphicon glyphicon-trash">-</label><div/><td/>
                                                 <tr/>   
                                                 <tr>
                                                     <th>Nom<br/></th>
