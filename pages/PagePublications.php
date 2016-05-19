@@ -57,29 +57,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <?php
-                            if(isset($_POST['login']) && isset($_POST['mdp'])){
-                                $_SESSION['login'] = $_POST['login'];
-                                $_SESSION['mdp'] = $_POST['mdp'];
-                            }
-                            if (isset($_SESSION['login']) && isset($_SESSION['mdp'])){
-                                //recherche SQL dans la base de la combin mdp=login
-                                $recherche = 'bobi';
-                                if($recherche == $_SESSION['mdp']){
-                                    echo ('<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Mes Publications</a> <!-- faut faire ce lien -->
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li><a href="Accueil.php?deco=oui"><i class="fa fa-sign-out fa-fw"></i> Déconnexion </a>
-                                    </li>');
-                                }
-                                else{
-                                echo('<li><a data-toggle="modal" data-target="#myModal">Connexion</a></li>'); //myModal en bas du body pour éviter les problèmes d'affichage
-                                }
-                            }
-                            if(!isset($_SESSION['login']) && !isset($_SESSION['mdp'])){
-                                echo('<li><a data-toggle="modal" data-target="#myModal">Connexion</a></li>'); //myModal en bas du body pour éviter les problèmes d'affichage
-                            }
+                            echo $menuNavbar;
                         ?>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -194,57 +172,6 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-        
-        <?php
-        function affichepublication($affiche){ //affcihe doit être un objet héritant de publication
-            if(is_a($affiche,Publication)){
-               $recupAuteurs = $affiche->getAuteurs();
-                sort($recupAuteurs);
-            echo('<div class="col-lg-12">
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>'); echo $affiche->getTitre();echo('
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Auteurs</th>
-                                                    <th>Ref</th>
-                                                    <th>Annee</th>');if(is_a($affiche,Conference)){
-                                              echo('<th>Lieu</th>');}
-                                              echo('<th>Statut</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>');foreach($recupAuteurs as $auteur){echo $auteur->getNom();echo ('<br/>');}echo('</td>
-                                                    <td>');echo $affiche->getRef();echo('</td>
-                                                    <td>');echo $affiche->getAnnee();echo('</td>
-                                                        ');if(is_a($affiche,Conference)){echo('<td>');echo $affiche->getLieu(); echo('</td>');}
-                                                    echo('<td>');echo $affiche->getStatut();echo('</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div id="morris-bar-chart"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>'); 
-            }//fin du if c'est une publication
-            else{echo("erreur de l'affichage des publications<br/>");}
-        }
-        ?>
-
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -255,7 +182,7 @@
             <!-- /.row -->
             <div class="row">
                 <?php 
-                if(isset($_GET["auteur"])){
+                /*if(isset($_GET["auteur"])){
                     //récupérer publications liès à l'auteur de $_GET
                     foreach($_GET["auteur"] as $publi->$publications){
                         affichepublication($publications);
@@ -266,30 +193,8 @@
                 if(isset($_GET["auteur"]) && isset($_GET["sujet"])){
                 }
                 if (!(isset($_GET["auteur"]) || isset($_GET["sujet"]))){    
-                require_once('../Classes/Chercheur.php');
-                require_once('../Classes/Publication.php');
-                require_once('../Classes/Conference.php');
-                //require_once('../Classes/Article.php');
-                $auteur1 = new Chercheur(1,'billy','billybob','UTT','GAMMA3');
-                $auteur2 = new Chercheur(2,'bob','boby','UTT','theses');
-                $auteur5 = new Chercheur(3,'GRE','GREBY','UTT','theses');
-                $auteurs =array($auteur1,$auteur2);
-                $auteurs4 =array($auteur2,$auteur1);
-                $auteurs3 =array($auteur2,$auteur2);
-/*
-                affichepublication("ficelage",$auteurs, "10/34/90", "la théorie des ficelles", "google");
-                affichepublication("birdo", $auteurs2, "10/26/12", "birdy", "twitter");
-                affichepublication("bible", $auteurs3, "10janvier 2309", "lecture", "facebook");
-                affichepublication("bible", $auteurs3, "10janvier 2309", "lecture", "facebook");
-                affichepublication("bible", $auteurs3, "10janvier 2309", "lecture", "facebook");
-                affichepublication("bible", $auteurs3, "10janvier 2309", "lecture", "facebook");
-                affichepublication("bible", $auteurs3, "10janvier 2309", "lecture", "facebook");
-                affichepublication("bible", $auteurs3, "10janvier 2309", "lecture", "facebook");
-  */            
-                $Mapubli1 = new Conference(4,array($auteur2,$auteur1),"lalalatitre","ref","2016","validé","Troyes","CI");
-                affichepublication($Mapubli1);}
-                $Mapubli2 = new Publication(3,array($auteur5,$auteur1,$auteur2), 'ceci est un très bon article', 'http://www.google.com', '2015', 'en cours', 'RF');
-                affichepublication($Mapubli2);
+                */
+		echo $publication;
                 ?>
                 <!-- /.col-lg-8 -->
                 
@@ -308,7 +213,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">connexion</h4>
           </div>
-            <form method="POST" action="PagePublications.php">
+            <form method="POST" action="../Classes/test.php">
           <div class="modal-body">
               <h4>Login : </h4>
               <input type="text" name="login">
