@@ -4,8 +4,8 @@
         private $lieu;
         private $type;
  
-        public function __construct($auteurs, $titre, $ref, $annee, $statut, $lieu, $type){
-            parent::__construct($auteurs, $titre, $ref, $annee, $statut);
+        public function __construct($id, $auteurs, $titre, $ref, $annee, $statut, $lieu, $type){
+            parent::__construct($id, $auteurs, $titre, $ref, $annee, $statut);
             $this->type = $type;
             $this->lieu = $lieu;
         }
