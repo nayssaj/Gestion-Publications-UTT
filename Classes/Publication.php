@@ -54,9 +54,13 @@
 			die('Erreur : ' . $e->getMessage());
 		}
 		$reqPublication = $db->query('SELECT * FROM Publication WHERE id = \'' . $idPublication . '\'');
-		$donneesPublication = $reqPublication->fetch();	
-		echo $donneesPublication['titre_article'];
-	}
+		//if($reqPublication->rowCount() == 1){
+			return $donneesPublication = $reqPublication->fetch();	
+		//}
+		//else{
+		//	throw new Exception('Il n\'y a pas de publication correspondantes');
 
+		//}
+	}
 }
 
