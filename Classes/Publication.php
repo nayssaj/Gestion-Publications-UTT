@@ -1,4 +1,6 @@
 <?php
+	require_once('Database.php');
+
     class Publication {
 
 	private $id;
@@ -43,5 +45,18 @@
 		}
 		return false;
 	}
-    }
-?>
+
+	public function getPublication($idPublication){
+		try{
+			$db = Database::getInstance();
+		}
+		catch(Exception $e){
+			die('Erreur : ' . $e->getMessage());
+		}
+		$reqPublication = $db->query('SELECT * FROM Publication WHERE id = \'' . $idPublication . '\'');
+		$donneesPublication = $reqPublication->fetch();	
+		echo $donneesPublication['titre_article'];
+	}
+
+}
+
