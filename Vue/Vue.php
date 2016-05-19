@@ -7,7 +7,7 @@
 		private $titre;
 
 		public function __construct($action){
-			//Determination du nom du fichie vue à partir de l'action
+			//Determination du nom du fichier vue à partir de l'action
 			$this->fichier = "Vue/vue" . $action . ".php";
 		}
 
