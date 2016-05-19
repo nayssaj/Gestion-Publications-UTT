@@ -9,7 +9,7 @@
         	private $login;
         	private $MDP;
     
-        	public function __construct ($id, $nom, $prenom, $organisation, $equipe, $login, $MDP){
+        	public function __construct ($id, $nom, $prenom, $equipe, $login, $MDP){
     
         	//fonctionnalité de création du compte
             		parent::__construct($id, $nom, $prenom, 'UTT', $equipe);
