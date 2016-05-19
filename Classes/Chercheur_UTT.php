@@ -126,6 +126,33 @@
 			}
 		}
 
+		public function retirerAuteur(Publication $publication, Chercheur $chercheur){
+			try{
+				if(!$publication->verificationAuteur($this)){
+					throw new Exception('Vous n\'etes pas auteur de ce fichier');	
+				}
+			}
+			catch(Exception $e){
+				die('Erreur : ' . $e->getMessage());
+			}
+			//On verifie que l'auteur est bien présent 
+			if($publication->verificationAuteur($chercheur)){
+				try{
+					$db = Database::getInstance();
+				}
+				catch(Exception $e){
+					die('Erreur : ' . $e->getMessage());
+				}
+				$req = $db->prepare('DELETE FROM redige WHERE Auteur_id = :idAuteur AND Publication_id = :idPublication'); 
+				$idPublication = $publication->getId();
+				$idAuteur = $chercheur->getId();
+				$req->execute(array(
+					'idPublication' => $idPublication,
+				       	'idAuteur' => $idAuteur
+				));	
+			}
+		}
+
 		public function modifierPublication(){}
     	}
 ?>
