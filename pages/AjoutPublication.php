@@ -4,9 +4,6 @@
  ?>   
 
 <?php ob_start(); ?>
-    <button type="button" class="btn btn-primary" onclick="addField()" >+</button>
-            <!--on écrit le formulaire d'inscription -->
-    <br/><br/>
     <form method="POST" action="AjoutPublication.php">
         <div class="col-lg-12">
         <!-- /.panel -->
