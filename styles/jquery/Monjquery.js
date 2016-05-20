@@ -28,7 +28,7 @@
     });
     $('.B_aM').on('click', function(){
         //$('.auteur-origin').after().text($('.auteur-origin').after().text().slice()); //supprime tout
-        $('.auteur-origin').find('tr').first().remove(); //CA MARCHE !!!!
+        $('.auteur-origin').find('tr').last().remove(); //CA MARCHE !!!!
     });
     
   $('.Mondanger').on('click', function () { //destruction de l'annotation quand on clique dessus
@@ -111,6 +111,5 @@ $('.submitjs').on('click', function () {//vérification à la validation de la p
     else{
         $('.submitnojs').prop('disabled', true);
     }
-    
     //$('.Maverification').slideDown();
   });
