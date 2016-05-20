@@ -17,10 +17,8 @@
 		//	$vue->generer($publication);
 
 				$bill = new Chercheur(1, 'Habile', 'Bill', 'UTT', 'GAMMA3');
-				$lelynx= new Chercheur(2, 'Malynx', 'Lelynx', 'UTT', 'GAMMA3');
-				$auteursPub[] = $bill;
-				$auteursPub[] = $lelynx;
-				$publicationsAuteur[] = new Publication(1, $auteursPub, 'astrapi', 'ref', '2016', 'en cours de validation');
+                                $publicationsAuteur = $bill->getPublication();
+
 				if(isset($_POST['login']) && isset($_POST['mdp'])){
 					$_SESSION['login'] = $_POST['login'];
 					$_SESSION['mdp'] = $_POST['mdp'];
