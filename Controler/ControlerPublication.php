@@ -17,10 +17,10 @@
 		//	$vue->generer($publication);
 
 				$bill = new Chercheur(1, 'Habile', 'Bill', 'UTT', 'GAMMA3');
+				$lelynx= new Chercheur(2, 'Malynx', 'Lelynx', 'UTT', 'GAMMA3');
 				$auteursPub[] = $bill;
-				$astrapi = new Publication(1, $auteursPub, 'astrapi', 'ref', '2016', 'en cours de validation');
-				$publication = $this->affichePublication($astrapi);
-
+				$auteursPub[] = $lelynx;
+				$publicationsAuteur[] = new Publication(1, $auteursPub, 'astrapi', 'ref', '2016', 'en cours de validation');
 				if(isset($_POST['login']) && isset($_POST['mdp'])){
 					$_SESSION['login'] = $_POST['login'];
 					$_SESSION['mdp'] = $_POST['mdp'];
@@ -47,63 +47,5 @@
                           	}
 			include('../pages/PagePublications.php');
 		}
-
-		public function affichePublication(Publication $affiche){ 
-			$publication ='';
-            		if(is_a($affiche,Publication)){
-			       	$recupAuteurs = $affiche->getAuteurs();
-			    	$publication .= '<div class="col-lg-12">
-				    <!-- /.panel -->
-				    <div class="panel panel-default">
-				        <div class="panel-heading">
-					<i class="fa fa-bar-chart-o fa-fw"></i>'; 
-				$publication .= '</div>
-					<!-- /.panel-heading --><div class="panel-body">
-				            <div class="row">
-				                <div class="col-lg-12">
-				                    <div class="table-responsive">
-				                        <table class="table table-bordered table-hover table-striped">
-				                            <thead>
-				                                <tr>
-				                                    <th>Auteurs</th>
-				                                    <th>Ref</th>
-								    <th>Annee</th>';
-				if(is_a($affiche,Conference)){
-					$publication .='<th>Lieu</th>';
-				}
-				$publication .= '<th>Statut</th></tr></thead><tbody><tr><td>';
-				foreach($recupAuteurs as $auteur){
-					$publication .= $auteur->getNom();
-					$publication .= '<br/>';
-				}
-				$publication .= '</td><td>' . $affiche->getRef() . '</td><td>' . $affiche->getAnnee() . '</td>';
-				if(is_a($affiche,Conference)){
-					$publication .= '<td>';
-					$publication .= $affiche->getLieu(); 
-					$publication .= '</td>';
-				}
-			       	$publication .= '<td>';
-				$publication .=  $affiche->getStatut();
-				$publication .= '</td>
-				                                </tr>
-				                            </tbody>
-				                        </table>
-				                    </div>
-				                </div>
-				                <div class="col-lg-12">
-				                    <div id="morris-bar-chart"></div>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-				</div>'; 
-		    }//fin du if c'est une publication
-			else{
-				$publication = "erreur de l'affichage des publications<br/>";
-		}
-			return $publication;
-        }
-}
-	
-
+	}
 
