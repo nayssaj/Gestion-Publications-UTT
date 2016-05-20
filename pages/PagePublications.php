@@ -180,7 +180,7 @@
                                                     </thead>
                                                     <tbody>
                                                 	<tr>
-                                                            <td>
+                                                            <td> 
 								<?php 
 							            foreach($publication->getAuteurs() as $auteur){ 
 							                echo $auteur->getNom() . ' ' . $auteur->getPrenom()  . '<br/>';
