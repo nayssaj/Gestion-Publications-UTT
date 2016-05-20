@@ -307,7 +307,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../bootstrap/dist/js/sb-admin-2.js"></script>
-    <script src="../monjqueryModification.js"></script>
+    <script src="../styles/jquery/monjqueryModification.js"></script>
 </body>
 
 </html>

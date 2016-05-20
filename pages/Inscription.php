@@ -266,7 +266,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../bootstrap/dist/js/sb-admin-2.js"></script>
-    <script src="../monjqueryInscription.js"></script>
+    <script src="../styles/jquery/monjqueryInscription.js"></script>
 </body>
 
 </html>
