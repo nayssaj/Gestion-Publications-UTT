@@ -108,6 +108,8 @@
     <script src="../bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <script src="../Monjquery.js"></script>
     <!-- Morris Charts JavaScript -->
     <!-- <script src="bootstrap/bower_components/raphael/raphael-min.js"></script>
     <script src="bootstrap/bower_components/morrisjs/morris.min.js"></script>
