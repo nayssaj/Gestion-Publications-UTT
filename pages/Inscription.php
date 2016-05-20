@@ -51,24 +51,7 @@
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Profil</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Paramètres</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="pages/login.html"><i class="fa fa-sign-out fa-fw"></i>Déconnexion</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
+            <ul class="nav navbar-top-links navbar-right"></ul>
             <!-- /.navbar-top-links -->
             <!-- /.navbar-static-side -->
         </nav>

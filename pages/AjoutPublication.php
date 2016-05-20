@@ -59,13 +59,10 @@ session_start()?>
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Profil</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Paramètres</a>
-                        </li>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Profil</a></li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Paramètres</a></li>
                         <li class="divider"></li>
-                        <li><a href="Accueil.php?deco=oui"><i class="fa fa-sign-out fa-fw"></i>Déconnexion</a>
-                        </li>
+                        <li><a href="Accueil.php?deco=oui"><i class="fa fa-sign-out fa-fw"></i>Déconnexion</a></li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -75,6 +72,8 @@ session_start()?>
             <!-- /.navbar-static-side -->
         </nav>
         <?php
+        echo ("$partielogin");
+        /*
         if(isset($_SESSION["login"]) && isset($_SESSION["mdp"])){
         //echo("trouvé");
         }
@@ -93,7 +92,7 @@ session_start()?>
         else{
             //echo("Vous n'étes pas connecté , infâme lepreuxchaun");
         }
-    }
+    }*/
     ?>
         <div id="page-wrapper">
             <div class="row">
@@ -300,7 +299,9 @@ session_start()?>
                     </div>
             </div>');                                               
         echo("</form>"); //fin du formulaire
-                                                    
+            
+             /*
+                                                      
                 if(isset($_POST[nom]) && isset($_POST[prenom]) && isset($_POST[equipe]) && isset($_POST[login]) && isset($_POST[mdp])){
                     if(strlen($_POST[mdp])>6 ){ //ajouter les vérif d'existance login,nom et prenom 
                     //créer les éléments dans la BDD
@@ -310,7 +311,7 @@ session_start()?>
                    // }
                     }
                 }
-            ?>
+            */?>
         </div>
         <!-- /#page-wrapper -->
 
