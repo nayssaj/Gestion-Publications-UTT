@@ -1,138 +1,72 @@
-<?php include("../Classes/Database.php"); ?>
-<!DOCTYPE html>
-<html lang="en">
+<?php 
+    $titreEntete = "Modification d'une Publication";
+    $titrePage = 'Modifier une Publication';
+ ?> 
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Modification d'une Publication</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- MetisMenu CSS -->
-    <link href="../bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-    <!-- Timeline CSS -->
-    <link href="../bootstrap/dist/css/timeline.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="../bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
-    <!-- Morris Charts CSS -->
-    <link href="../bootstrap/bower_components/morrisjs/morris.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="../bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header navbar-inverse">
-                <button type="button" class="navbar-toggle navbar-inverse" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand navbar-inverse" href="ModificationPublication.php">Modification Publication</a>
-            </div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-inverse navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Profil</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Paramètres</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="Accueil.php?deco=oui"><i class="fa fa-sign-out fa-fw"></i>Déconnexion</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-            <!-- /.navbar-static-side -->
-        </nav>
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Modifier une Publication</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <?php
-            //on écrit le formulaire d'inscription
-        echo('<form method="POST" action="ModificationPublication.php">');
-        echo('<div class="col-lg-12">
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
-                            <i class="fa fa-fw"></i>'); echo('Qui sont les Auteurs ?  
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr><td>
+<?php ob_start(); ?>
+    <form method="POST" action="ModificationPublication.php">
+        <div class="col-lg-12">
+            <!-- /.panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+                        <i class="fa fa-fw"></i>
+                        Qui sont les Auteurs ?  
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <td>
                                                     <div class=" B_a" data-toggle="buttons">
-                                                    <label class="btn btn-primary B_aP1 glyphicon glyphicon-pencil">+</label>
-                                                    <label class="btn btn-primary B_aM1 glyphicon glyphicon-trash"></label><div/><td/>
-                                                <tr/>   
-                                                <tr>
-                                                    <th>Nom<br/></th>
-                                                    <th>Prénom<br/></th>
-                                                    <th>Organisation<br/></th>
-                                                    <th>Département<th/>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="auteur-origin" >
-                                            
-                                                <tr>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="Lemercier" value="'."$_get[nomAuteur1]".'" name="nom[]">');echo('</td>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="Marc" value="'."$_get[prenomAuteur1]".'" name="prenom[]">');echo('</td>
-                                                    <td>');echo('<input class="form-control Maorga" type="text" placeholder="UTT" value="" name="organisation[]">');echo('</td>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="tech-CICO" value="" name="departement[]">');echo('</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                        <label class="btn btn-primary B_aP1 glyphicon glyphicon-pencil">+</label>
+                                                        <label class="btn btn-primary B_aM1 glyphicon glyphicon-trash"></label>
+                                                    <div/>
+                                                <td/>
+                                            <tr/>   
+                                            <tr>
+                                                <th>Nom<br/></th>
+                                                <th>Prénom<br/></th>
+                                                <th>Organisation<br/></th>
+                                                <th>Département<th/>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="auteur-origin" >
+                                            <tr>
+                                                <td>
+                                                    <input class="form-control" type="text" placeholder="Lemercier" name="nom[]">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" type="text" placeholder="Marc" name="prenom[]">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control Maorga" type="text" placeholder="UTT" value="" name="organisation[]">
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" type="text" placeholder="tech-CICO" value="" name="departement[]">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-            </div>');
-        
-            echo('<div class="col-lg-12">
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                            <i class="fa fa-fw"></i>'); echo('Quelles sont les informations de la Publication ?  
-                        </div>
-                        <!-- /.panel-heading -->
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <!-- /.panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        <i class="fa fa-fw"></i>
+                        Quelles sont les informations de la Publication ?  
+                    </div>
+                    <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -147,28 +81,37 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>');echo('<input class="form-control" type="text" value="'."$_GET[titre]".'" name="titre">');echo('</td>
-                                                    <td>');echo('<select class="form-control" name="annee" value="'."$_GET[annee]".'">'
-                                                            .'<option value ="2016">2016</option>'
-                                                            .'<option value ="2017">2017</option>'
-                                                            .'<option value ="2018">2018</option>'
-                                                            .'<option value ="2019">2019</option>'
-                                                            .'<option value ="2020">2020</option>'
-                                                            .'<option value ="2021">2021</option>'
-                                                            .'<option value ="2022">2022</option>'
-                                                            .'<option value ="2023">2023</option>'
-                                                            . '</select>');echo('</td>
-                                                    <td>');echo('<div class="" data-toggle="buttons">
-                                                        <label class="btn btn-primary active">
-                                                    <input type="radio" name="statut" value="soumis" autocomplete="off" ');if($_GET['statut'] == 'soumis'){echo("checked='checked'");}echo('> Soumis
-                                                      </label>
-                                                      <label class="btn btn-warning">
-                                                        <input type="radio" name="statut" value="revision" autocomplete="off" ');if($_GET['statut'] == 'revision'){echo("checked='checked'");}echo('> En révision
-                                                      </label>
-                                                      <label class="btn btn-success">
-                                                        <input type="radio" name="statut" value="publie" autocomplete="off" ');if($_GET['statut'] == 'publie'){echo("checked='checked'");}echo('> Publié
-                                                      </label>
-                                                  </div>');echo('</td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="titre">
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" name="annee">
+                                                            <option value ="2016">2016</option>
+                                                            <option value ="2017">2017</option>
+                                                            <option value ="2018">2018</option>
+                                                            <option value ="2019">2019</option>
+                                                            <option value ="2020">2020</option>
+                                                            <option value ="2021">2021</option>
+                                                            <option value ="2022">2022</option>
+                                                            <option value ="2023">2023</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <div class="" data-toggle="buttons">
+                                                            <label class="btn btn-primary active">
+                                                                <input type="radio" name="statut" value="soumis" autocomplete="off">
+                                                                Soumis
+                                                            </label>
+                                                            <label class="btn btn-warning">
+                                                                <input type="radio" name="statut" value="revision" autocomplete="off">
+                                                                En révision
+                                                            </label>
+                                                            <label class="btn btn-success">
+                                                                <input type="radio" name="statut" value="publie" autocomplete="off"> 
+                                                                Publié
+                                                            </label>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -177,13 +120,14 @@
                             </div>
                         </div>
                     </div>
-            </div>');
-                                                  echo('<div class="col-lg-12">
+                </div>
+                <div class="col-lg-12">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                            <i class="fa fa-fw"></i>'); echo('Informations supplémentaires  
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            <i class="fa fa-fw"></i>
+                            Informations supplémentaires  
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -200,19 +144,23 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>');echo('<input class="form-control" type="text" value="'."$_GET[reference]".'" name="reference">');echo('</td>
-                                                    <td>');echo('<select class="form-control Maclass" name="categorie" value="'."$_GET[categorie]".'">'
-                                                            .'<option value ="RI">Article dans les revues internationales</option>'
-                                                            .'<option value ="RF">Article dans les revues nationales</option>'
-                                                            .'<option value ="CI">Article dans les conférences internationales</option>'
-                                                            .'<option value ="CF">Article dans les conférences nationales</option>'
-                                                            .'<option value ="OS">Ouvrage scientifique</option>'
-                                                            .'<option value ="TD">Thèse de doctorat</option>'
-                                                            .'<option value ="BV">Brevet</option>'
-                                                            .'<option value ="AP">Autre production</option>'
-                                                            . '</select>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="reference">
                                                     </td>
-                                                    <td><input class="form-control conf" type="text" value="" name="lieu">
+                                                    <td>
+                                                        <select class="form-control Maclass" name="categorie">
+                                                            <option value ="RI">Article dans les revues internationales</option>
+                                                            <option value ="RF">Article dans les revues nationales</option>
+                                                            <option value ="CI">Article dans les conférences internationales</option>
+                                                            <option value ="CF">Article dans les conférences nationales</option>
+                                                            <option value ="OS">Ouvrage scientifique</option>
+                                                            <option value ="TD">Thèse de doctorat</option>
+                                                            <option value ="BV">Brevet</option>
+                                                            <option value ="AP">Autre production</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control conf" type="text" value="" name="lieu">
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -222,12 +170,14 @@
                             </div>
                         </div>
                     </div>
-            </div>');echo('<div class="col-lg-12">
+                </div>
+                <div class="col-lg-12">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                            <i class="fa fa-fw"></i>'); echo('Avez vous fini ? 
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            <i class="fa fa-fw"></i>
+                            Avez vous fini ? 
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -238,76 +188,53 @@
                                             <thead>
                                                 <tr></tr>
                                             </thead>
-                                        <tbody">
-                                        <tr>
-                                        <td><label class="btn btn-primary submitjs pull-right" >Vérifier</label></td>
-                                        <td><input type="submit" name="valider" class="submitnojs btn btn-primary submitnojs pull-right" disabled="disabled" value="Valider"></td><td></td><td></td><td></td><td></td><td></td></tr>
-                                        <tr>
-                                              <h4>Vérifications</h4>
-                                            <div class="container Maverification" style="display:none;">
-                                              <div class="alert alert-success Monsucces">
-                                                <strong>Success!</strong> This alert.
-                                              </div>
-                                              <div class="alert alert-info Moninfo">
-                                                <strong>Info!</strong> This ale.
-                                              </div>
-                                              <div class="alert alert-danger Mondanger">
-                                                <strong>Danger!</strong> This alert .
-                                              </div>
-                                            </div>
-                                        </tr>
-                                        </tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <label class="btn btn-primary submitjs pull-right" >Vérifier</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="submit" name="valider" class="submitnojs btn btn-primary submitnojs pull-right" disabled="disabled" value="Valider">
+                                                    </td>
+                                                    <td>
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <h4>Vérifications</h4>
+                                                    <div class="container Maverification" style="display:none;">
+                                                        <div class="alert alert-success Monsucces">
+                                                            <strong>Success!</strong> This alert.
+                                                        </div>
+                                                        <div class="alert alert-info Moninfo">
+                                                            <strong>Info!</strong> This ale.
+                                                        </div>
+                                                        <div class="alert alert-danger Mondanger">
+                                                            <strong>Danger!</strong> This alert .
+                                                        </div>
+                                                    </div>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-            </div>'); 
-            
-        echo("</form>"); //fin du formulaire
-                                                    
-                  
-            ?>
-            <?php 
-                if(isset($_POST[nom]) && isset($_POST[prenom]) && isset($_POST[equipe]) && isset($_POST[login]) && isset($_POST[mdp])){
-                    if(strlen($_POST[mdp])>6 ){ //ajouter les vérif d'existance login,nom et prenom 
-                    //créer les éléments dans la BDD
-                   // foreach ($_POST as $ele){
-                   //     echo $ele;
-                   //     echo ("<br/>");
-                   // }
-                    }
-                }
-                else{
-           //         echo('il y a une erreur cliquez ici <a href=inscription.php?nom='."$_POST[nom]".'&prenom='."$_POST[prenom]".'&equipe='."$_POST[equipe]".'&login='."$_POST[login]".'>albezbe</a>'); 
-             //       echo('arg');
-                //header("location : inscription.php?nom="."$_POST[nom]"."&prenom=$_POST[prenom]&equipe=$_POST[equipe]&login=$_POST[login]");
-                }
-            ?>
-        </div>
-        <!-- /#page-wrapper -->
+                </div>
+            </form>                                 
+<?php $contenu = ob_get_clean(); ?>
 
-    </div>
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="../bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <!-- <script src="bootstrap/bower_components/raphael/raphael-min.js"></script>
-    <script src="bootstrap/bower_components/morrisjs/morris.min.js"></script>
-    <script src="bootstrap/js/morris-data.js"></script>  !-->
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../bootstrap/dist/js/sb-admin-2.js"></script>
-    <script src="../monjqueryModification.js"></script>
-</body>
-
-</html>
+<?php require 'gabarit.php' ?>
