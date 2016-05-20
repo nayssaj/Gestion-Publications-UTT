@@ -235,6 +235,6 @@
                     </div>
                 </div>
             </form>                                 
-<?php $contenu = ob_get_clean(); ?>
+<?php $contenuCentral = ob_get_clean(); ?>
 
 <?php require 'gabarit.php' ?>

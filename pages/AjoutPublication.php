@@ -243,17 +243,6 @@
                 </div>
             </div>                                               
         </form>
-        <?php
-                /*                                    
-                if(isset($_POST[nom]) && isset($_POST[prenom]) && isset($_POST[equipe]) && isset($_POST[login]) && isset($_POST[mdp])){
-                    if(strlen($_POST[mdp])>6 ){ //ajouter les vérif d'existance login,nom et prenom 
-                    //créer les éléments dans la BDD
-                   // foreach ($_POST as $ele){
-                   //     echo $ele;
-                   //     echo ("<br/>");
-                   // }
-                    }
-                }*/
-        ?>
-<?php $contenu = ob_get_clean(); ?>
+<?php $contenuCentral = ob_get_clean(); ?>
+
 <?php require 'gabarit.php' ?>        

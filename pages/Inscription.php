@@ -1,6 +1,7 @@
 <?php 
     $titreEntete = 'Inscription';
     $titrePage = "Formulaire d'inscription";
+    $barreGauche = '';
  ?>  
 
 <?php ob_start(); ?>
@@ -181,6 +182,6 @@
                     </div>
                 </div>                                        
     </form>               
-<?php $contenu = ob_get_clean(); ?>
+<?php $contenuCentral = ob_get_clean(); ?>
 
 <?php require 'gabarit.php' ?>

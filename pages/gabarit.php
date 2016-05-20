@@ -58,13 +58,14 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <?php
-                            echo $menuNavbar;
+                            echo $menuConnection;
                         ?>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
             </ul>
+            <?= $barreGauche ?>
         </nav>
         <div id="page-wrapper">
             <div class="row">
@@ -74,7 +75,7 @@
                 <!-- /.col-lg-12 -->
             </div>
             <div id="contenu">
-                <?= $contenu ?> <!--ELEMENT SPECIFIQUE -->
+                <?= $contenuCentral ?> <!--ELEMENT SPECIFIQUE -->
             </div>
         </div>
         <!-- /#page-wrapper -->
