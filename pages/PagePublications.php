@@ -208,7 +208,7 @@
                                                             <td>
 								<?php 
 							            foreach($publication->getAuteurs() as $auteur){ 
-							                echo $auteur->getNom() . '<br/>';
+							                echo $auteur->getNom() . ' ' . $auteur->getPrenom()  . '<br/>';
 							            }
 								?>
 						            </td>
