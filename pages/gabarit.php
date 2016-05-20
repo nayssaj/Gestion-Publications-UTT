@@ -23,6 +23,8 @@
     <link href="../bootstrap/bower_components/morrisjs/morris.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="../bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Alertes JS -->
+    <link href="../Moncss.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -100,15 +102,14 @@
         </div>
       </div>
     </div>
+    <script src="../bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
+
     <!--/Mymodal-->
     <!-- /#wrapper -->
-    <!-- jQuery -->
-    <script src="../bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
     <script src="../Monjquery.js"></script>
     <!-- Morris Charts JavaScript -->
     <!-- <script src="bootstrap/bower_components/raphael/raphael-min.js"></script>
