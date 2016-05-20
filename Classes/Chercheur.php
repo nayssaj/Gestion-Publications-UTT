@@ -40,16 +40,16 @@
 		$reponse = $db->query('SELECT Publication.* FROM Publication, redige WHERE Publication.id = redige.Publication_id AND redige.Auteur_id =\'' . $this->getId() . '\''); 
 		while($donneesPublication = $reponse->fetch()){
 			//On cherche tous les auteurs de la publication trouvée
-			$reponseAuteurs = $db->query('SELECT Auteur.id FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id =\''. $donneesPublication['id'] . '\''); 
+			$reponseAuteurs = $db->query('SELECT Auteur.* FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id =\''. $donneesPublication['id'] . '\''); 
 			//On garde en mémoire la liste de tous les auteurs de la publication trouvée
 			//elle servira a créer l'objet publication associée à celle trouvée
 			while($donneesAuteurs = $reponseAuteurs->fetch()){
-				$idAuteurs[] = $donneesAuteurs['id'];
+				$idAuteurs[] = new Chercheur($donneesAuteurs['id'], $donneesAuteurs['nom'], $donneesAuteurs['prenom'], $donneesAuteurs['organisation'], $donneesAuteurs['equipe']); 
 			}
 			$reponseAuteurs->closeCursor();
 			//On viens créer un objet publication que l'on ajoute aux autres publication 
 			//potentiellement déja trouvées 
-			$publications[] = new Publication($idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut']);
+			$publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut']);
 			unset($idAuteurs);
 		}
 		$reponse->closeCursor();	
