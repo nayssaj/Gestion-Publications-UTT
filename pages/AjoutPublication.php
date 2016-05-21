@@ -193,7 +193,7 @@
                                         <thead>
                                             <tr></tr>
                                         </thead>
-                                        <tbody">
+                                        <tbody>
                                             <tr>
                                                 <td>
                                                     <label class="btn btn-primary submitjs pull-right" >Vérifier</label>
