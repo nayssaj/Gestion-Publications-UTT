@@ -1,6 +1,10 @@
 <?php 
     $titreEntete = 'Erreur';
     $titrePage = 'ERREUR !';
-    $contenuCentral = 'Il semblerait qu\'une erreur se soit produite';
-    require 'gabarit.php';
 ?>
+
+<?php ob_start() ?>
+    <p>Une erreur est survenue : <?= $msgErreur ?></p> 
+<?php $contenuCentral = ob_get_clean(); ?>
+
+<?php require 'gabarit.php'; ?>
