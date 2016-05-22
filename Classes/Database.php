@@ -18,8 +18,8 @@
 				catch(Exception $e){
 					die('Erreur : ' . $e->getMessage());
 				}
-			return self::$instance;
 			}
+			return self::$instance;
 		}
 	}
 ?>
