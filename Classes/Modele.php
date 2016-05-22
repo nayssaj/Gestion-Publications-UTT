@@ -3,14 +3,14 @@
 
     abstract class Modele{
         
-        protected function executrRequete($sql, $params = null){
+        protected function executerRequete($sql, $params = null){
             $db = Database::getInstance();
-            if($param == null){
+            if($params == null){
                 $resultat = $db->query($sql);
             }
             else{
                 $resultat = $db->prepare($sql);
-                $reusltat->execute($params);
+                $resultat->execute($params);
             }
             return $resultat;
         }
