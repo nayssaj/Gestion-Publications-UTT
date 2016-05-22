@@ -173,7 +173,7 @@
                                                     <li class="next"><span aria-hidden="true"><input class="btn btn-primary btn-large" type="reset" value="Réinitialiser"></span></li>
                                                   </ul> !-->
                                             <script src="../bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
-                                            <script src="../styles/jquery/monjqueryInscription.js"></script>
+                                            
                                         </body>
                                     </table>
                                 </div>
@@ -185,3 +185,4 @@
 <?php $contenuCentral = ob_get_clean(); ?>
 
 <?php require 'gabarit.php' ?>
+<script src="../styles/jquery/monjqueryInscription.js"></script>

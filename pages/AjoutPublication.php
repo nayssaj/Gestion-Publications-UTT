@@ -195,27 +195,10 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>
-                                                    <label class="btn btn-primary submitjs pull-right" >Vérifier</label>
-                                                </td>
+                                                <td><label class="btn btn-primary submitjs pull-right" >Vérifier</label></td>
                                                 <td>
                                                     <input type="submit" name="valider" class="submitnojs btn btn-primary submitnojs pull-right" disabled="disabled" value="Valider">
-                                                </td>
-                                                <td>
-                                                    
-                                                </td>
-                                                <td>
-                                                    
-                                                </td>
-                                                <td>
-                                                    
-                                                </td>
-                                                <td>
-                                                    
-                                                </td>
-                                                <td>
-                                                    
-                                                </td>
+                                                </td><td></td><td></td><td></td><td></td><td></td>
                                             </tr>
                                             <tr>
                                                 <h4>Vérifications</h4>
@@ -244,5 +227,5 @@
             </div>                                               
         </form>
 <?php $contenuCentral = ob_get_clean(); ?>
-
 <?php require 'gabarit.php' ?>        
+<script src="../styles/jquery/Monjquery.js"></script>

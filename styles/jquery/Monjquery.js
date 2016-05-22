@@ -8,7 +8,8 @@
             $('.conf').css({'display':'none'});
             $('.conf').val("");
         }
-    });
+        });
+       
        $('.Maclass').on('click',function(){ //script pour le lieu et les conférences
         if( $('.Maclass').val() === "CF" || $('Maclass').val() === "CF"){
             $('.conf').css({'display':'inline'});
@@ -34,14 +35,20 @@
   $('.Mondanger').on('click', function () { //destruction de l'annotation quand on clique dessus
      $('.Maverification').slideUp();
       $('.Mondanger').hide();     
+      $('.Moninfo').hide(); 
+      $('.Monsucces').hide(); 
   });
     $('.Moninfo').on('click', function () { //destruction de l'annotation quand on clique dessus
      $('.Maverification').slideUp();
-      $('.Moninfo').hide();     
+      $('.Mondanger').hide();     
+      $('.Moninfo').hide(); 
+      $('.Monsucces').hide(); 
   });
     $('.Monsucces').on('click', function () { //destruction de l'annotation quand on clique dessus
      $('.Maverification').slideUp();
-      $('.Monsucces').hide();     
+      $('.Mondanger').hide();     
+      $('.Moninfo').hide(); 
+      $('.Monsucces').hide(); 
   });
   
 $('.submitjs').on('click', function () {//vérification à la validation de la page
@@ -57,6 +64,7 @@ $('.submitjs').on('click', function () {//vérification à la validation de la p
           $('.Mondanger').text("Attention ! il semblerait que vous ayez oublié de tout remplir.");
           $('.Mondanger').show();
           chercheErreur +=1;
+          console.log("et une erreur en plus");
       }
      /* var val = $(this).val();
       var matches = val.match(/\d+/g);
@@ -83,12 +91,6 @@ $('.submitjs').on('click', function () {//vérification à la validation de la p
     
     $('.Maverification').slideDown();
   });
-  
-  
-  
-  
-  
-  
   $('.submitnojs').on('mouseenter',function(){
       var chercheErreur2 = 0;
     
