@@ -10,6 +10,9 @@
 		private function __clone(){}
 
 		public static function getInstance(){
+                        echo 'valeur de instance : ';
+                        var_dump(self::$instance);
+                        echo "\n";
 			if(!isset(self::$instance)){
 				$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 				try{
@@ -18,8 +21,8 @@
 				catch(Exception $e){
 					die('Erreur : ' . $e->getMessage());
 				}
-			return self::$instance;
 			}
+			return self::$instance;
 		}
 	}
 ?>
