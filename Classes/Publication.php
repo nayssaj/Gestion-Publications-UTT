@@ -1,7 +1,8 @@
 <?php
-	require_once('Database.php');
 
-    class Publication {
+    require_once 'Modele.php';
+
+    class Publication extends Modele{
 
 	private $id;
         private $auteurs = array();
@@ -47,20 +48,12 @@
 	}
 
 	public function getPublication($idPublication){
-		try{
-			$db = Database::getInstance();
-		}
-		catch(Exception $e){
-			die('Erreur : ' . $e->getMessage());
-		}
-		$reqPublication = $db->query('SELECT * FROM Publication WHERE id = \'' . $idPublication . '\'');
-		//if($reqPublication->rowCount() == 1){
-			return $donneesPublication = $reqPublication->fetch();	
-		//}
-		//else{
-		//	throw new Exception('Il n\'y a pas de publication correspondantes');
-
-		//}
-	}
-}
+            $sql = 'SELECT * FROM Publication WHERE id = ?';
+            $publication = $this->executerRequete($sql, array($idPublication));
+            if($publication->rowCount() == 1)
+                return $publication->fetch();
+            else
+                throw new Exception("Aucune publication ne coresspond a l'identifiant '$idPublication'");
+        }
+    }
 
