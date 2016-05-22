@@ -24,9 +24,8 @@
 			$idPublication = $idPublications->fetch()[0];
 			//On insère dans la table rédige les couples idAuteur/idPublication
 			foreach($auteurs as $auteur){
-				$idAuteur = $auteur->getId();
 				$reqInsRedige = 'INSERT INTO redige(Publication_id, Auteur_id) VALUES(?, ?)'; 
-				$this->executerRequete($reqInsRedige, array($idPublication, $idAuteur));
+				$this->executerRequete($reqInsRedige, array($idPublication, $auteur->getId()));
 			}
 		}
                 
