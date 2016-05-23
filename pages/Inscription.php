@@ -59,38 +59,20 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover table-striped">
                                             <thead>
-                                                <tr>
-                                                    <th>Equipe de recherche<br/></th>
-                                                </tr>
+                                                <tr><th>Equipe de recherche<br/></th></tr>
                                             </thead>
                                             <tbody>
                                                 <tr>      
                                                     <td>
                                                         <div class="btn-group" data-toggle="buttons">
-                                                            <label class="btn btn-primary active">
-                                                                <input type="radio" name="equipe" value="CREIDD" autocomplete="off" checked> CREIDD
-                                                            </label>
-                                                            <label class="btn btn-primary">
-                                                                <input type="radio" name="equipe" value="ERA" autocomplete="off"> ERA
-                                                            </label>
-                                                            <label class="btn btn-primary">
-                                                                <input type="radio" name="equipe" value="GAMMA3" autocomplete="off"> GAMMA3
-                                                            </label>
-                                                            <label class="btn btn-primary">
-                                                                <input type="radio" name="equipe" value="LASMIS" autocomplete="off"> LASMIS
-                                                            </label>
-                                                            <label class="btn btn-primary">
-                                                                <input type="radio" name="equipe" value="LM2S" autocomplete="off"> LM2S
-                                                            </label>
-                                                            <label class="btn btn-primary">
-                                                                <input type="radio" name="equipe" value="LNIO" autocomplete="off"> LNIO
-                                                            </label>
-                                                            <label class="btn btn-primary">
-                                                                <input type="radio" name="equipe" value="LOSI" autocomplete="off"> LOSI
-                                                            </label>
-                                                            <label class="btn btn-primary">
-                                                                <input type="radio" name="equipe" value="tech-CICO" autocomplete="off"> tech-CICO
-                                                            </label>
+                                                            <label class="btn btn-primary active"><input type="radio" name="equipe" value="CREIDD" autocomplete="off" checked> CREIDD</label>
+                                                            <label class="btn btn-primary"><input type="radio" name="equipe" value="ERA" autocomplete="off"> ERA</label>
+                                                            <label class="btn btn-primary"><input type="radio" name="equipe" value="GAMMA3" autocomplete="off"> GAMMA3</label>
+                                                            <label class="btn btn-primary"><input type="radio" name="equipe" value="LASMIS" autocomplete="off"> LASMIS</label>
+                                                            <label class="btn btn-primary"><input type="radio" name="equipe" value="LM2S" autocomplete="off"> LM2S</label>
+                                                            <label class="btn btn-primary"><input type="radio" name="equipe" value="LNIO" autocomplete="off"> LNIO</label>
+                                                            <label class="btn btn-primary"><input type="radio" name="equipe" value="LOSI" autocomplete="off"> LOSI</label>
+                                                            <label class="btn btn-primary"><input type="radio" name="equipe" value="tech-CICO" autocomplete="off"> tech-CICO</label>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -125,12 +107,8 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>
-                                                        <input class="form-control verif" type="text" name="login">
-                                                    </td>
-                                                    <td>
-                                                        <input class ="form-control verif" type="password" value="" name="mdp">
-                                                    </td>
+                                                    <td><input class="form-control verif" type="text" name="login"></td>
+                                                    <td><input class ="form-control verif" type="password" value="" name="mdp"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -152,11 +130,7 @@
                                         </thead>
                                         <body>   
                                             <tr>
-                                                <th>
-                                                    <div class="">
-                                                        <a class="btn btn-primary btn-large Monverif">Vérifier</a>
-                                                    </div>
-                                                </th>
+                                                <th><div class=""><a class="btn btn-primary btn-large Monverif">Vérifier</a></div></th>
                                                 <th>
                                                     <div class="">
                                                         <button class="btn btn-primary btn-large Monvalider" type="submit" value="Valider" name="submit">Valider
@@ -164,9 +138,7 @@
                                                         </button>
                                                     </div>
                                                 </th>
-                                                <th>
-                                                        
-                                                </th>
+                                                <th></th>
                                             </tr>
                                             <tr><div class="container Maverification">
                                                     <div class="alert alert-success Monsucces">
@@ -188,7 +160,6 @@
                                                     <li class="next"><span aria-hidden="true"><input class="btn btn-primary btn-large" type="reset" value="Réinitialiser"></span></li>
                                                   </ul> !-->
                                             <script src="../bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
-                                            
                                         </body>
                                     </table>
                                 </div>
