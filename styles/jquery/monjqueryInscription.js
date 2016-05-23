@@ -2,7 +2,7 @@ $('.Monvalider').prop('disabled', true);
 
 $('.Monvalider').on('mouseenter',function(){
     var nbErreur =0;
-    $(document).find('input[type!="hidden"]').each(function(){
+    $(document).find('.verif').each(function(){
       if (!$(this).val()) {
           nbErreur +=1;
       }
@@ -27,6 +27,26 @@ $('.Monvalider').on('mouseenter',function(){
 //});
 
 
-$('.Monreinit').on('click',function(){
+$('.Monverif').on('click',function(){
    $('.Monvalider').prop('disabled', true); 
 });
+
+    $('.Mondanger').on('click', function () { //destruction de l'annotation quand on clique dessus
+     $('.Maverification').slideUp();
+      $('.Mondanger').hide();     
+      $('.Moninfo').hide(); 
+      $('.Monsucces').hide(); 
+    });
+    $('.Moninfo').on('click', function () { //destruction de l'annotation quand on clique dessus
+     $('.Maverification').slideUp();
+      $('.Mondanger').hide();     
+      $('.Moninfo').hide(); 
+      $('.Monsucces').hide(); 
+    });
+    $('.Monsucces').on('click', function () { //destruction de l'annotation quand on clique dessus
+     $('.Maverification').slideUp();
+      $('.Mondanger').hide();     
+      $('.Moninfo').hide(); 
+      $('.Monsucces').hide(); 
+    });
+    

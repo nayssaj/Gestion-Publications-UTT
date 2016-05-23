@@ -29,10 +29,10 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <input class="form-control" type="text" name="nom">
+                                                <input class="form-control verif" type="text" name="nom">
                                             </td>
                                             <td>
-                                                <input class="form-control" type="text" name="prenom">
+                                                <input class="form-control verif" type="text" name="prenom">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -126,10 +126,10 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <input class="form-control" type="text" name="login">
+                                                        <input class="form-control verif" type="text" name="login">
                                                     </td>
                                                     <td>
-                                                        <input class ="form-control" type="password" value="" name="mdp">
+                                                        <input class ="form-control verif" type="password" value="" name="mdp">
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -154,7 +154,7 @@
                                             <tr>
                                                 <th>
                                                     <div class="">
-                                                        <input class="btn btn-primary btn-large Monreinit" type="reset" value="Réinitialiser">
+                                                        <a class="btn btn-primary btn-large Monverif">Vérifier</a>
                                                     </div>
                                                 </th>
                                                 <th>
@@ -167,6 +167,21 @@
                                                 <th>
                                                         
                                                 </th>
+                                            </tr>
+                                            <tr><div class="container Maverification">
+                                                    <div class="alert alert-success Monsucces">
+                                                        <strong>Success!</strong>
+                                                        This alert.
+                                                    </div>
+                                                    <div class="alert alert-info Moninfo">
+                                                        <strong>Info!</strong> 
+                                                        This alert.
+                                                    </div>
+                                                    <div class="alert alert-danger Mondanger">
+                                                        <strong>Danger!</strong> 
+                                                        This alert.
+                                                    </div>
+                                                </div>
                                             </tr>
                                                   <!--<ul class="pager">
                                                     <li class="previous disabled"><span aria-hidden="true">&larr;older</span></li>
