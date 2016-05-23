@@ -37,10 +37,10 @@
                                         </thead>
                                         <tbody class="auteur-origin" >
                                             <tr>
-                                                <td><input class="form-control " type="text" placeholder="Lemercier" name="nom[]"></td>
-                                                <td><input class="form-control " type="text" placeholder="Marc" name="prenom[]"></td>
-                                                <td><input class="form-control  Maorga" type="text" placeholder="UTT" value="" name="organisation[]"></td>
-                                                <td><input class="form-control " type="text" placeholder="tech-CICO" value="" name="departement[]"></td>
+                                                <td><input class="form-control verif" type="text" placeholder="Lemercier" name="nom[]"></td>
+                                                <td><input class="form-control verif" type="text" placeholder="Marc" name="prenom[]"></td>
+                                                <td><input class="form-control Maorga" type="text" placeholder="UTT" value="" name="organisation[]"></td>
+                                                <td><input class="form-control verif" type="text" placeholder="tech-CICO" value="" name="departement[]"></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -74,7 +74,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <input class="form-control " type="text" name="titre">
+                                                        <input class="form-control verif" type="text" name="titre">
                                                     </td>
                                                     <td>
                                                         <select class="form-control" name="annee" disabled="disabled">

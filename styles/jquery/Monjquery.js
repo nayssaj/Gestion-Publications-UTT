@@ -58,7 +58,7 @@ $('.submitjs').on('click', function () {//vérification à la validation de la p
     //$('.Mondanger').hide();
     //$('.Moninfo').hide();
     //$('.Monsucces').hide(); //on cache les anciennes alertes pour les nouvelles
-    $(document).find('input[name!="lieu"]').each(function(){
+    $(document).find('.verif').each(function(){
       if (! $(this).val()) { //le cas ou il y aurait des formulaires vides
           has_empty = true;
           $('.Mondanger').text("Attention ! il semblerait que vous ayez oublié de tout remplir.");
@@ -74,8 +74,8 @@ $('.submitjs').on('click', function () {//vérification à la validation de la p
       }*/
           
     });
-    $(document).find('input[name ="organisation[]"]').each(function(){ //on cherche un auteur UTTien
-          if($('.Maorga').val() !== 'UTT'){
+    $(document).find('.Maorga').each(function(){ //on cherche un auteur UTTien
+          if($(this).val() !== 'UTT'){
           $('.Moninfo').text('Le formulaire ne peut pas être accepté si il n\'y a pas d\'auteur de l\'UTT');
           $('.Moninfo').show();
           chercheErreur +=1;
@@ -91,18 +91,19 @@ $('.submitjs').on('click', function () {//vérification à la validation de la p
     
     $('.Maverification').slideDown();
   });
+  
   $('.submitnojs').on('mouseenter',function(){
       var chercheErreur2 = 0;
     
-    $(document).find('input[name!="lieu"]').each(function(){
+    $(document).find('.verif').each(function(){
       if (! $(this).val()) { //le cas ou il y aurait des formulaires vides
           has_empty = true;
           chercheErreur2 +=1;
       }   
     });
     
-    $(document).find('input[name ="organisation[]"]').each(function(){ //on cherche un auteur UTTien
-      if($('.Maorga').val() !== 'UTT'){
+    $(document).find('.Maorga').each(function(){ //on cherche un auteur UTTien
+      if($(this).val() !== 'UTT'){
       chercheErreur2 +=1;
       }
     });

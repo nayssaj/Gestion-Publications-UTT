@@ -37,18 +37,10 @@
                                     </thead>
                                     <tbody class="auteur-origin" >      
                                         <tr>
-                                            <td>
-                                                <input class="form-control" type="text" placeholder="Lemercier" value="" name="nom[]">
-                                            </td>
-                                            <td>
-                                                <input class="form-control" type="text" placeholder="Marc" value="" name="prenom[]">
-                                            </td>
-                                            <td>
-                                                <input class="form-control Maorga" type="text" placeholder="UTT" value="" name="organisation[]">
-                                            </td>
-                                            <td>
-                                                <input class="form-control" type="text" placeholder="tech-CICO" value="" name="departement[]">
-                                            </td>
+                                            <td><input class="form-control verif" type="text" placeholder="Lemercier" value="" name="nom[]"></td>
+                                            <td><input class="form-control verif" type="text" placeholder="Marc" value="" name="prenom[]"></td>
+                                            <td><input class="form-control verif Maorga" type="text" placeholder="UTT" value="" name="organisation[]"></td>
+                                            <td><input class="form-control verif" type="text" placeholder="tech-CICO" value="" name="departement[]"></td>
                                         </tr>   
                                                 <!--  affiche à effectuer en plus pour chaque auteur
                                                 <tr>
@@ -90,10 +82,10 @@
                                     <tbody>
                                     <tr>
                                         <td>
-                                            <input class="form-control" type="text" value="" name="titre">
+                                            <input class="form-control verif" type="text" value="" name="titre">
                                         </td>
                                         <td>
-                                            <select class="form-control" name="annee" value="">
+                                            <select class="form-control verif" name="annee" value="">
                                                 <option value ="2016">2016</option>
                                                 <option value ="2017">2017</option>'
                                                 <option value ="2018">2018</option>'
@@ -150,10 +142,10 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <input class="form-control" type="text" value="" name="reference">
+                                                <input class="form-control verif" type="text" value="" name="reference">
                                             </td>
                                             <td>
-                                                <select class="form-control Maclass" name="categorie" value="">
+                                                <select class="form-control Maclass verif" name="categorie" value="">
                                                     <option value ="RI">Article dans les revues internationales</option>
                                                     <option value ="RF">Article dans les revues nationales</option>
                                                     <option value ="CI">Article dans les conférences internationales</option>
@@ -165,7 +157,7 @@
                                                 </select>     
                                             </td>
                                             <td>
-                                                <input class="form-control conf" type="text" value="" name="lieu">
+                                                <input class="form-control conf " type="text" value="" name="lieu">
                                             </td>
                                         </tr>
                                     </tbody>
