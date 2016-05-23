@@ -43,6 +43,9 @@ $('.Maclass').on('click',function(){ //script pour le lieu et les conférences
   
   $('.submitjs').on('click', function () {//vérification à la validation de la page
     var chercheErreur = 0;
+      $('.Mondanger').hide();     
+      $('.Moninfo').hide(); 
+      $('.Monsucces').hide(); 
    
     $(document).find('.verif').each(function(){
       if (! $(this).val()) { //le cas ou il y aurait des formulaires vides

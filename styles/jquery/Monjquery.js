@@ -52,7 +52,9 @@
   });
   
 $('.submitjs').on('click', function () {//vérification à la validation de la page
-    
+    $('.Mondanger').hide();     
+    $('.Moninfo').hide(); 
+    $('.Monsucces').hide(); 
     var chercheErreur = 0;
     $(document).find('.verif').each(function(){
         if (! $(this).val()) { //le cas ou il y aurait des formulaires vides

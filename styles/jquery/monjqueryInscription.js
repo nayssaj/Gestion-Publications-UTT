@@ -28,7 +28,28 @@ $('.Monvalider').on('mouseenter',function(){
 
 
 $('.Monverif').on('click',function(){
-   $('.Monvalider').prop('disabled', true); 
+      $('.Mondanger').hide();     
+      $('.Moninfo').hide(); 
+      $('.Monsucces').hide();
+    var chercheErreur = 0;
+   
+    $(document).find('.verif').each(function(){
+      if (! $(this).val()) { //le cas ou il y aurait des formulaires vides
+          //has_empty = true;
+          $('.Mondanger').text("Attention ! il semblerait que vous ayez oublié de tout remplir.");
+          $('.Mondanger').show();
+          chercheErreur +=1;
+      }
+    });
+    if(chercheErreur === 0){ //si le formulaire n'a pas de soucis alors on dévérouille la validation
+          $('.Monsucces').text("Le formulaire est rempli et est prêt à être envoyé.");
+          $('.Monsucces').show();
+          $('.Monvalider').prop('disabled', true); 
+
+    }
+    
+    $('.Maverification').slideDown();
+
 });
 
     $('.Mondanger').on('click', function () { //destruction de l'annotation quand on clique dessus
