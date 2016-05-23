@@ -22,12 +22,15 @@ $('.Maclass').on('click',function(){ //script pour le lieu et les conférences
           chercheErreur2 +=1;
       }   
     });
-    
-    $(document).find('input[name ="organisation[]"]').each(function(){ //on cherche un auteur UTTien
-      if($(this).val() !== 'UTT'){
-      chercheErreur2 +=1;
+    var countUTT =0;
+    $(document).find('.Maorga').each(function(){ //on cherche un auteur UTTien
+      if($(this).val() === 'UTT'){
+          countUTT+=1;
       }
     });
+    if (countUTT<1){
+        chercheErreur2 +=1;
+    }
     
     if(chercheErreur2 === 0){ //si le formulaire n'a pas de soucis alors on dévérouille la validation
           $('.submitnojs').prop('disabled', false);
@@ -49,14 +52,17 @@ $('.Maclass').on('click',function(){ //script pour le lieu et les conférences
           chercheErreur +=1;
       }
     });
-    $(document).find('input[name ="organisation[]"]').each(function(){ //on cherche un auteur UTTien
-          if($('.Maorga').val() !== 'UTT'){
-          $('.Moninfo').text('Le formulaire ne peut pas être accepté si il n\'y a pas d\'auteur de l\'UTT');
-          $('.Moninfo').show();
-          chercheErreur +=1;
-          }
+    var countUTT =0;
+    $(document).find('.Maorga').each(function(){ //on cherche un auteur UTTien
+      if($(this).val() === 'UTT'){
+          countUTT+=1;
+      }
     });
-    
+    if (countUTT<1){
+        $('.Moninfo').text('Le formulaire ne peut pas être accepté si il n\'y a pas d\'auteur de l\'UTT');
+        $('.Moninfo').show();
+        chercheErreur +=1;
+    }
     if(chercheErreur === 0){ //si le formulaire n'a pas de soucis alors on dévérouille la validation
           $('.Monsucces').text("Le formulaire est rempli et est prêt à être envoyé.");
           $('.Monsucces').show();
