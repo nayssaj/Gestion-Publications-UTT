@@ -1,45 +1,23 @@
 <?php
-	require_once('../Classes/Publication.php');
-	require_once('../Classes/Chercheur.php');
-	//require_once('../Vue/vue.php');
+	require_once('Classes/Publication.php');
+	require_once('Classes/Chercheur_UTT.php');
+	require_once('vue/Vue.php');
 
 	class ControlerAjoutPublication{
 
-		private $publication;
+		private $chercheurUTT;
 
 		public function __construct(){
-			$this->publication = new Publication();
+		    $this->chercheurUTT = new Chercheur_UTT(1, 'michel', 'dupont', 'UTT', 'equipe', 'login', 'mdp');	
 		}
 
-		public function ajoutPublication(){
-		//	$publication = $this->publication->getPublication($isBillet);
-		//	$vue = new Vue('Publication');
-		//	$vue->generer($publication);
+		public function formulaireAjoutPublication(){
+			//$publication = $this->publication->getPublication($isBillet);
+			$vue = new Vue('AjoutPublication');
+			$vue->generer(array('titrePage' => 'Ajouter une publication'));
+                }
 
-            if(isset($_SESSION["login"]) && isset($_SESSION["mdp"])){
-            
-            }
-            else{
-                if(isset($_POST["login"]) && isset($_POST["mdp"])){
-                    $resultatlogin="bobi";
-                    $resultatmdp="bobu";
-                    //requete SQL savoir si login et mdp sont bons
-                    if($_POST['mdp'] == $resultatmdp){
-                        $_SESSION["login"]=$resultatlogin;
-                        $_SESSION["mdp"]=$resultatmdp;
-                        //echo("connexion en cours !");
-                    }
-                }
-                if(isset($_POST[nom]) && isset($_POST[prenom]) && isset($_POST[equipe]) && isset($_POST[login]) && isset($_POST[mdp])){
-                    if(strlen($_POST[mdp])>6 ){ //ajouter les vérif d'existance login,nom et prenom 
-                    //créer les éléments dans la BDD
-                   // foreach ($_POST as $ele){
-                   //     echo $ele;
-                   //     echo ("<br/>");
-                   // }
-                    }
-                }
-            }
-            
+                public function ajouterPublication($auteurs, $titre_article, $reference_publication, $annee, $categorie, $lieu, $statut){
+                    $this->chercheurUTT->ajoutPublication($auteurs, $titre_article, $reference_publication, $annee, $categorie, $lieu, $statut);
+        }
     }
-}
