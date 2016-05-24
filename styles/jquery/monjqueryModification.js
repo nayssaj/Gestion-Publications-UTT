@@ -117,4 +117,3 @@ $('.B_aM1').on('click', function(){
             $('.B_aM1').show();
         }
     }); 
-  

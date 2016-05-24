@@ -29,9 +29,6 @@
                         $_SESSION["mdp"]=$resultatmdp;
                         //echo("connexion en cours !");
                     }
-                }   
-                else{
-                //echo("Vous n'étes pas connecté , infâme lepreuxchaun");
                 }
                 if(isset($_POST[nom]) && isset($_POST[prenom]) && isset($_POST[equipe]) && isset($_POST[login]) && isset($_POST[mdp])){
                     if(strlen($_POST[mdp])>6 ){ //ajouter les vérif d'existance login,nom et prenom 

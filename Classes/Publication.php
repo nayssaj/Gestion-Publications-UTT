@@ -11,13 +11,14 @@
         private $annee;
         private $statut;
     
-        public function __construct($id, $auteurs, $titre, $ref, $annee, $statut) {
+        public function __construct($id, $auteurs, $titre, $ref, $annee, $statut, $type) {
 		$this->id = $id;	
         	$this->auteurs = $auteurs;
 		$this->titre = $titre;
 		$this->ref = $ref;
 		$this->annee = $annee;
 		$this->statut = $statut;
+                $this->type = $type;
         }
     
 	public function getId(){return $this->id;}
@@ -37,6 +38,9 @@
 
         public function getStatut(){return $this->statut;}
         public function setStatut($statut){$this->statut = $statut;}
+        
+        public function getType(){return $this->type;}
+	public function setType($type){$this->type = $type;}
 
 	public function verificationAuteur(Chercheur $auteurIncertain){
 		foreach($this->getAuteurs() as $auteurCertain){
@@ -53,7 +57,7 @@
             if($publication->rowCount() == 1)
                 return $publication->fetch();
             else
-                throw new Exception("Aucune publication ne coresspond a l'identifiant '$idPublication'");
+                throw new Exception("Aucune publication ne correspond a l'identifiant '$idPublication'");
         }
     }
 

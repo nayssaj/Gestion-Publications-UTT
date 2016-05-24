@@ -59,29 +59,41 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">connexion</h4>
+            <h4 class="modal-title" id="myModalLabel">Recherche avancée</h4>
           </div>
             <form method="POST" action="PagePublications.php">
               
                 <div class="modal-body"><ul class="nav nav-tabs">
                   <li class="active"><a data-toggle="tab" href="#home">Recherche Publications Chercheur</a></li>
                   <li><a data-toggle="tab" href="#menu1">Recherche Laboratoire à partir d'une année</a></li>
-                  <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+                  <li><a data-toggle="tab" href="#menu2">Collaborations extérieures d'un chercheur UTT</a></li>
+                  <li><a data-toggle="tab" href="#menu3">Liste des coauteurs</a></li>
                 </ul>
                 <div class="tab-content">
                   <div id="home" class="tab-pane fade in active">
-                      <br/><h4>Recherche Publications Chercheur</h4><br/><br/>
-                          <input type="text" name="recherche">
+                      <br/><h4>Publications Chercheur</h4><br/><br/>
+                          <input type="text" name="r-prenom" placeholder="Prenom">
+                        <input type="text" name="r-nom" placeholder="Nom">
+                          <input type="hidden" name="type" value="1">
                   </div>
                   <div id="menu1" class="tab-pane fade">
-                    <br/><h4>Recherche Laboratoire à partir d'une année</h4><br/><br/>
+                    <br/><h4>Laboratoire à partir d'une année</h4><br/><br/>
                     <input type="text" name="recherche" placeholder="Laboratoire">
                           <input type="text" name="Année" placeholder="Année">
+                          <input type="hidden" name="type" value="2">
                   </div>
                   <div id="menu2" class="tab-pane fade">
-                    <h3>Menu 2</h3>
-                    <p>Some content in menu 2.</p>
+                    <br/><h4>Collaborations extérieures</h4><br/><br/>
+                          <input type="text" name="r-prenom" placeholder="Prenom">
+                        <input type="text" name="r-nom" placeholder="Nom">
+                          <input type="hidden" name="type" value="3">
                   </div>
+                    <div id="menu3" class="tab-pane fade">
+                    <br/><h4>Liste des coauteurs</h4><br/><br/>
+                        <input type="text" name="r-prenom" placeholder="Prenom">
+                        <input type="text" name="r-nom" placeholder="Nom">
+                          <input type="hidden" name="type" value="4">
+                    </div>
                 </div>
           </div>
                 

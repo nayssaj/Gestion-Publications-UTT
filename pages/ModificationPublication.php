@@ -37,18 +37,10 @@
                                         </thead>
                                         <tbody class="auteur-origin" >
                                             <tr>
-                                                <td>
-                                                    <input class="form-control" type="text" placeholder="Lemercier" name="nom[]">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control" type="text" placeholder="Marc" name="prenom[]">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control Maorga" type="text" placeholder="UTT" value="" name="organisation[]">
-                                                </td>
-                                                <td>
-                                                    <input class="form-control" type="text" placeholder="tech-CICO" value="" name="departement[]">
-                                                </td>
+                                                <td><input class="form-control verif" type="text" placeholder="Lemercier" name="nom[]"></td>
+                                                <td><input class="form-control verif" type="text" placeholder="Marc" name="prenom[]"></td>
+                                                <td><input class="form-control Maorga" type="text" placeholder="UTT" value="" name="organisation[]"></td>
+                                                <td><input class="form-control verif" type="text" placeholder="tech-CICO" value="" name="departement[]"></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -82,10 +74,10 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <input class="form-control" type="text" name="titre">
+                                                        <input class="form-control verif" type="text" name="titre">
                                                     </td>
                                                     <td>
-                                                        <select class="form-control" name="annee">
+                                                        <select class="form-control" name="annee" disabled="disabled">
                                                             <option value ="2016">2016</option>
                                                             <option value ="2017">2017</option>
                                                             <option value ="2018">2018</option>
@@ -99,15 +91,15 @@
                                                     <td>
                                                         <div class="" data-toggle="buttons">
                                                             <label class="btn btn-primary active">
-                                                                <input type="radio" name="statut" value="soumis" autocomplete="off">
+                                                                <input type="radio" name="statut" class="" value="soumis" autocomplete="off">
                                                                 Soumis
                                                             </label>
                                                             <label class="btn btn-warning">
-                                                                <input type="radio" name="statut" value="revision" autocomplete="off">
+                                                                <input type="radio" name="statut" class="" value="revision" autocomplete="off">
                                                                 En révision
                                                             </label>
                                                             <label class="btn btn-success">
-                                                                <input type="radio" name="statut" value="publie" autocomplete="off"> 
+                                                                <input type="radio" name="statut" class="" value="publie" autocomplete="off"> 
                                                                 Publié
                                                             </label>
                                                         </div>
@@ -145,10 +137,10 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <input class="form-control" type="text" name="reference">
+                                                        <input class="form-control" type="text" name="reference" disabled="disabled">
                                                     </td>
                                                     <td>
-                                                        <select class="form-control Maclass" name="categorie">
+                                                        <select class="form-control Maclass" name="categorie" disabled="disabled">
                                                             <option value ="RI">Article dans les revues internationales</option>
                                                             <option value ="RF">Article dans les revues nationales</option>
                                                             <option value ="CI">Article dans les conférences internationales</option>
@@ -159,9 +151,7 @@
                                                             <option value ="AP">Autre production</option>
                                                         </select>
                                                     </td>
-                                                    <td>
-                                                        <input class="form-control conf" type="text" value="" name="lieu">
-                                                    </td>
+                                                    <td><input class="form-control conf" type="text" value="" name="lieu" disabled="disabled"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -194,23 +184,8 @@
                                                         <label class="btn btn-primary submitjs pull-right" >Vérifier</label>
                                                     </td>
                                                     <td>
-                                                        <input type="submit" name="valider" class="submitnojs btn btn-primary submitnojs pull-right" disabled="disabled" value="Valider">
-                                                    </td>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                    <td>
-                                                        
-                                                    </td>
+                                                        <input type="submit" class="submitnojs btn btn-primary submitnojs pull-right" disabled="disabled" value="Valider">
+                                                    </td><td></td><td></td><td></td><td></td><td></td>
                                                 </tr>
                                                 <tr>
                                                     <h4>Vérifications</h4>
@@ -219,7 +194,7 @@
                                                             <strong>Success!</strong> This alert.
                                                         </div>
                                                         <div class="alert alert-info Moninfo">
-                                                            <strong>Info!</strong> This ale.
+                                                            <strong>Info!</strong> This alert.
                                                         </div>
                                                         <div class="alert alert-danger Mondanger">
                                                             <strong>Danger!</strong> This alert .
@@ -234,7 +209,7 @@
                         </div>
                     </div>
                 </div>
-            </form>                                 
+            </form>
 <?php $contenuCentral = ob_get_clean(); ?>
-
 <?php require 'gabarit.php' ?>
+<script src="../styles/jquery/monjqueryModification.js"></script>
