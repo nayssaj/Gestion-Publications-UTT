@@ -44,8 +44,8 @@ Class Administrateur {
                 $nbpublication[$i] = sizeof($getpubli);
                 $anneemax[$i] = max($annees);
                 $anneemin[$i] = min($annees);
-            $pointsChercheur[$i] = $nbpublication[$i]/($anneemax[i] - $anneemin[i]) * ($nbpublié/$nbpublication) * (($nbCI + $nbRI)/$nbpublication) * (($nbCI+$nbRI)/$nbpublication);        
-        $Résultat[i] = array($Chercheur[i]->getNom(),$Chercheur[i]->getPrenom(),$pointsChercheur[i]);
+            $pointsChercheur[$i] = $nbpublication[$i]/($anneemax[$i] - $anneemin[$i]) * ($nbpublié/$nbpublication) * (($nbCI + $nbRI)/$nbpublication) * (($nbCI+$nbRI)/$nbpublication);        
+        $Résultat[i] = array($Chercheur[$i]->getNom(),$Chercheur[$i]->getPrenom(),$pointsChercheur[$i]);
         }
         return $Résultat;
     }

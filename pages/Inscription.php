@@ -28,12 +28,8 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <input class="form-control verif" type="text" name="nom">
-                                            </td>
-                                            <td>
-                                                <input class="form-control verif" type="text" name="prenom">
-                                            </td>
+                                            <td><input class="form-control verif" type="text" name="nom"></td>
+                                            <td><input class="form-control verif" type="text" name="prenom"></td>
                                         </tr>
                                     </tbody>
                                 </table>
