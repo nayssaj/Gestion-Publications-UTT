@@ -50,7 +50,7 @@
                 }
                 //On viens créer un objet publication que l'on ajoute aux autres publication 
                 //potentiellement déja trouvées 
-                $publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut']);
+                $publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie']);
                 unset($idAuteurs);
             }
             return $publications;
