@@ -2,6 +2,6 @@
     class ControleurAccueil{
 
         public function accueil(){
-            require 'pages/Accueil.php';
+            require 'vue/vueAccueil.php';
         }
     }
