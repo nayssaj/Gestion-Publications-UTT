@@ -1,6 +1,7 @@
 <?php
-	require_once('../Classes/Publication.php');
-	require_once('../Classes/Chercheur.php');
+	require_once 'Classes/Publication.php';
+	require_once 'Classes/Chercheur.php';
+        require_once 'pages/vue.php';
 	//require_once('../Vue/vue.php');
 
 	class ControlerPublication{
