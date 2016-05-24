@@ -35,10 +35,10 @@
         public function setOrganisation($organisation){$this->organisation= $organisation;}
 
 	//Retourne les publication écrits par l'auteur sous forme d'objets	
-	public function getPublication(){
+	public function getPublication($idChercheur){
             //On cherche toutes les publications écrites par l'auteur
             $reqPublications = 'SELECT Publication.* FROM Publication, redige WHERE Publication.id = redige.Publication_id AND redige.Auteur_id = ?';
-            $reponsePublications = $this->executerRequete($reqPublications, array($this->getId()));
+            $reponsePublications = $this->executerRequete($reqPublications, array($idChercheur));
             while($donneesPublication = $reponsePublications->fetch()){
                     //On cherche tous les auteurs de la publication trouvée
                 $reqAuteurs = 'SELECT Auteur.* FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id = ?';
