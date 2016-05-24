@@ -30,8 +30,8 @@
                                                 <tr>
                                                     <td>
                                                         <div class=" B_a" data-toggle="buttons">
-                                                            <label class="btn btn-primary B_aP1 glyphicon glyphicon-pencil">+</label>
-                                                            <label class="btn btn-primary B_aM1 glyphicon glyphicon-trash"></label>
+                                                            <label class="btn btn-primary B_aP1 glyphicon glyphicon-plus"></label>
+                                                            <label class="btn btn-primary B_aM1 glyphicon glyphicon-minus"></label>
                                                         <div/>
                                                     <td/>
                                                 <tr/>   
