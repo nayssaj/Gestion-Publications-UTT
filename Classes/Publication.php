@@ -51,7 +51,8 @@
 		return false;
 	}
 
-	public function getPublication($idPublication){
+
+	public function getPublicationID($idPublication){
             $sql = 'SELECT * FROM Publication WHERE id = ?';
             $publication = $this->executerRequete($sql, array($idPublication));
             if($publication->rowCount() == 1)
@@ -60,4 +61,6 @@
                 throw new Exception("Aucune publication ne correspond a l'identifiant '$idPublication'");
         }
     }
+
+    
 
