@@ -59,31 +59,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <?php
-                    if(isset($_SESSION['login']) && isset($_SESSION['mdp'])){
-                        $recherche_login = 'bobi';
-                        $recherche_mdp = 'bobi';
-                        //faire la recherche SQL
-                        if(($recherche_login == $_SESSION['login']) && ($recherche_mdp =$_SESSION['mdp'])){   
-                        /*
-                    echo('    <li>
-                        <a href="PagePublication.php">Mes Publications</a><!-- il faut modifier le lien -->
-                        </li>
-                        <li>
-                        <a href="Accueil.php?deco=oui">Déconnexion</a>            <!--il faut recharger la page sinon les labels ne changent pas -->
-                        </li>        
-                            
-                        ');*/} 
-                    }
-                    else{ echo('
-                    <li>
-                        <a href="pages/Inscription.php">inscription</a>
-                    </li>
-                    <li><!-- on replace cela par un bouton de connexion 
-                        <a href="#connect">Connexion</a> !-->
-                        <a data-toggle="modal" data-target="#myModal">Connexion</a>
-                    </li>
-                    ');}?>        
+                   
                     <form class="navbar-form navbar-left" role="search">
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Search">
@@ -119,28 +95,6 @@
         </div>
       </div>
     </div>
-  <?php
-    if(isset($_SESSION["login"]) && isset($_SESSION["mdp"])){
-        //echo("trouvé");
-    }
-    else{
-        if(isset($_POST["login"]) && isset($_POST["mdp"])){
-          //  echo("retrouvé !");
-            $resultatlogin="bobi";
-            $resultatmdp="bobi";
-            //requete SQL savoir si login et mdp sont bons
-            if($_POST['mdp'] == $resultatmdp){
-                $_SESSION["login"]=$resultatlogin;
-                $_SESSION["mdp"]=$resultatmdp;
-            //    echo("connexion en cours !");
-            }
-        }
-        else{
-            //echo("Vous n'étes pas connecté , infâme lepreuxchaun");
-        }
-    }
-    
-    ?>
     <!-- Page Content -->
     <div class="container">
 
