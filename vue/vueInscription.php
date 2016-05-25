@@ -11,7 +11,7 @@
         <!-- /.col-lg-12 -->
     </div>
     <div id="contenu">
-        <form method="POST" action="Inscription.php">
+        <form method="POST" action="vue/vueInscription.php">
             <div class="col-lg-12">
                 <!-- /.panel -->
                 <div class="panel panel-default">
