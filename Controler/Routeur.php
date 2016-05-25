@@ -29,7 +29,7 @@
                 if(isset($_GET['action'])){
                     if($_GET['action'] == 'publication'){
                         $chercheur = new Chercheur('3', 'michel', 'dupont', 'UTT', 'MMRI');
-                        $this->$ctrlPublication->publication($chercheur->getId());
+                        $this->ctrlPublication->publication($chercheur->getId());
                     }
                     else if($_GET['action'] == 'formulaireAjoutPublication'){
                         $this->ctrlAjoutPublication->formulaireAjoutPublication();
