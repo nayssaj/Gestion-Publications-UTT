@@ -1,13 +1,7 @@
 <?php   
-    
-    require_once 'Controler/ControlerAccueil.php';
-    require_once 'Controler/ControlerPublication.php';
-    require_once 'Controler/ControlerAjoutPublication.php';
-    require_once 'Controler/ControlerModificationPublication.php';
-    require_once 'Controler/ControlerInscription.php';
-    require_once 'Classes/Chercheur.php';
+
     require_once 'vue/Vue.php';
-//    require_once 'pages/vueErreur.php';
+    require_once 'Requete.php';
 
     class Routeur{
 
@@ -25,47 +19,57 @@
             $this->ctrlInscritpion = new ControlerInscription();
         }
 
+        //Route une requete entrante : execute l'action associée
         public function routerRequete(){
-                if(isset($_GET['action'])){
-                    if($_GET['action'] == 'publication'){
-                        $chercheur = new Chercheur('3', 'michel', 'dupont', 'UTT', 'MMRI');
-                        $this->ctrlPublication->publication($chercheur->getId());
-                    }
-                    else if($_GET['action'] == 'formulaireAjoutPublication'){
-                        $this->ctrlAjoutPublication->formulaireAjoutPublication();
-                    }
-                    else if($_GET['action'] == 'ajouterPublication'){
-                        $nomChercheur = $_POST['nom'][0];
-                        $prenomChercheur = $_POST['prenom'][0];
-                        $idChercheur = 3;
-                        $orgaChercheur = $_POST['organisation'][0];
-                        $equipeChercheur = $_POST['departement'][0];
-                        $chercheur = new Chercheur($idChercheur, $nomChercheur, $prenomChercheur, $orgaChercheur, $equipeChercheur);
-                        $auteurs = array($chercheur);
-                        $this->ctrlAjoutPublication->ajouterPublication($auteurs, $_POST['titre'], $_POST['reference'], $_POST['annee'], $_POST['categorie'], NULL, $_POST['statut'] );
-                    }
-                    else if($_GET['action'] == 'modifierPublication'){
-                        $this->ctrlModificationPublication->modifierPublication();
-                    }
-                    else if($_GET['action'] == 'inscription'){
-                        echo 'inscription';
-                        $this->ctrlInscritpion->formulaireInscription();
-                    }
-                    else if($_GET['action'] == 'inscrire'){
-                        echo 'inscrire';
-                    }
-                    else{
-                        throw new Exception("Action non valide");
-                    }
-                }
-                else{
-                    $this->ctrlAccueil->Accueil();
-                }
+            try{
+                //Fusion des parametres GET et POST de la requete
+                $requete = new Requete(array_merge($_GET, $_POST));  
+
+                $controleur = $this->creerControleur($requete);
+                $action = $this->creeAction($requete);
+
+                $controleur->executerAction($action);
+            }
+            catch(Exception $e){
+                $this->gererErreur($e);
+            }
+        }
+                
+        //Crée le controleur approprié en fonction de la requete reçue
+        private function creerControleur(Requete $requete){
+            $controleur = "Accueil";//Controleur par défaut
+            if($requete->existeParametre('controleur')){
+                $controleur = $requete->getParametres('controleur');
+                //Première lettre en majuscule
+                $controleur = ucfirst(strtolower($controleur));
+            } 
+            //Creation du fichier controleur
+            $classeControleur = "Controleur" . $controleur;
+            $fichierControleur = 'Controleur/' . $classeControleuri . 'php';
+            if(file_exists($fichierControleur)){
+                //Instanciation du controleur adapté a la requête
+                require($fichierControleur);
+                $controleur = new $classeControleur();
+                $controleur->setRequete($requete);
+                return $controleur;
+            }
+            else{
+                throw new Exception("Fichier '$fichierControleur' introuvable");
+            }
         }
 
-        private function erreur($msgErreur){
-            $vue = new Vue('Erreur');
-            $vue->generer(array('msgErreur' => $msgErreur));
+        //Determine l'action a executer en fonction de la requete reçue 
+        private function creerAction(Requete $requete){
+            $action = "index"; //Action par défaut
+            if($requete->existeRequete('action')){
+                $action = $requete->getParametres('action');
+            }
+            return $action;
+        }
+
+        private function gererErreur(Exception $exception){
+            $vue = new Vue('Erreur'); 
+            $vue->generer(array('msgErreur' => $exception->getMessage()));
         }
     }
 
