@@ -6,8 +6,8 @@
 
         //Renvoi la valeur d'un parametres de configuration
         public static function get($nom, $valeurDefaut = null){
-            if(isset(self::getParametres()['nom'])){
-                $valeur = self::getParametres()['nom'];
+            if(isset(self::getParametres()[$nom])){
+                $valeur = self::getParametres()[$nom];
             }
             else{
                 $valeur = $valeurDefaut;
