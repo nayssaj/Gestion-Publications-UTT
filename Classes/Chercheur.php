@@ -1,7 +1,6 @@
 <?php
 
-    require_once 'Modele.php';
-    require_once 'Database.php';
+    require_once 'Core/Modele.php';
     require_once 'Publication.php';
 
     class Chercheur extends Modele{
