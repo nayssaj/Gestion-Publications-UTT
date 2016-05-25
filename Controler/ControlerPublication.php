@@ -12,9 +12,9 @@
                 }
 
 
-		public function publication(Chercheur $chercheur){
-                    
-                    $this->publications = $chercheur->getPublication();
+		public function publication($id){
+                    $michel = new Chercheur('1', 'michel', 'dupont', 'UTT', 'equipe'); 
+                    $this->publications = $michel->getPublication($id);
                     try{
                         $donneesSpecifiques = array('publicationsAuteur' => $this->publications, 'titrePage' => 'Publications');
                         $vue = new Vue('Publication');
