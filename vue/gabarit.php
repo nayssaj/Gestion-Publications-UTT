@@ -46,7 +46,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="Accueil.php">Accueil</a>
+        <a class="navbar-brand" href="index.php">Accueil</a>
       </div>
       <!-- /.navbar-header -->
       <ul class="nav navbar-top-links navbar-right">
