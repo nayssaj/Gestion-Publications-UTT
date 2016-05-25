@@ -7,9 +7,13 @@
         private $titrePage;
         private $script;
 
-        public function __construct($action){
-            //Determinationi du nom du fichier vue a partir de l'action
-            $this->fichier = "vue/vue" . $action . ".php";
+        public function __construct($action, $controleur =""){
+            //Determinationi du nom du fichier vue a partir de l'action et du controleur
+            $fichier = "Vue/";
+            if ($controleur != ""){
+                $fichier = $fichier . $controleur . "/";
+            }
+            $this->fichier = $fichier . $action . ".php";
         }
 
         //Genere et affiche la vue
