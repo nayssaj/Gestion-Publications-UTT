@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'Modele.php';
+    require_once 'Core/Modele.php';
 
     class Publication extends Modele{
 
