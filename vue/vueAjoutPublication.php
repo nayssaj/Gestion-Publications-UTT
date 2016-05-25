@@ -11,7 +11,7 @@
         <!-- /.col-lg-12 -->
     </div>
     <div id="contenu">
-        <form method="POST" action="AjoutPublication.php">
+        <form method="POST" action="index.php?action=ajouterPublication">
         <div class="col-lg-12">
         <!-- /.panel -->
             <div class="panel panel-default">
@@ -49,14 +49,6 @@
                                             <td><input class="form-control verif Maorga" type="text" placeholder="UTT" value="" name="organisation[]"></td>
                                             <td><input class="form-control verif" type="text" placeholder="tech-CICO" value="" name="departement[]"></td>
                                         </tr>   
-                                                <!--  affiche à effectuer en plus pour chaque auteur
-                                                <tr>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="Lemercier" value="" name="nom[]">');echo('</td>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="Marc" value="" name="prenom[]">');echo('</td>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="UTT" value="" name="organisation[]">');echo('</td>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="tech-CICO" value="" name="departement[]">');echo('</td>
-                                                </tr>
-                                                !-->
                                     </tbody>
                                 </table>
                             </div>
