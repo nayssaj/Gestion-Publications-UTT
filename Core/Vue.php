@@ -7,10 +7,10 @@
         private $titrePage;
         private $script;
 
-        public function __construct($action, $controleur =""){
+        public function __construct($action, $controleur =''){
             //Determinationi du nom du fichier vue a partir de l'action et du controleur
             $fichier = "Vue/";
-            if ($controleur != ""){
+            if ($controleur != ''){
                 $fichier = $fichier . $controleur . "/";
             }
             $this->fichier = $fichier . $action . ".php";
@@ -21,7 +21,7 @@
             //Generation de la partie spécifique de la vue
             $contenu = $this->genererFichier($this->fichier, $donneesSpecifiques);
             //Generation du gabarit commun utilisant la partie spécifique
-            $vue = $this->genererFichier('vue/gabarit.php',
+            $vue = $this->genererFichier('Vue/gabarit.php',
                 array(
                     'titreEntete' => $this->titreEntete,
                     'titrePage' => $this->titrePage,
