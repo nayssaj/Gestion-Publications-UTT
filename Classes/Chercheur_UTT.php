@@ -51,7 +51,7 @@
 		}
 
                 public function ajouterChercheur($nom, $prenom, $organisation, $equipe){
-			//On verifie que l'auteur n'est pas déja indiqué dans la liste des auteurs
+			//Verifier que l'auteur n'est pas déja présent dans la base
 			if(!$publication->verificationAuteur($chercheur)){
 			    $sql = 'INSERT INTO Auteur(id, organisation, equipe, nom, prenom) VALUES (?, ?, ?, ?, ?)';
 			    $this->executerRequete($sql, array(NULL, $organisation, $equipe, $nom, $prenom));

@@ -1,10 +1,10 @@
 <?php
 	require_once 'Classes/Publication.php';
 	require_once 'Classes/Chercheur.php';
-        require_once 'vue/Vue.php';
-	//require_once('../Vue/vue.php');
+        require_once 'Core/Vue.php';
+        require_once 'Core/Controleur.php';
 
-	class ControlerPublication{
+	class ControleurPublication extends Controleur{
 
                 private $publications; 
                 
@@ -12,19 +12,21 @@
                 }
 
 
-		public function publication($id){
+                public function index(){
+
+                }
+
+		public function publication(){
                     $michel = new Chercheur('1', 'michel', 'dupont', 'UTT', 'equipe'); 
-                    $this->publications = $michel->getPublication($id);
+                    $this->publications = $michel->getPublication('1');
                     try{
                         $donneesSpecifiques = array('publicationsAuteur' => $this->publications, 'titrePage' => 'Publications');
-                        $vue = new Vue('Publication');
-                        $vue->generer($donneesSpecifiques);
+                        $this->genererVue($donneesSpecifiques);
 
 		    }
                     catch(Exception $e){
                         $msgErreur = $e->getMessage();
-                        $vue = new Vue('Erreur');
-                        $vue6>generer($msgErreur);
+                        $this->genererVue($msgErreur);
 	            }
             }
         }
