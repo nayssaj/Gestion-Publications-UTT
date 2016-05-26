@@ -11,7 +11,7 @@
 
         //Renvoi vrai si le parametre existe dans la requête
         public function existeParametre($nom){
-            return (isset($this->paramtres[$nom]) && $this->parametres[$nom] != "");
+            return (isset($this->parametres[$nom]) && $this->parametres[$nom] != '');
         }
         
         //Renvoi la valeur du parametre demandé
