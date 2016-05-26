@@ -1,7 +1,7 @@
 <?php
     
     require_once 'Requete.php';
-    require_once 'Vue.php';
+    require_once 'Core/Vue.php';
 
     abstract class Controleur{
 
@@ -18,7 +18,7 @@
 
         //Execute l'action a réaliser
         public function executerAction($action){
-            if(method_exists($this->$action)){
+            if(method_exists($this, $action)){
                 $this->action = $action;
                 $this->{$this->action}();
             }
@@ -39,6 +39,6 @@
             $controleur = str_replace("Controleur", "", $classeControleur);
             //Instanciation et génération de la vue
             $vue = new Vue($this->action, $controleur);
-            $vue->genererVue($donneesVue);
+            $vue->generer($donneesVue);
         } 
     }
