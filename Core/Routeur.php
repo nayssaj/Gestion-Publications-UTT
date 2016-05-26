@@ -1,32 +1,17 @@
 <?php   
 
-    require_once 'vue/Vue.php';
+    require_once 'Core/Vue.php';
     require_once 'Requete.php';
 
     class Routeur{
-
-        private $ctrlAccueil;
-        private $ctrlPublication;
-        private $ctrlAjoutPublication;
-        private $ctrlModificationPublication;
-        private $ctrlInscription;
-
-        public function __construct(){
-            $this->ctrlAccueil = new ControleurAccueil();
-            $this->ctrlPublication = new ControlerPublication();
-            $this->ctrlAjoutPublication = new ControlerAjoutPublication();
-            $this->ctrlModificationPublication = new ControlerModificationPublication();
-            $this->ctrlInscritpion = new ControlerInscription();
-        }
 
         //Route une requete entrante : execute l'action associée
         public function routerRequete(){
             try{
                 //Fusion des parametres GET et POST de la requete
                 $requete = new Requete(array_merge($_GET, $_POST));  
-
                 $controleur = $this->creerControleur($requete);
-                $action = $this->creeAction($requete);
+                $action = $this->creerAction($requete);
 
                 $controleur->executerAction($action);
             }
@@ -44,8 +29,8 @@
                 $controleur = ucfirst(strtolower($controleur));
             } 
             //Creation du fichier controleur
-            $classeControleur = "Controleur" . $controleur;
-            $fichierControleur = 'Controleur/' . $classeControleuri . 'php';
+            $classeControleur = 'Controleur' . $controleur;
+            $fichierControleur = 'Controleur/' . $classeControleur . '.php';
             if(file_exists($fichierControleur)){
                 //Instanciation du controleur adapté a la requête
                 require($fichierControleur);
@@ -61,7 +46,7 @@
         //Determine l'action a executer en fonction de la requete reçue 
         private function creerAction(Requete $requete){
             $action = "index"; //Action par défaut
-            if($requete->existeRequete('action')){
+            if($requete->existeParametre('action')){
                 $action = $requete->getParametres('action');
             }
             return $action;
