@@ -24,8 +24,13 @@
 			$idPublication = $idPublications->fetch()[0];
 			//On insère dans la table rédige les couples idAuteur/idPublication
 			foreach($auteurs as $auteur){
+                                $this->ajouterChercheur($auteur);
+                                //On récupère l'ID de l'auteur que l'on viens d'inserer
+                                $reqIdAuteur = 'SELECT LAST_INSERT_ID()';
+                                $idAuteurs = $this->executerRequete($reqIdAuteur);
+                                $idAuteur = $idAuteurs->fetch()[0];
 				$reqInsRedige = 'INSERT INTO redige(Publication_id, Auteur_id) VALUES(?, ?)'; 
-				$this->executerRequete($reqInsRedige, array($idPublication, $auteur->getId()));
+				$this->executerRequete($reqInsRedige, array($idPublication, $idAuteur));
 			}
 		}
                 
@@ -50,12 +55,10 @@
 			}
 		}
 
-                public function ajouterChercheur($nom, $prenom, $organisation, $equipe){
-			//On verifie que l'auteur n'est pas déja indiqué dans la liste des auteurs
-			if(!$publication->verificationAuteur($chercheur)){
-			    $sql = 'INSERT INTO Auteur(id, organisation, equipe, nom, prenom) VALUES (?, ?, ?, ?, ?)';
-			    $this->executerRequete($sql, array(NULL, $organisation, $equipe, $nom, $prenom));
-			}
+                private function ajouterChercheur(Chercheur $chercheur){
+			//Verifier que l'auteur n'est pas déja présent dans la base
+			$sql = 'INSERT INTO Auteur(id, organisation, equipe, nom, prenom) VALUES (?, ?, ?, ?, ?)';
+			$this->executerRequete($sql, array(NULL, $chercheur->getOrganisation(), $chercheur->getEquipe(), $chercheur->getNom(), $chercheur->getPrenom()));
 		}
 
 		public function ajouterAuteurPublication(Publication $publication, Chercheur $chercheur){

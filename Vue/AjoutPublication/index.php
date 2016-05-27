@@ -1,10 +1,17 @@
 <?php 
-    $titreEntete = 'Ajout Publication';
-    $titrePage = 'Ajouter une publication';
- ?>   
+    $this->titreEntete = 'Ajout Publication';
+    $this->script = "<script src='styles/jquery/Monjquery.js'></script>";       
+?>   
 
-<?php ob_start(); ?>
-    <form method="POST" action="AjoutPublication.php">
+ <div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+           <h1 class="page-header"><?= $titrePage ?></h1><!-- ELEMENT SPECIFIQUE -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div id="contenu">
+        <form method="POST" action="index.php?controleur=ajoutPublication&action=ajouterPublication">
         <div class="col-lg-12">
         <!-- /.panel -->
             <div class="panel panel-default">
@@ -42,14 +49,6 @@
                                             <td><input class="form-control verif Maorga" type="text" placeholder="UTT" value="" name="organisation[]"></td>
                                             <td><input class="form-control verif" type="text" placeholder="tech-CICO" value="" name="departement[]"></td>
                                         </tr>   
-                                                <!--  affiche à effectuer en plus pour chaque auteur
-                                                <tr>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="Lemercier" value="" name="nom[]">');echo('</td>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="Marc" value="" name="prenom[]">');echo('</td>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="UTT" value="" name="organisation[]">');echo('</td>
-                                                    <td>');echo('<input class="form-control" type="text" placeholder="tech-CICO" value="" name="departement[]">');echo('</td>
-                                                </tr>
-                                                !-->
                                     </tbody>
                                 </table>
                             </div>
@@ -218,6 +217,5 @@
                 </div>
             </div>                                               
         </form>
-<?php $contenuCentral = ob_get_clean(); ?>
-<?php require 'gabarit.php' ?>        
-<script src="../styles/jquery/Monjquery.js"></script>
+    </div>
+</div>

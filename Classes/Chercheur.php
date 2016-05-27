@@ -33,6 +33,8 @@
         public function getOrganisation(){return ($this->organisation);}
         public function setOrganisation($organisation){$this->organisation= $organisation;}
 
+        public function getEquipe(){return ($this->equipe);}
+
 	//Retourne les publication écrits par l'auteur sous forme d'objets	
 	public function getPublication($idChercheur){
             //On cherche toutes les publications écrites par l'auteur
