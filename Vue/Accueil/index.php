@@ -42,7 +42,7 @@
           <ul class="dropdown-menu">
             <li><a href="index.php?controleur=publication&action=publication">Parcourir ses publication</a></li>
             <li><a href="index.php?controleur=ajoutPublication">Ajouter un article</a></li>
-            <li><a href="index.php?controleur=modificationpublication">Modifier un article</a></li>
+            <li><a href="index.php?controleur=modificationPublication">Modifier un article</a></li>
           </ul>
         </li>
             <li class="dropdown">
