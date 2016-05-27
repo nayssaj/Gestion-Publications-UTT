@@ -26,15 +26,16 @@
             if($requete->existeParametre('controleur')){
                 $controleur = $requete->getParametres('controleur');
                 //Première lettre en majuscule
-                $controleur = ucfirst(strtolower($controleur));
+                $controleur = ucfirst($controleur);
             } 
-            //Creation du fichier controleur
+            //Creation du fichier controleur correspondant a la requete
             $classeControleur = 'Controleur' . $controleur;
             $fichierControleur = 'Controleur/' . $classeControleur . '.php';
             if(file_exists($fichierControleur)){
                 //Instanciation du controleur adapté a la requête
                 require($fichierControleur);
                 $controleur = new $classeControleur();
+                //Indication de la requete auquel le controleur va devoir répondre
                 $controleur->setRequete($requete);
                 return $controleur;
             }
@@ -52,9 +53,10 @@
             return $action;
         }
 
+        //On renvoi vers une vue indiquant un message d'erreur, qq soit l'exception levée
         private function gererErreur(Exception $exception){
             $vue = new Vue('Erreur'); 
-            $vue->generer(array('msgErreur' => $exception->getMessage()));
+            $vue->generer(array('titrePage' => 'ERREUR !', 'msgErreur' => $exception->getMessage()));
         }
     }
 

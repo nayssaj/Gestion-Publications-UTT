@@ -24,7 +24,6 @@
             $vue = $this->genererFichier('Vue/gabarit.php',
                 array(
                     'titreEntete' => $this->titreEntete,
-                    'titrePage' => $this->titrePage,
                     'script' => $this->script,
                     'contenu' => $contenu
                 )); 

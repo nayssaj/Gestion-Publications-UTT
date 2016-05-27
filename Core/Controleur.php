@@ -18,6 +18,7 @@
 
         //Execute l'action a réaliser
         public function executerAction($action){
+            //On vérifie que le controleur est bien capable de prendre en charge l'action
             if(method_exists($this, $action)){
                 $this->action = $action;
                 $this->{$this->action}();

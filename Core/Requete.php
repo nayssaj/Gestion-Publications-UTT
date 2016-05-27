@@ -2,7 +2,6 @@
     
     class Requete{
 
-        //Param
         private $parametres;
 
         public function __construct($parametres){
