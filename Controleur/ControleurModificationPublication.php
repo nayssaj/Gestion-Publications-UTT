@@ -1,15 +1,14 @@
 <?php
 
-    require_once 'vue/Vue.php';
+    require_once 'Core/Controleur.php';
 
-    class ControlerModificationPublication{
+    class ControleurModificationPublication extends Controleur{
+
+        public function index(){
+            $this->genererVue(array('titrePage' => 'Modifier une publication'));
+        }
 
         public function modificationPublication(){
-
-            $vue = new Vue('ModificationPublication');
-            $donneesSpecifiques = array('titrePage' => 'Modifier une publication');
-            $vue->generer($donneesSpecifiques);
-
         }
     }
 
