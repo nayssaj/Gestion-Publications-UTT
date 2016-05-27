@@ -41,8 +41,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publications <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="index.php?controleur=publication&action=publication">Parcourir ses publication</a></li>
-            <li><a href="index.php?controleur=ajoutpublication">Ajouter un article</a></li>
-            <li><a href="index.php?action=formulaireModificationPublication">Modifier un article</a></li>
+            <li><a href="index.php?controleur=ajoutPublication">Ajouter un article</a></li>
+            <li><a href="index.php?controleur=modificationpublication">Modifier un article</a></li>
           </ul>
         </li>
             <li class="dropdown">
