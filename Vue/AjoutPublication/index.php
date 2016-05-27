@@ -11,7 +11,7 @@
         <!-- /.col-lg-12 -->
     </div>
     <div id="contenu">
-        <form method="POST" action="index.php?action=ajouterPublication">
+        <form method="POST" action="index.php?controleur=ajoutPublication&action=ajouterPublication">
         <div class="col-lg-12">
         <!-- /.panel -->
             <div class="panel panel-default">
