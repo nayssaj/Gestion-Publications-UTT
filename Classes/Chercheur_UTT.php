@@ -24,11 +24,19 @@
 			$idPublication = $idPublications->fetch()[0];
 			//On insère dans la table rédige les couples idAuteur/idPublication
 			foreach($auteurs as $auteur){
+                            //On verifie que l'auteur n'est pas déja présent dans la BDD
+                            //Si il ne l'est pas on l'ajoute
+                            if($this->verificationAuteurBase($auteur) == -1){
                                 $this->ajouterChercheur($auteur);
                                 //On récupère l'ID de l'auteur que l'on viens d'inserer
                                 $reqIdAuteur = 'SELECT LAST_INSERT_ID()';
                                 $idAuteurs = $this->executerRequete($reqIdAuteur);
                                 $idAuteur = $idAuteurs->fetch()[0];
+                            }
+                            //Si il ne l'est pas on recupère son id
+                            else{
+                                $idAuteur = $this->verificationAuteurBase($auteur);
+                            }
 				$reqInsRedige = 'INSERT INTO redige(Publication_id, Auteur_id) VALUES(?, ?)'; 
 				$this->executerRequete($reqInsRedige, array($idPublication, $idAuteur));
 			}
@@ -55,10 +63,10 @@
 			}
 		}
 
-                private function ajouterChercheur(Chercheur $chercheur){
-			//Verifier que l'auteur n'est pas déja présent dans la base
-			$sql = 'INSERT INTO Auteur(id, organisation, equipe, nom, prenom) VALUES (?, ?, ?, ?, ?)';
-			$this->executerRequete($sql, array(NULL, $chercheur->getOrganisation(), $chercheur->getEquipe(), $chercheur->getNom(), $chercheur->getPrenom()));
+                public function ajouterChercheur(Chercheur $chercheur){
+                    //Verifier que l'auteur n'est pas déja présent dans la base
+                    $sql = 'INSERT INTO Auteur(id, organisation, equipe, nom, prenom) VALUES (?, ?, ?, ?, ?)';
+                    $this->executerRequete($sql, array(NULL, $chercheur->getOrganisation(), $chercheur->getEquipe(), $chercheur->getNom(), $chercheur->getPrenom()));
 		}
 
 		public function ajouterAuteurPublication(Publication $publication, Chercheur $chercheur){
@@ -85,11 +93,14 @@
 
 		public function modifierPublication(){}
 
-                public function verificationAuteurBase(Chercheur $chercheur){
+                private function verificationAuteurBase(Chercheur $chercheur){
                     $sql= 'SELECT * FROM Auteur WHERE organisation = ? AND equipe = ? AND nom = ? AND prenom = ?';
                     $resultat= $this->executerRequete($sql, array($chercheur->getOrganisation(), $chercheur->getEquipe(), $chercheur->getNom(), $chercheur->getPrenom()));
                     $auteurPresent = $resultat->fetch();
-                    return $auteurPresent;
+                    if($auteurPresent)
+                        return $auteurPresent['id'];
+                    else        
+                        return -1;
                 }
     	}
 ?>
