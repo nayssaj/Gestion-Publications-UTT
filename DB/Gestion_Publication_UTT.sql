@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 13 Mai 2016 à 20:05
+-- Généré le: Dim 29 Mai 2016 à 19:10
 -- Version du serveur: 5.5.47-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.16
 
@@ -33,25 +33,20 @@ CREATE TABLE IF NOT EXISTS `Auteur` (
   `nom` varchar(25) NOT NULL,
   `prenom` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
-
--- --------------------------------------------------------
 
 --
 -- Structure de la table `Comptes`
 --
 
 CREATE TABLE IF NOT EXISTS `Comptes` (
-  `Auteur_id` int(11) DEFAULT NULL,
-  `statut` varchar(25) NOT NULL,
-  `login` varchar(50) NOT NULL,
+  `utilisateur_id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(100) NOT NULL,
   `mdp` varchar(50) NOT NULL,
-  PRIMARY KEY (`login`),
-  UNIQUE KEY `Auteur_id` (`Auteur_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`utilisateur_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
--- --------------------------------------------------------
 
 --
 -- Structure de la table `Publication`
@@ -66,10 +61,8 @@ CREATE TABLE IF NOT EXISTS `Publication` (
   `lieu` varchar(25) DEFAULT NULL,
   `statut` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=60 ;
 
-
--- --------------------------------------------------------
 
 --
 -- Structure de la table `redige`
@@ -82,16 +75,9 @@ CREATE TABLE IF NOT EXISTS `redige` (
   KEY `redige_Auteur` (`Auteur_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 --
 -- Contraintes pour les tables exportées
 --
-
---
--- Contraintes pour la table `Comptes`
---
-ALTER TABLE `Comptes`
-  ADD CONSTRAINT `Comptes_Auteur` FOREIGN KEY (`Auteur_id`) REFERENCES `Auteur` (`id`);
 
 --
 -- Contraintes pour la table `redige`
