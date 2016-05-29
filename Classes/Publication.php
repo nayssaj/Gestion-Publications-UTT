@@ -60,6 +60,13 @@
             else
                 throw new Exception("Aucune publication ne correspond a l'identifiant '$idPublication'");
         }
+
+        public function getNombrePublications(){
+            $sql = 'SELECT count(*) as nbPublications FROM Publication';
+            $resultat = $this->executerRequete($sql);
+            $ligne = $resultat->fetch();
+            return $ligne['nbPublications'];
+        }
     }
 
     
