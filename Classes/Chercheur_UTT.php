@@ -84,5 +84,12 @@
 		}
 
 		public function modifierPublication(){}
+
+                public function verificationAuteurBase(Chercheur $chercheur){
+                    $sql= 'SELECT * FROM Auteur WHERE organisation = ? AND equipe = ? AND nom = ? AND prenom = ?';
+                    $resultat= $this->executerRequete($sql, array($chercheur->getOrganisation(), $chercheur->getEquipe(), $chercheur->getNom(), $chercheur->getPrenom()));
+                    $auteurPresent = $resultat->fetch();
+                    return $auteurPresent;
+                }
     	}
 ?>
