@@ -24,7 +24,7 @@
         private function creerControleur(Requete $requete){
             $controleur = "Accueil";//Controleur par défaut
             if($requete->existeParametre('controleur')){
-                $controleur = $requete->getParametres('controleur');
+                $controleur = $requete->getParametre('controleur');
                 //Première lettre en majuscule
                 $controleur = ucfirst($controleur);
             } 
@@ -48,7 +48,7 @@
         private function creerAction(Requete $requete){
             $action = "index"; //Action par défaut
             if($requete->existeParametre('action')){
-                $action = $requete->getParametres('action');
+                $action = $requete->getParametre('action');
             }
             return $action;
         }
