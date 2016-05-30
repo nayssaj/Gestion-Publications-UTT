@@ -1,5 +1,5 @@
 <?php 
-    $this->titre = "Mon Blog - Connexion" 
+    $this->titreEntete = "Connexion" 
 ?>
 
 <p>Vous devez être connecté pour accéder à cette zone.</p>
