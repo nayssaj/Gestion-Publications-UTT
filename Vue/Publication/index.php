@@ -130,7 +130,7 @@
                                     <thead>
                                         <tr>
                                             <th>Auteurs</th>
-                                            <th>Ref</th>
+                                            <th>Label</th>
                                             <th>Annee</th>
                                             <th>Statut</th>
                                         </tr>

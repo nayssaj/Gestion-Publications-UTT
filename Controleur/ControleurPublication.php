@@ -16,7 +16,7 @@
 
             public function index(){
                 try{
-                    $donneesSpecifiques = array('publicationsAuteur' => $this->publications->getPublicationsRecentes(), 'titrePage' => 'Publications Récentes');
+                    $donneesSpecifiques = array('publicationsAuteur' => $this->publications->getPublicationsRecentes(), 'titrePage' => 'Publications récemment ajoutées');
                     $this->genererVue($donneesSpecifiques);
 
                 }

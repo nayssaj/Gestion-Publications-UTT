@@ -16,8 +16,8 @@
 
 		public function ajoutPublication($auteurs, $titre_article, $reference_publication, $annee, $categorie, $lieu, $statut){
 			//On insère d'abord la publication dans la table Publication
-                        $reqInsertion= 'INSERT INTO Publication(id, titre_article, reference_publication, annee, categorie, lieu, statut) VALUES(?, ?, ?, ?, ?, ?, ?)';
-                        $this->executerRequete($reqInsertion, array(NULL, $titre_article, $reference_publication, $annee, $categorie, $lieu, $statut)); 
+                        $reqInsertion= 'INSERT INTO Publication(id, titre_article, reference_publication, annee, categorie, lieu, statut, date_ajout) VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
+                        $this->executerRequete($reqInsertion, array(NULL, $titre_article, $reference_publication, $annee, $categorie, $lieu, $statut, date("Y-m-d"))); 
 			//On récupère l'id de la publication que l'on viens d'inserer
 			$reqIdPublication = 'SELECT LAST_INSERT_ID()'; 
                         $idPublications = $this->executerRequete($reqIdPublication);
