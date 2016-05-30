@@ -27,10 +27,11 @@
 
             }
 
-            public function publicationsUtilisateur(){
+            public function publicationsChercheur(){
                 try{
-                    $donneesSpecifiques = array('publicationsAuteur' => $this->publications, 'titrePage' => 'Publications');
-                    $this->genererVue($donneesSpecifiques);
+                    $idChercheur = $this->requete->getParametre('id');
+                    $donneesSpecifiques = array('publicationsAuteur' => $this->chercheur->getPublications($idChercheur), 'titrePage' => 'Publications');
+                    $this->genererVue($donneesSpecifiques, "index");
 
                 }
                 catch(Exception $e){

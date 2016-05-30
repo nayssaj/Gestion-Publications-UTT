@@ -36,16 +36,16 @@
         public function getEquipe(){return ($this->equipe);}
 
 	//Retourne les publication écrits par l'auteur sous forme d'objets	
-	public function getPublication($idChercheur){
+	public function getPublications($idChercheur){
             //On cherche toutes les publications écrites par l'auteur
             $reqPublications = 'SELECT Publication.* FROM Publication, redige WHERE Publication.id = redige.Publication_id AND redige.Auteur_id = ?';
             $reponsePublications = $this->executerRequete($reqPublications, array($idChercheur));
             while($donneesPublication = $reponsePublications->fetch()){
-                    //On cherche tous les auteurs de la publication trouvée
+                //On cherche tous les auteurs de la publication trouvée
                 $reqAuteurs = 'SELECT Auteur.* FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id = ?';
                 $reponseAuteurs = $this->executerRequete($reqAuteurs, array($donneesPublication['id'])); 
-                    //On garde en mémoire la liste de tous les auteurs de la publication trouvée
-                    //elle servira a créer l'objet publication associée à celle trouvée
+                //On garde en mémoire la liste de tous les auteurs de la publication trouvée
+                //elle servira a créer l'objet publication associée à celle trouvée
                 while($donneesAuteurs = $reponseAuteurs->fetch()){
                     $idAuteurs[] = new Chercheur($donneesAuteurs['id'], $donneesAuteurs['nom'], $donneesAuteurs['prenom'], $donneesAuteurs['organisation'], $donneesAuteurs['equipe']); 
                 }

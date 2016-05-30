@@ -138,11 +138,11 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <?php 
-                                                    foreach($publication->getAuteurs() as $auteur){ 
-                                                        echo $auteur->getNom() . ' ' . $auteur->getPrenom()  . '<br/>';
-                                                    }
-                                                ?>
+                                                <?php foreach($publication->getAuteurs() as $auteur) :?>
+                                                  <a href= "index.php?controleur=publication&action=publicationsChercheur&id=<?= $auteur->getId()?>">
+                                                    <?php echo $auteur->getNom() . ' ' . $auteur->getPrenom() . ' </br>' ?> 
+                                                  </a>
+                                                <?php endforeach; ?>
                                             </td>
                                             <td><?php echo $publication->getRef();?></td>
                                             <td><?php echo $publication->getAnnee();?></td>
