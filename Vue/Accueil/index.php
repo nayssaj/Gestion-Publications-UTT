@@ -44,7 +44,7 @@
             <li><a href="index.php?controleur=publication">Parcourir les publication</a></li>
             <li><a href="index.php?controleur=ajoutPublication">Ajouter un article</a></li>
             <li><a href="index.php?controleur=modificationPublication">Modifier un article</a></li>
-            <li><a href="index.php?controleur=admin">Administration</a></li>
+           <li><a href="index.php?controleur=admin">Administration</a></li>
           </ul>
         </li>
             <li class="dropdown">
@@ -57,6 +57,7 @@
             <li><a href="#">Départements</a></li>
           </ul>
         </li>
+        <li><a href="index.php?controleur=contact">Contact</a></li>
       </ul>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -105,15 +106,54 @@
         <header class="jumbotron hero-spacer">
             <h1>Bienvenue !</h1>
             <p>Vous êtes actuellement sur le site des publications de l'UTT</p>
-            <p><a class="btn btn-primary btn-large" href="pages/PagePublications.php">Accéder aux articles!</a>
+            <p><a class="btn btn-primary btn-large" href="index.php?controleur=Publication">Accéder aux Publications !</a>
             </p>
         </header>
 
         <hr>
-
+        <div>
+            <div class="row">
+                <div class="col-lg-12">
+                <h2>Les équipes de l'UTT</h2><br/>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 hero-feature">   
+                    <img src="bootstrap/img/labo/CREIDD.png" alt="">
+                    <div class="caption"></div>
+            </div>
+            <div class="col-md-3 col-sm-3 hero-feature">
+                    <img src="bootstrap/img/labo/ERA.png" alt="">
+                    <div class="caption"></div>
+            </div>
+            <div class="col-md-3 col-sm-3 hero-feature">
+                    <img src="bootstrap/img/labo/GAMMA3.png" alt="">
+                    <div class="caption"></div>
+            </div>
+            <div class="col-md-3 col-sm-3 hero-feature">
+                    <img src="bootstrap/img/labo/LASMIS.png" alt="">
+                    <div class="caption"></div>
+            </div>
+            <div class="col-md-3 col-sm-3 hero-feature">
+                    <img src="bootstrap/img/labo/LM2S.png" alt="">
+                    <div class="caption"></div>
+            </div>
+            <div class="col-md-3 col-sm-3 hero-feature">
+                    <img src="bootstrap/img/labo/LNIO.png" alt="">
+                    <div class="caption"></div>
+            </div>
+            <div class="col-md-3 col-sm-3 hero-feature">
+                    <img src="bootstrap/img/labo/LOSI.png" alt="">
+                    <div class="caption"></div>
+            </div>
+            <div class="col-md-3 col-sm-3 hero-feature">
+                    <img src="bootstrap/img/labo/TECHCICO.png" alt="">
+                    <div class="caption"></div>
+            </div>
         <!-- Title -->
+    </div>
         <div class="row">
             <div class="col-lg-12">
+                <hr>
                 <h2>A propos de nous</h2><br/>
             </div>
         </div>
