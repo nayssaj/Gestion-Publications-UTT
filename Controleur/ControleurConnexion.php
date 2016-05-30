@@ -23,7 +23,8 @@
                     $utilisateur = $this->utilisateur->getUtilisateur($login, $mdp);
                     $this->requete->getSession()->setAttribut("idUtilisateur", $utilisateur['utilisateur_id']);
                     $this->requete->getSession()->setAttribut("login", $utilisateur['login']);
-                    $this->rediriger("admin");
+                    $pageSecuriseDemande = $this->requete->getSession()->getAttribut("pageSecuriseDemande");
+                    $this->rediriger($pageSecuriseDemande);
                 }
                 else{
                     $this->genererVue(array('msgErreur' => 'Login ou mot de passe incorrects'), "index");
