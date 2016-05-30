@@ -67,6 +67,27 @@
             $ligne = $resultat->fetch();
             return $ligne['nbPublications'];
         }
+
+        public function getPublicationsRecentes(){
+             //On cherche toutes les publications écrites par l'auteur
+            $reqPublications = 'SELECT Publication.* FROM Publication ORDER BY Publication.date_ajout DESC LIMIT 5'; 
+            $reponsePublications = $this->executerRequete($reqPublications);
+            while($donneesPublication = $reponsePublications->fetch()){
+                //On cherche tous les auteurs de la publication trouvée
+                $reqAuteurs = 'SELECT Auteur.* FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id = ?    ';
+                $reponseAuteurs = $this->executerRequete($reqAuteurs, array($donneesPublication['id']));
+                //On garde en mémoire la liste de tous les auteurs de la publication trouvée
+                //elle servira a créer l'objet publication associée à celle trouvée
+                while($donneesAuteurs = $reponseAuteurs->fetch()){
+                    $idAuteurs[] = new Chercheur($donneesAuteurs['id'], $donneesAuteurs['nom'], $donneesAuteurs['prenom'], $donneesAuteurs['organisation'], $donneesAuteurs['equipe']);
+                }
+                //On viens créer un objet publication que l'on ajoute aux autres publication 
+                //potentiellement déja trouvées 
+                $publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie']);
+                 unset($idAuteurs);
+            }
+            return $publications;
+        }           
     }
 
     
