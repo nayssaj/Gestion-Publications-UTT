@@ -34,12 +34,21 @@
         public abstract function index();
 
         //Génère la vue associée au controleur courant
-        protected function genererVue($donneesVue = array()){
+        protected function genererVue($donneesVue = array(), $action = null){
+            //Utilisation de l'action actuelle par défaut
+            $actionVue = $this->action;
+            if($action != null){
+                $actionVue = $action;
+            }
             //Determination du nom du fichier vue à partir du nom du controleur actuel
             $classeControleur = get_class($this);
             $controleur = str_replace("Controleur", "", $classeControleur);
             //Instanciation et génération de la vue
-            $vue = new Vue($this->action, $controleur);
+            $vue = new Vue($actionVue, $controleur);
             $vue->generer($donneesVue);
         } 
+
+        protected function rediriger($controleur, $action = null){
+            header("Location:" . 'index.php?controleur=' . $controleur . '&action=' . $action);
+        }
     }

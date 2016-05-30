@@ -1,4 +1,7 @@
 <?php
+
+    require_once 'Configuration.php';
+
     class Vue{
 
         //Nom du fichier associé a la vue
@@ -20,10 +23,15 @@
         public function generer($donneesSpecifiques){
             //Generation de la partie spécifique de la vue
             $contenu = $this->genererFichier($this->fichier, $donneesSpecifiques);
+            //On définit une variable locale accessible par la vue pour la racine Web
+            //Il s'agit du chemin vers le site sur le serveur web
+            //Nécéssaire pour les url de type controleur/action/id
+            $racineWeb = Configuration::get("racineWeb", "/");
             //Generation du gabarit commun utilisant la partie spécifique
             $vue = $this->genererFichier('Vue/gabarit.php',
                 array(
                     'titreEntete' => $this->titreEntete,
+                    'racineWeb' => $racineWeb,
                     'script' => $this->script,
                     'contenu' => $contenu
                 )); 

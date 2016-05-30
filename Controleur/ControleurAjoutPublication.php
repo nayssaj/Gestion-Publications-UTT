@@ -1,10 +1,10 @@
 <?php
         
-        require_once('Core/Controleur.php');
+        require_once('Controleur/ControleurSecurise.php');
 	require_once('Classes/Publication.php');
 	require_once('Classes/Chercheur_UTT.php');
 
-	class ControleurAjoutPublication extends Controleur{
+	class ControleurAjoutPublication extends ControleurSecurise{
 
 		private $chercheurUTT;
 
@@ -20,24 +20,24 @@
                 //Ajoute une publication dans la base correspondant aux données du formulaire 
                 public function ajouterPublication(){
 
-                    $nbAuteurs = count($this->requete->getParametres('nom'));
+                    $nbAuteurs = count($this->requete->getParametre('nom'));
                     $auteurs = array();
                     for($i = 0; $i < $nbAuteurs; $i++){
 
-                        $nom = $this->requete->getParametres('nom')[$i];
-                        $prenom = $this->requete->getParametres('prenom')[$i];
-                        $organisation= $this->requete->getParametres('organisation')[$i];
-                        $equipe= $this->requete->getParametres('departement')[$i];
+                        $nom = $this->requete->getParametre('nom')[$i];
+                        $prenom = $this->requete->getParametre('prenom')[$i];
+                        $organisation= $this->requete->getParametre('organisation')[$i];
+                        $equipe= $this->requete->getParametre('departement')[$i];
                         $auteurs[] = new Chercheur(null, $nom, $prenom, $organisation, $equipe);
                     }
 
-                    $titre = $this->requete->getParametres('titre');
-                    $reference = $this->requete->getParametres('reference');
-                    $annee = $this->requete->getParametres('annee');
-                    $categorie = $this->requete->getParametres('categorie');
-                    $statut = $this->requete->getParametres('statut');
+                    $titre = $this->requete->getParametre('titre');
+                    $reference = $this->requete->getParametre('reference');
+                    $annee = $this->requete->getParametre('annee');
+                    $categorie = $this->requete->getParametre('categorie');
+                    $statut = $this->requete->getParametre('statut');
                     if($this->requete->existeParametre('lieu'))
-                        $lieu = $this->requete->getParametres('lieu');
+                        $lieu = $this->requete->getParametre('lieu');
                     else
                         $lieu = null;
 

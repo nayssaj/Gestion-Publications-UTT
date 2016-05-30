@@ -11,12 +11,7 @@
 		public function __construct(){
                 }
 
-
-                public function index(){
-
-                }
-
-		public function publication(){
+		public function index(){
                     $michel = new Chercheur('1', 'michel', 'dupont', 'UTT', 'equipe'); 
                     $this->publications = $michel->getPublication('1');
                     try{

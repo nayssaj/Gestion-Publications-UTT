@@ -1,8 +1,8 @@
 <?php
 
-    require_once 'Core/Controleur.php';
+    require_once 'Controleur/ControleurSecurise.php';
 
-    class ControleurModificationPublication extends Controleur{
+    class ControleurModificationPublication extends ControleurSecurise{
 
         public function index(){
             $this->genererVue(array('titrePage' => 'Modifier une publication'));

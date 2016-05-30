@@ -56,4 +56,11 @@
             }
             return $publications;
 	}
+
+        public function getNombreChercheurs(){
+            $sql = 'SELECT count(*) as nbChercheurs FROM Auteur';
+            $resultat = $this->executerRequete($sql);
+            $ligne = $resultat->fetch();
+            return $ligne['nbChercheurs'];
+        }
     }

@@ -1,7 +1,7 @@
 <?php 
     $this->titreEntete = 'Administrateur';
  ?> 
- 
+
 <!-- /.navbar-top-links -->
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -93,12 +93,13 @@
     <div id="page-wrapper">
         <div class="row">
           <div class="col-lg-12">
-             <h1 class="page-header"><?= $titrePage ?></h1><!-- ELEMENT SPECIFIQUE -->
+             <h1 class="page-header">Administration</h1><!-- ELEMENT SPECIFIQUE -->
           </div>
           <!-- /.col-lg-12 -->
         </div>
         <div id="contenu">
-          
+            Il y a <?= $nbPublications ?> publications enregistrées sur le site, écrites par <?= $nbChercheurs ?> chercheurs.</br> 
+            <a id="lienDeco" href="index.php?controleur=connexion&action=deconnecter">Se déconnecter</a>
         </div>
       </div>
       <!-- /#page-wrapper -->
