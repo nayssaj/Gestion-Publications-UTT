@@ -30,7 +30,10 @@
             public function publicationsChercheur(){
                 try{
                     $idChercheur = $this->requete->getParametre('id');
-                    $donneesSpecifiques = array('publicationsAuteur' => $this->chercheur->getPublications($idChercheur), 'titrePage' => 'Publications');
+                    $nomChercheur = $this->chercheur->getChercheur($idChercheur)->getNom();
+                    $prenomChercheur = $this->chercheur->getChercheur($idChercheur)->getPrenom();
+                    $titrePage = 'Publications de ' . $prenomChercheur . ' ' .$nomChercheur;
+                    $donneesSpecifiques = array('publicationsAuteur' => $this->chercheur->getPublications($idChercheur), 'titrePage' => $titrePage);
                     $this->genererVue($donneesSpecifiques, "index");
 
                 }

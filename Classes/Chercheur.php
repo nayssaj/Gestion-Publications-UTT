@@ -63,4 +63,12 @@
             $ligne = $resultat->fetch();
             return $ligne['nbChercheurs'];
         }
+
+        public function getChercheur($id){
+            $sql = 'SELECT * FROM Auteur WHERE id = ?';
+            $resultat = $this->executerRequete($sql, array($id));
+            $chercheurID = $resultat->fetch();
+            $chercheur = new Chercheur($chercheurID['id'], $chercheurID['nom'], $chercheurID['prenom'], $chercheurID['organisation'], $chercheurID['equipe']);
+            return $chercheur;
+        }
     }
