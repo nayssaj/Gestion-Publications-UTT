@@ -38,31 +38,28 @@
                 </button>
         <!--<a class="navbar-brand topnav" href="#">Publications</a> !-->    
         <ul class="nav navbar-nav navbar-left">
+        <li><a class="navbar-brand" href="index.php">Accueil</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publications <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="index.php?controleur=publication">Parcourir les publication</a></li>
-            <li><a href="index.php?controleur=ajoutPublication">Ajouter un article</a></li>
-            <li><a href="index.php?controleur=modificationPublication">Modifier un article</a></li>
-           <li><a href="index.php?controleur=admin">Administration</a></li>
-          </ul>
+            <ul class="dropdown-menu">
+                <li><a href="index.php?controleur=publication">Parcourir les publications</a></li>
+                <li><a href="index.php?controleur=ajoutPublication">Ajouter un article</a></li>
+                <li><a href="index.php?controleur=modificationPublication">Modifier un article</a></li>
+                <li><a href="index.php?controleur=admin">Administration</a></li>
+            </ul>
         </li>
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Auteurs <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Chercheurs UTT</a></li>
             <li><a href="#">Chercheurs extérieurs</a></li>
-            <li><a href="#">Doctorants</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Départements</a></li>
           </ul>
         </li>
-        <li><a href="index.php?controleur=contact">Contact</a></li>
       </ul>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <!--<ul class="nav navbar-nav navbar-right">
                    
                     <form class="navbar-form navbar-left" role="search">
   <div class="form-group">
@@ -70,7 +67,7 @@
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
-                </ul>
+                </ul> !-->
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -103,11 +100,15 @@
     <div class="container">
 
         <!-- Jumbotron Header -->
-        <header class="jumbotron hero-spacer">
-            <h1>Bienvenue !</h1>
-            <p>Vous êtes actuellement sur le site des publications de l'UTT</p>
-            <p><a class="btn btn-primary btn-large" href="index.php?controleur=Publication">Accéder aux Publications !</a>
+        <header><h1 class="text-center">Bienvenue !</h1></header>
+            <hr>
+         
+        <header class="jumbotron well well-lg hero-spacer">
+            <p class="text-center">Vous êtes actuellement sur le site des publications de l'UTT</p>            
+            <div class="col-sm-offset-4 col-sm-4 text-center">
+            <p><a class="btn btn-primary btn-large center-block" href="index.php?controleur=Publication">Accéder aux Publications !</a>
             </p>
+          </div>
         </header>
 
         <hr>

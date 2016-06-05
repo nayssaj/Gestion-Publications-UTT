@@ -1,6 +1,6 @@
 <?php 
     $this->titreEntete = 'Publications';
- ?> 
+    ?> 
 
  <nav>
       <!-- /.navbar-top-links -->
@@ -19,33 +19,7 @@
             <!-- /input-group -->
             </li>
             <li><a data-toggle="modal" data-target="#myModal"><i class="fa fa-question fa-fw"></i>Recherche Avancée</a></li>
-            <li><a href="PagePublications.php"><i class="fa fa-book fa-fw"></i>Publications</a></li>
-            <li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-              <ul class="nav nav-second-level">
-                <li><a href="flot.html">Flot Charts</a></li>
-                <li><a href="morris.html">Morris.js Charts</a></li>
-              </ul>
-              <!-- /.nav-second-level -->
-            </li>
-            <li><a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a></li>
-            <li><a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-              <ul class="nav nav-second-level">
-                <li><a href="panels-wells.html">Panels and Wells</a></li>
-                <li><a href="buttons.html">Buttons</a></li>
-                <li><a href="notifications.html">Notifications</a></li>
-                <li><a href="typography.html">Typography</a></li>
-                <li><a href="icons.html"> Icons</a></li>
-                <li><a href="grid.html">Grid</a></li>
-              </ul>
-              <!-- /.nav-second-level -->
-            </li>
-            <li><a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-              <ul class="nav nav-second-level">
-                <li><a href="blank.html">Blank Page</a></li>
-                 <li><a href="login.html">Login Page</a></li>
-              </ul>
-              <!-- /.nav-second-level -->
-            </li>
+            <li><a href="index.php?controleur=publication"><i class="fa fa-book fa-fw"></i>Publications</a></li>
           </ul>
         </div>
         <!-- /.sidebar-collapse -->

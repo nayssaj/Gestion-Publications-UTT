@@ -47,7 +47,25 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">Accueil</a>
+        <ul class="nav navbar-nav navbar-left">
+        <li><a class="navbar-brand" href="index.php">Accueil</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publications <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="index.php?controleur=publication">Parcourir les publications</a></li>
+                <li><a href="index.php?controleur=ajoutPublication">Ajouter un article</a></li>
+                <li><a href="index.php?controleur=modificationPublication">Modifier un article</a></li>
+                <li><a href="index.php?controleur=admin">Administration</a></li>
+            </ul>
+        </li>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Auteurs <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Chercheurs UTT</a></li>
+            <li><a href="#">Chercheurs extérieurs</a></li>
+          </ul>
+        </li>
+      </ul>
       </div>
       <!-- /.navbar-header -->
       <ul class="nav navbar-top-links navbar-right">
