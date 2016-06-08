@@ -17,11 +17,11 @@
           </div>
         </header>
 
-        <hr>
         <div>
             <div class="row">
                 <div class="col-lg-12">
-                <h2>Les équipes de l'UTT</h2><br/>
+            <hr>    
+                <h2 class="text-center">Les équipes de l'UTT</h2><br/><br/>
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 hero-feature">   
@@ -61,13 +61,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <hr>
-                <h2>A propos de nous</h2><br/>
+                <h2 class="text-center">A propos de nous</h2><br/><br/>
             </div>
         </div>
         <!-- /.row -->
 
         <!-- Page Features -->
-        <div class="row text-center">
+        <div class="row center-block">
 
             <div class="col-md-3 col-sm-2 hero-feature">
                 <div class="thumbnail">
