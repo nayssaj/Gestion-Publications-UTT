@@ -39,7 +39,7 @@
                                                     <th>Nom<br/></th>
                                                     <th>Prénom<br/></th>
                                                     <th>Organisation<br/></th>
-                                                    <th>Département<th/>
+                                                    <th>Laboratoire<th/>
                                                 </tr>
                                             </thead>
                                             <tbody class="auteur-origin" >
@@ -81,9 +81,9 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th>titre<br/></th>
-                                                        <th>annee<br/></th>
-                                                        <th>statut<br/></th>
+                                                        <th>Titre<br/></th>
+                                                        <th>Annee<br/></th>
+                                                        <th>Statut<br/></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -145,7 +145,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Lien de la publication<br/></th>
-                                                        <th>catégorie<br/></th>
+                                                        <th>Catégorie<br/></th>
                                                         <th class="conf">Lieu</th>
                                                     </tr>
                                                 </thead>
