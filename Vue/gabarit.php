@@ -41,41 +41,61 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publications <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="index.php?controleur=publication">Parcourir les publications</a></li>
-              <li><a href="index.php?controleur=ajoutPublication">Ajouter un article</a></li>
-              <li><a href="index.php?controleur=modificationPublication">Modifier un article</a></li>
-              <li><a href="index.php?controleur=admin">Administration</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Auteurs <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Chercheurs UTT</a></li>
-              <li><a href="#">Chercheurs extérieurs</a></li>
+              <?php if (isset($_SESSION['idUtilisateur'])): ?>
+                <li><a href="index.php?controleur=ajoutPublication">Ajouter un article</a></li>
+                <li><a href="index.php?controleur=modificationPublication">Modifier un article</a></li>
+                <li><a href="index.php?controleur=admin">Administration</a></li>
+              <?php endif; ?>
             </ul>
           </li>
         </ul>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="fa fa-user fa-fw"></i>  
-              <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-user">
-              <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
-              <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
-              <li class="divider"></li>
-              <li><a href="pages/login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
-            </ul>
-          </li>
+          <?php if (!isset($_SESSION['idUtilisateur'])): ?>
+            <li><a href="index.php?controleur=inscription">Inscription</a></li>
+            <li><a data-toggle="modal" data-target="#modalConnexion">Connexion</a></li>
+          <?php else: ?>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-user fa-fw"></i>  
+                <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="index.php?controleur=connexion&action=deconnecter"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+              </ul>
+            </li>
+          <?php endif; ?>
         </ul>
       </div>
      <!--/.navbar-collapse -->
     </div>  
   <!-- /.container -->
   </nav>
+  <div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Connexion</h4>
+          </div>
+            <form method="POST" action="index.php?controleur=connexion&action=connecter">
+          <div class="modal-body">
+              <h4>Login : </h4>
+              <input type="text" name="login">
+              <h4>Mot de Passe : </h4>
+              <input type="password" name="mdp">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            <input type="submit" class="btn btn-primary" value="Connexion">
+          </div></form>
+        </div>
+      </div>
+    </div>
 </div> 
 <?= $contenu ?>
   <!-- jQuery -->
