@@ -17,6 +17,8 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="bootstrap/css/heroic-features.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <?= $stylesCss ?>
 </head>
 
@@ -53,10 +55,24 @@
           </li>
         </ul>
       </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-user fa-fw"></i>  
+              <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+              <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+              <li class="divider"></li>
+              <li><a href="pages/login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
-      <!-- /.navbar-collapse -->
+     <!--/.navbar-collapse -->
     </div>  
   <!-- /.container -->
   </nav>
