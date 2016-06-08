@@ -1,8 +1,18 @@
 <?php 
     $this->titreEntete = "Modification d'une Publication";
-    $this->script = "<script src='styles/jquery/monjqueryModification.js'></script>"
- ?> 
-
+    $this->script = "<script src='styles/jquery/monjqueryModification.js'></script>";
+    $this->stylesCss = '
+    <!— MetisMenu CSS —>
+    <link href="bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!— Timeline CSS —>
+    <link href="bootstrap/dist/css/timeline.css" rel="stylesheet">
+    <!— Custom CSS —>
+    <link href="bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!— Morris Charts CSS —>
+    <link href="bootstrap/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!— Alertes JS —>
+    <link href="styles/css/Moncss.css" rel="stylesheet" type="text/css">';
+ ?>
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -43,20 +53,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="auteur-origin" >
-                                                <tr>
-                                                    <td>
-                                                        <input class="form-control" type="text" placeholder="Lemercier" name="nom[]">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control" type="text" placeholder="Marc" name="prenom[]">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control Maorga" type="text" placeholder="UTT" value="" name="organisation[]">
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control" type="text" placeholder="tech-CICO" value="" name="departement[]">
-                                                    </td>
-                                                </tr>
+                                                <?php foreach($auteurs_publi as $a_p){ echo('
+                                                    <tr>
+                                                    <td><input class="form-control" type="text" value="'.$a_p->getNom().'" name="nom[]" disabled></td>
+                                                    <td><input class="form-control" type="text" value="'.$a_p->getPrenom().'" name="prenom[]" disabled></td>
+                                                    <td><input class="form-control Maorga" type="text" value="'.$a_p->getOrganisation().'" value="" name="organisation[]" disabled></td>
+                                                    <td><input class="form-control" type="text" value="'.$a_p->getEquipe().'" value="" name="departement[]" disabled></td>
+                                                    <td><label class="btn btn-primary B_aM2 glyphicon glyphicon-trash"></label></td><br/>
+                                                    </tr>');}?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -88,11 +92,9 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
+                                                        <td><input class="form-control" class="TITRE" type="text" name="titre"></td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="titre">
-                                                        </td>
-                                                        <td>
-                                                            <select class="form-control" name="annee">
+                                                            <select class="form-control" name="annee" disabled>
                                                                 <option value ="2016">2016</option>
                                                                 <option value ="2017">2017</option>
                                                                 <option value ="2018">2018</option>
@@ -151,11 +153,9 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
+                                                        <td><input class="form-control" type="text" name="reference" disabled></td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="reference">
-                                                        </td>
-                                                        <td>
-                                                            <select class="form-control Maclass" name="categorie">
+                                                            <select class="form-control Maclass" name="categorie" disabled>
                                                                 <option value ="RI">Article dans les revues internationales</option>
                                                                 <option value ="RF">Article dans les revues nationales</option>
                                                                 <option value ="CI">Article dans les conférences internationales</option>
@@ -200,24 +200,8 @@
                                                         <td>
                                                             <label class="btn btn-primary submitjs pull-right" >Vérifier</label>
                                                         </td>
-                                                        <td>
-                                                            <input type="submit" name="valider" class="submitnojs btn btn-primary submitnojs pull-right" disabled="disabled" value="Valider">
-                                                        </td>
-                                                        <td>
-                                                            
-                                                        </td>
-                                                        <td>
-                                                            
-                                                        </td>
-                                                        <td>
-                                                            
-                                                        </td>
-                                                        <td>
-                                                            
-                                                        </td>
-                                                        <td>
-                                                            
-                                                        </td>
+                                                        <td><input type="submit" name="valider" class="submitnojs btn btn-primary submitnojs pull-right" disabled="disabled" value="Valider"></td>
+                                                        <td></td><td></td><td></td><td></td><td></td>
                                                     </tr>
                                                     <tr>
                                                         <h4>Vérifications</h4>
