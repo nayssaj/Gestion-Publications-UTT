@@ -47,8 +47,8 @@ $('.Maclass').on('click',function(){ //script pour le lieu et les conférences
       $('.Moninfo').hide(); 
       $('.Monsucces').hide(); 
    
-    $(document).find('.verif').each(function(){
-      if (! $(this).val()) { //le cas ou il y aurait des formulaires vides
+    $(document).find('.TITRE').each(function(){
+        if (! $(this).val()) { //le cas ou il y aurait des formulaires vides
           //has_empty = true;
           $('.Mondanger').text("Attention ! il semblerait que vous ayez oublié de tout remplir.");
           $('.Mondanger').show();
@@ -56,7 +56,8 @@ $('.Maclass').on('click',function(){ //script pour le lieu et les conférences
       }
     });
     var countUTT =0;
-    $(document).find('.Maorga').each(function(){ //on cherche un auteur UTTien
+    $(document).find('.Maorga').each(function(){
+        //on cherche un auteur UTTien
       if($(this).val() === 'UTT'){
           countUTT+=1;
       }
