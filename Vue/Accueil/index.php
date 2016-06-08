@@ -1,103 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php 
+    $this->titreEntete = 'Publications UTT';  
+    $this->stylesCss = '<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">';    
+?>
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Laio">
-    <base href="/Gestion-Publications-UTT/">
-    
-    <title>Publications UTT</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="bootstrap/css/heroic-features.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top topnav" role="navigation">
-        <div class="container topnav">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-        <!--<a class="navbar-brand topnav" href="#">Publications</a> !-->    
-        <ul class="nav navbar-nav navbar-left">
-        <li><a class="navbar-brand" href="index.php">Accueil</a></li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publications <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="index.php?controleur=publication">Parcourir les publications</a></li>
-                <li><a href="index.php?controleur=ajoutPublication">Ajouter un article</a></li>
-                <li><a href="index.php?controleur=modificationPublication">Modifier un article</a></li>
-                <li><a href="index.php?controleur=admin">Administration</a></li>
-            </ul>
-        </li>
-            <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Auteurs <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Chercheurs UTT</a></li>
-            <li><a href="#">Chercheurs extérieurs</a></li>
-          </ul>
-        </li>
-      </ul>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <!--<ul class="nav navbar-nav navbar-right">
-                   
-                    <form class="navbar-form navbar-left" role="search">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Search">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-                </ul> !-->
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        
-        <!-- /.container -->
-    </nav>
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">connexion</h4>
-          </div>
-            <form method="POST" action="pages/PagePublications.php">
-          <div class="modal-body">
-              <h4>Login : </h4>
-              <input type="text" name="login">
-              <h4>Mot de Passe : </h4>
-              <input type="password" name="mdp">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-            <input type="submit" class="btn btn-primary" value="Connexion">
-          </div></form>
-        </div>
-      </div>
-    </div>
-    <!-- Page Content -->
-    <div class="container">
+<div class="container">
 
         <!-- Jumbotron Header -->
         <header><h1 class="text-center">Bienvenue !</h1></header>
@@ -197,14 +103,4 @@
         </footer>
 
     </div>
-    <!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="bootstrap/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-
-</body>
-
-</html>

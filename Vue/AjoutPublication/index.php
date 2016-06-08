@@ -1,6 +1,19 @@
 <?php 
     $this->titreEntete = 'Ajout Publication';
-    $this->script = "<script src='styles/jquery/Monjquery.js'></script>";       
+    $this->script = "<script src='styles/jquery/Monjquery.js'></script>";  
+    $this->stylesCss = '
+    <!-- MetisMenu CSS -->
+    <link href="bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="bootstrap/dist/css/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="bootstrap/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Alertes JS -->
+    <link href="styles/css/Moncss.css" rel="stylesheet" type="text/css">';     
 ?>   
 
  <div id="page-wrapper">
@@ -39,7 +52,7 @@
                                             <th>Nom<br/></th>
                                             <th>Prénom<br/></th>
                                             <th>Organisation<br/></th>
-                                            <th>Département<th/>
+                                            <th>Laboratoire<th/>
                                         </tr>
                                     </thead>
                                     <tbody class="auteur-origin" >      
@@ -73,9 +86,9 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>titre<br/></th>
-                                            <th>annee<br/></th>
-                                            <th>statut<br/></th>
+                                            <th>Titre<br/></th>
+                                            <th>Annee<br/></th>
+                                            <th>Statut<br/></th>
                                         </tr>
                                     </thead>
                                     <tbody>

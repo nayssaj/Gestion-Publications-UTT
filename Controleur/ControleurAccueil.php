@@ -5,6 +5,6 @@
     class ControleurAccueil extends Controleur{
 
         public function index(){
-            require 'Vue/Accueil/index.php';
+            $this->genererVue();
         }
     }

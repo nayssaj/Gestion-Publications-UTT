@@ -31,6 +31,7 @@
             $vue = $this->genererFichier('Vue/gabarit.php',
                 array(
                     'titreEntete' => $this->titreEntete,
+                    'stylesCss' => $this->stylesCss,
                     'racineWeb' => $racineWeb,
                     'script' => $this->script,
                     'contenu' => $contenu
