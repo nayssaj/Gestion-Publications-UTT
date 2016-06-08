@@ -9,8 +9,6 @@
     <link href="bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="bootstrap/bower_components/morrisjs/morris.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Alertes JS -->
     <link href="styles/css/Moncss.css" rel="stylesheet" type="text/css">';
 ?> 
