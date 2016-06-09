@@ -107,7 +107,7 @@ $changements = 0;
         }
  });
     
-$('.B_aM1').show();    
+$('.B_aM1').hide();    
 
 $('.B_aM1').on('click', function(){
         $('.auteur-origin').find('tr').last().remove(); //CA MARCHE !!!!
