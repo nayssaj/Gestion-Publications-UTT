@@ -114,6 +114,9 @@
             Il y a <?= $nbPublications ?> publications enregistrées sur le site, écrites par <?= $nbChercheurs ?> chercheurs.</br> 
             <a id="lienDeco" href="index.php?controleur=connexion&action=deconnecter">Se déconnecter</a>
         </div>
+       <div class="row">
+                <div class="col-lg-2">
+                </div>
+            </div> 
       </div>
       <!-- /#page-wrapper -->
-    </div>

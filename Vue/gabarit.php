@@ -21,8 +21,9 @@
     <link href="bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <?= $stylesCss ?>
 </head>
-
 <body>
+    <div id="wrapper">
+    <div id="container">
   <!-- Navigation -->
   <nav class="navbar navbar-inverse navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
@@ -62,8 +63,7 @@
                 <i class="fa fa-caret-down"></i>
               </a>
               <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+                <li><a href="index.php?controleur=profil"><i class="fa fa-user fa-fw"></i> Mon Profil</a></li>
                 <li class="divider"></li>
                 <li><a href="index.php?controleur=connexion&action=deconnecter"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
               </ul>
@@ -95,8 +95,8 @@
           </div></form>
         </div>
       </div>
+    </div> 
     </div>
-</div> 
 <?= $contenu ?>
   <!-- jQuery -->
   <script src="bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
@@ -111,6 +111,7 @@
   <!-- Custom Theme JavaScript -->
   <script src="bootstrap/dist/js/sb-admin-2.js"></script>
   <?= $script ?>
+    </div>
 </body>
 
 </html>
