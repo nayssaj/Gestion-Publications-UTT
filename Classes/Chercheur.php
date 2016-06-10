@@ -71,4 +71,11 @@
             $chercheur = new Chercheur($chercheurID['id'], $chercheurID['nom'], $chercheurID['prenom'], $chercheurID['organisation'], $chercheurID['equipe']);
             return $chercheur;
         }
+
+        public function getChercheurNom($nom, $prenom){
+            $sql = 'SELECT id FROM Auteur WHERE nom = ? AND prenom = ?';
+            $resultat = $this->executerRequete($sql, array($nom, $prenom));
+            $chercheurID = $resultat->fetch();
+            return $chercheurID['id'];
+        }
     }
