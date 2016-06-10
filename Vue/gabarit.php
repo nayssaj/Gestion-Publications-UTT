@@ -22,6 +22,7 @@
     <?= $stylesCss ?>
 </head>
 <body>
+    <div id="wrapper">
     <div id="container">
   <!-- Navigation -->
   <nav class="navbar navbar-inverse navbar-fixed-top topnav" role="navigation">
@@ -110,14 +111,7 @@
   <!-- Custom Theme JavaScript -->
   <script src="bootstrap/dist/js/sb-admin-2.js"></script>
   <?= $script ?>
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Léo Schneider, Jean-gabriel Le Mercier 2016</p>
-                </div>
-            </div>
-        </footer>
-
+    </div>
 </body>
 
 </html>

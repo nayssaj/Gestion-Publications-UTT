@@ -11,4 +11,8 @@
     <div id="contenu">
 		<p>Une erreur est survenue : <?= $msgErreur ?></p> 
 	</div>
+<div class="row">
+    <div class="col-lg-2">
+    </div>
+</div>
 </div>
