@@ -68,7 +68,6 @@
 
         <!-- Page Features -->
         <div class="row center-block">
-
             <div class="col-md-3 col-sm-2 hero-feature">
                 <div class="thumbnail">
                     <img src="bootstrap/img/photoCV.jpg" alt="">

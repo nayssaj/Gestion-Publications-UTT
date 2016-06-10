@@ -42,7 +42,7 @@
                                                         <div class=" B_a" data-toggle="buttons">
                                                             <label class="btn btn-primary B_aP1 glyphicon glyphicon-plus"></label>
                                                             <label class="btn btn-primary B_aM1 glyphicon glyphicon-minus"></label>
-                                                        <div/>
+                                                        </div>
                                                     <td/>
                                                 <tr/>   
                                                 <tr>
@@ -92,7 +92,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td><input class="form-control" class="TITRE" type="text" name="titre"></td>
+                                                        <td><input class="form-control TITRE" type="text" name="titre"></td>
                                                         <td>
                                                             <select class="form-control" name="annee" disabled>
                                                                 <option value ="2016">2016</option>
