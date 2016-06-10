@@ -47,8 +47,7 @@
             </button>
             <h4 class="modal-title" id="myModalLabel">Recherche avancée</h4>
           </div>
-            <form method="POST" action="PagePublications.php">
-              
+            <form method="POST" action="index.php?controleur=publication&action=publicationsChercheurNom">
                 <div class="modal-body"><ul class="nav nav-tabs">
                   <li class="active"><a data-toggle="tab" href="#home">Recherche Publications Chercheur</a></li>
                   <li><a data-toggle="tab" href="#menu1">Recherche Laboratoire à partir d'une année</a></li>
@@ -59,26 +58,26 @@
                   <div id="home" class="tab-pane fade in active">
                       <br/><h4>Publications Chercheur</h4><br/><br/>
                           <input type="text" name="r-prenom" placeholder="Prenom">
-                        <input type="text" name="r-nom" placeholder="Nom">
+                          <input type="text" name="r-nom" placeholder="Nom">
                           <input type="hidden" name="type" value="1">
                   </div>
                   <div id="menu1" class="tab-pane fade">
                     <br/><h4>Laboratoire à partir d'une année</h4><br/><br/>
-                    <input type="text" name="recherche" placeholder="Laboratoire">
-                          <input type="text" name="Année" placeholder="Année">
-                          <input type="hidden" name="type" value="2">
+                        <input type="text" name="recherche" placeholder="Laboratoire">
+                        <input type="text" name="Année" placeholder="Année">
+                        <input type="hidden" name="type" value="2">
                   </div>
                   <div id="menu2" class="tab-pane fade">
                     <br/><h4>Collaborations extérieures</h4><br/><br/>
-                          <input type="text" name="r-prenom" placeholder="Prenom">
-                        <input type="text" name="r-nom" placeholder="Nom">
-                          <input type="hidden" name="type" value="3">
+                        <input type="text" name="r-prenomCollab" placeholder="Prenom">
+                        <input type="text" name="r-nomCollab" placeholder="Nom">
+                        <input type="hidden" name="type" value="3">
                   </div>
                     <div id="menu3" class="tab-pane fade">
                     <br/><h4>Liste des coauteurs</h4><br/><br/>
-                        <input type="text" name="r-prenom" placeholder="Prenom">
-                        <input type="text" name="r-nom" placeholder="Nom">
-                          <input type="hidden" name="type" value="4">
+                        <input type="text" name="" placeholder="Prenom">
+                        <input type="text" name="" placeholder="Nom">
+                        <input type="hidden" name="type" value="4">
                     </div>
                 </div>
           </div>
@@ -86,7 +85,8 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
             <input type="submit" class="btn btn-primary" value="rechercher">
-          </div></form>
+          </div>
+        </form>
         </div>
       </div>
     </div>
