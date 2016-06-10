@@ -1,6 +1,19 @@
 <?php 
     $this->titreEntete = 'Inscription';
     $this->script = "<script src='styles/jquery/monjqueryInscription.js'></script>";
+    $this->stylesCss = '
+    <!-- MetisMenu CSS -->
+    <link href="bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="bootstrap/dist/css/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="bootstrap/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Alertes JS -->
+    <link href="styles/css/Moncss.css" rel="stylesheet" type="text/css">';
  ?>  
 
 <div id="page-wrapper">

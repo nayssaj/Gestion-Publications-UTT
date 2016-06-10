@@ -1,19 +1,16 @@
 <?php
-	require_once('Classes/Publication.php');
-	require_once('Classes/Chercheur.php');
-        require_once 'vue/Vue.php';
-	//require_once('../Vue/vue.php');
+	require_once('Core/Controleur.php');
 
-	class ControlerInscription{
+	class ControleurInscription extends Controleur{
 
-		private $publication;
-
-		public function __construct(){
-		}
-
-		public function Inscription(){
-			$vue = new Vue('Inscription');
-			$vue->generer('Inscription');
-
+		public function index(){
+                    try{
+                        $donneesSpecifiques = array('titrePage' => 'Inscription');
+                        $this->genererVue($donneesSpecifiques);
+                    }
+                    catch(Exception $e){
+                        $msgErreur = $e->getMessage();
+                        $this->genererVue($msgErreur);
+                    }
                 }
         }
