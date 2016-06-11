@@ -53,7 +53,7 @@
             $vue->generer($donneesVue);
         } 
 
-        protected function rediriger($controleur, $action = null){
-            header("Location:" . 'index.php?controleur=' . $controleur . '&action=' . $action);
+        protected function rediriger($controleur, $action = null, $id = null){
+            header("Location:" . 'index.php?controleur=' . $controleur . '&action=' . $action . '&id=' . $id);
         }
     }
