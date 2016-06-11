@@ -1,3 +1,5 @@
+//script pour le drag and drop 
+//$("#sort tbody").sortable().disableSelection();
 //script pour le lieu et les conférences
     if( $('.Maclass').val() === "CI" || $('Maclass').val() === "CF"){
         $('.conf').css({'display':'inline'});
@@ -98,7 +100,7 @@ $('.Maclass').on('click',function(){ //script pour le lieu et les conférences
     
 $changements = 0;  
  $('.B_aP1').on('click', function(){
-        $('.auteur-origin').after().append("<tr><td><input class='form-control' type='text' placeholder='Lemercier' value='' name='nom[]'></td><td><input class='form-control' type='text' placeholder='Marc' value='' name='prenom[]'></td><td><input class='form-control Maorga' type='text' placeholder='UTT' value='' name='organisation[]'></td><td><input class='form-control' type='text' placeholder='tech-CICO' value='' name='departement[]'></td><td><div><label class='btn btn-primary B_aM2 glyphicon glyphicon-trash'></label></div></td></tr>");
+        $('.auteur-origin').after().append("<tr><td><label class='fa fa-bars'></label></td><td><input class='form-control' type='text' placeholder='Lemercier' value='' name='nom[]'></td><td><input class='form-control' type='text' placeholder='Marc' value='' name='prenom[]'></td><td><input class='form-control Maorga' type='text' placeholder='UTT' value='' name='organisation[]'></td><td><input class='form-control' type='text' placeholder='tech-CICO' value='' name='departement[]'></td><td><div><label class='btn btn-primary B_aM2 glyphicon glyphicon-trash'></label></div></td></tr>");
         $changements+=1;
         $('.B_aP1').hide();
         if ($changements > 0){

@@ -35,7 +35,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table" id="sort3">
                                             <thead>
                                                 <tr>
                                                     <td>
@@ -46,6 +46,7 @@
                                                     <td/>
                                                 <tr/>   
                                                 <tr>
+                                                    <th></th>
                                                     <th>Nom<br/></th>
                                                     <th>Prénom<br/></th>
                                                     <th>Organisation<br/></th>
@@ -54,15 +55,15 @@
                                             </thead>
                                             <tbody class="auteur-origin" >
                                                 <?php foreach($auteurs_publi as $a_p){ echo('
-                                                    <tr>
+                                                    <tr><td><label class="fa fa-bars"></label></td>
                                                     <td><input class="form-control" type="text" value="'.$a_p->getNom().'" name="nom[]" disabled></td>
                                                     <td><input class="form-control" type="text" value="'.$a_p->getPrenom().'" name="prenom[]" disabled></td>
                                                     <td><input class="form-control Maorga" type="text" value="'.$a_p->getOrganisation().'" value="" name="organisation[]" disabled></td>
                                                     <td><input class="form-control" type="text" value="'.$a_p->getEquipe().'" value="" name="departement[]" disabled></td>
-                                                    <td><label class="btn btn-primary B_aM2 glyphicon glyphicon-trash"></label></td><br/>
+                                                    <td><label class="btn btn-primary B_aM2 glyphicon glyphicon-trash"></label></td>
                                                     </tr>');}?>
                                             </tbody>
-                                        </table>
+                                        </table><script>$("#sort3 tbody").sortable().disableSelection();</script>
                                     </div>
                                 </div>
                             </div>
