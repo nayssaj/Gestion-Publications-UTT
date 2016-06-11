@@ -63,7 +63,7 @@
                                                     <td><label class="btn btn-primary B_aM2 glyphicon glyphicon-trash"></label></td>
                                                     </tr>');}?>
                                             </tbody>
-                                        </table><script>$("#sort3 tbody").sortable().disableSelection();</script>
+                                        </table><script>$("#sort3 tbody").sortable();</script>
                                     </div>
                                 </div>
                             </div>

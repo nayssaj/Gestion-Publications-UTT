@@ -42,6 +42,7 @@ $('.Maclass').on('click',function(){ //script pour le lieu et les conférences
     }
     //$('.Maverification').slideDown();
   });
+
   
   $('.submitjs').on('click', function () {//vérification à la validation de la page
     var chercheErreur = 0;
@@ -121,17 +122,21 @@ $('.B_aM1').on('click', function(){
         }
     }); 
 
+  
+  $('.submitnojs').on('mousedown', function () {//vérification à la validation de la page
+      $(document).find('.btn-danger').each(function(){
+          $(this).closest('tr').remove();
+      });
+  });
+
 $(document).on('click','.B_aM2' ,function(){
         //$('.auteur-origin').find('tr').prev().remove();
         if($(this).hasClass("btn-primary")){
             $(this).removeClass("btn-primary");
             $(this).addClass("btn-danger");
-            console.log("ca marche");
         }
         else{
             $(this).removeClass("btn-danger");
             $(this).addClass("btn-primary");
-            console.log("ca marche");
-        
         }
 }); 
