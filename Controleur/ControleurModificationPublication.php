@@ -2,27 +2,28 @@
 
     require_once 'Controleur/ControleurSecurise.php';
     require_once 'Classes/Publication.php';
-    require_once 'Classes/Chercheur.php';
+    require_once 'Classes/Chercheur_UTT.php';
 
     class ControleurModificationPublication extends ControleurSecurise{
 
-        private $publications;
         private $chercheur;
+        private $publication1;
         
         function __Construct(){    
-            $this->chercheur = new Chercheur('1', 'michel', 'dupont', 'UTT', 'equipe');
-            $this->chercheur1 = new Chercheur('2222', 'bobi', 'basqd', 'UTT', 'aquipe');
-                $this->publications = new Publication('1', array($this->chercheur,$this->chercheur1), 'titre', 'ref', 'annee', 'statut', 'type');
-                //print_r($this->publications->getAuteurs());
+            $this->chercheur = new Chercheur_UTT('1', 'michel', 'dupont', 'UTT', 'equipe', 'login', 'mdp');
+            $this->publication1 = new Publication('1', array($this->chercheur), 'titre', 'ref', 'annee', 'statut', 'type');
         }
         
         public function index(){
-            $lapubli = $this->publications->getPublicationID($this->requete->getParametre('id'));
-            $this->genererVue(array('titrePage' => 'Modifier une publication','auteurs_publi' => $lapubli->getAuteurs() ));
+            $publication2 = $this->publication1->getPublicationID($this->requete->getParametre('id'));
+            $this->genererVue(array('titrePage' => 'Modifier une publication', 'publication' => $publication2, 'auteurs_publi' => $publication2->getAuteurs()));
         }
 
         public function modificationPublication(){
-
+            $publication2 = $this->publication1->getPublicationID($this->requete->getParametre('id'));
+            $nouveauTitre = $this->requete->getParametre('titre');
+            $this->chercheur->modifierTitrePublication($publication2, $nouveauTitre);
+            $this->rediriger('profil', null, '1'); 
         }
     }
 
