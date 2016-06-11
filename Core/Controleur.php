@@ -18,14 +18,19 @@
 
         //Execute l'action a réaliser
         public function executerAction($action){
-            //On vérifie que le controleur est bien capable de prendre en charge l'action
-            if(method_exists($this, $action)){
-                $this->action = $action;
-                $this->{$this->action}();
+            try{
+                //On vérifie que le controleur est bien capable de prendre en charge l'action
+                if(method_exists($this, $action)){
+                    $this->action = $action;
+                    $this->{$this->action}();
+                }
+                else{
+                    $classeControleur = get_class($this);
+                    throw new Exception("Action '$action' non définie dans la classe '$classeControleur'");
+                }
             }
-            else{
-                $classeControleur = get_class($this);
-                throw new Exception("Action '$action' non définie dans la classe '$classeControleur'");
+            catch(Exception $e){
+                throw $e;
             }
         }
 
@@ -48,7 +53,7 @@
             $vue->generer($donneesVue);
         } 
 
-        protected function rediriger($controleur, $action = null){
-            header("Location:" . 'index.php?controleur=' . $controleur . '&action=' . $action);
+        protected function rediriger($controleur, $action = null, $id = null){
+            header("Location:" . 'index.php?controleur=' . $controleur . '&action=' . $action . '&id=' . $id);
         }
     }

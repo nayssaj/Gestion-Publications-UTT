@@ -2,6 +2,8 @@
 
     require_once 'Core/Modele.php';
     require_once 'Publication.php';
+    require_once 'Classes/Exception/ParametreAbsentException.php';
+    require_once 'Classes/Exception/ChercheurAbsentException.php';
 
     class Chercheur extends Modele{
     
@@ -76,6 +78,11 @@
             $sql = 'SELECT id FROM Auteur WHERE nom = ? AND prenom = ?';
             $resultat = $this->executerRequete($sql, array($nom, $prenom));
             $chercheurID = $resultat->fetch();
-            return $chercheurID['id'];
+            if(isset($chercheurID['id'])){
+                return $chercheurID['id'];
+            }
+            else{
+                throw new ChercheurAbsentException("Aucune publication trouvée pour ce chercheur");
+            }
         }
     }
