@@ -21,7 +21,7 @@
         <!-- /.col-lg-12 -->
     </div>
     <div id="contenu">
-        <form method="POST" action="ModificationPublication.php">
+        <form method="POST" action="index.php?controleur=modificationPublication&action=modificationPublication&id=<?=$publication->getId()?>">
             <div class="col-lg-12">
                 <!-- /.panel -->
                     <div class="panel panel-default">
