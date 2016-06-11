@@ -139,6 +139,7 @@
             <h3>Vos Publications</h3>
             <hr>
             <br/>
+            <?php if( sizeof($publicationsAuteur) >0 ) :?>
             <?php foreach($publicationsAuteur as $publication) :?>
                     <div class="col-lg-12">
             <div class="panel panel-default">
@@ -169,7 +170,7 @@
                                                   <a href= "index.php?controleur=publication&action=publicationsChercheur&id=<?= $auteur->getId()?>">
                                                     <?php echo $auteur->getNom() . ' ' . $auteur->getPrenom() . ' </br>' ?> 
                                                   </a>
-                                                <?php endforeach; ?>
+                                                <?php endforeach;?>
                                             </td>
                                             <td><?php echo $publication->getRef();?></td>
                                             <td><?php echo $publication->getAnnee();?></td>
@@ -187,6 +188,7 @@
             </div>
         </div>
 <?php endforeach; ?>
+<?php  endif; ?>
 
       </div>
             <div class="row">
