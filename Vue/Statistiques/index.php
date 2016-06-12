@@ -45,7 +45,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-bar-chart-o fa-fw"></i>
-                        Voici le compte 
+                        Voici les statistiques 
                     </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -58,7 +58,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-bar-chart-o fa-fw"></i>
-                        Informations du compte
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -70,59 +69,19 @@
                                         <tr>
                                             <th>Nom</th>
                                             <th>Prenom</th>
-                                            <th>Equipe</th>
-                                            <th>login</th>
-                                            <th>Mdp</th>
+                                            <th>Organisation</th>
+                                            <th>score</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+            <?php foreach($resultat as $res) :?>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?= $res[0] ?></td>
+                                            <td><?= $res[1] ?></td>
+                                            <td><?= $res[2] ?></td>
+                                            <td><?= $res[3] ?></td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div id="morris-bar-chart"></div>
-                        </div></div></div></div></div>
-    <!-- On passe sur la partie suivante avec toutes les publications de l'auteur 1-->
-        <div class="col-lg-12">
-            <?php //foreach($compte->getPublications($compte->getId()) as $publication ) :?>
-            <!-- /.panel -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                        Publication
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Auteurs</th>
-                                            <th>Label</th>
-                                            <th>Annee</th>
-                                            <th>Statut</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                          <a href= "index.php?controleur=publication&action=publicationsChercheur&id=">
-                                                  </a>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

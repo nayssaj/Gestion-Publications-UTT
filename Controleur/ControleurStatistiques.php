@@ -18,6 +18,6 @@
         public function index(){
             
             $admin = new Administrateur();
-            $this->genererVue(array('admin' => $admin->statistiquesChercheurs()));
+            $this->genererVue(array('resultat' => $admin->statistiquesChercheurs()));
         }
     }
