@@ -56,7 +56,10 @@
                 $publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie']);
                 unset($idAuteurs);
             }
-            return $publications;
+            if (empty($publications))
+                return null;
+            else
+                return $publications;
 	}
 
         public function getNombreChercheurs(){

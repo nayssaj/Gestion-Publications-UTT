@@ -4,14 +4,22 @@
 	class Chercheur_UTT extends Chercheur{
 
         	private $login;
-        	private $MDP;
+        	private $mdp;
+
+                public function getLogin(){
+                    return $this->login;
+                }
+
+                public function getMdp(){
+                    return $this->mdp;
+                }
     
-        	public function __construct ($id, $nom, $prenom, $equipe, $login, $MDP){
+        	public function __construct ($id, $nom, $prenom, $equipe, $login, $mdp){
     
         	//fonctionnalité de création du compte
             		parent::__construct($id, $nom, $prenom, 'UTT', $equipe);
             		$this->login = $login;
-            		$this->MDP = $MDP;
+            		$this->mdp= $mdp;
         	}
 
 		public function ajoutPublication($auteurs, $titre_article, $reference_publication, $annee, $categorie, $lieu, $statut){
@@ -67,6 +75,10 @@
                     //Verifier que l'auteur n'est pas déja présent dans la base
                     $sql = 'INSERT INTO Auteur(id, organisation, equipe, nom, prenom) VALUES (?, ?, ?, ?, ?)';
                     $this->executerRequete($sql, array(NULL, $chercheur->getOrganisation(), $chercheur->getEquipe(), $chercheur->getNom(), $chercheur->getPrenom()));
+                    $reqIdChercheur = 'SELECT LAST_INSERT_ID()';
+                    $repIdChercheur = $this->executerRequete($reqIdChercheur);
+                    $idChercheur = $repIdChercheur->fetch()[0];
+                    $chercheur->setId($idChercheur);
 		}
 
 		public function ajouterAuteurPublication(Publication $publication, Chercheur $chercheur){

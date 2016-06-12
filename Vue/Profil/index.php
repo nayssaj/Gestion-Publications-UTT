@@ -139,55 +139,57 @@
             <h3>Vos Publications</h3>
             <hr>
             <br/>
-            <?php if( sizeof($publicationsAuteur) >0 ) :?>
-            <?php foreach($publicationsAuteur as $publication) :?>
-                    <div class="col-lg-12">
-            <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <?= $publication->getTitre() ?>
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
-                                    <thead>
-                                        <a class='btn btn-primary glyphicon glyphicon-pencil' href="index.php?controleur=modificationPublication&id=<?= $publication->getId()?>" ></a>
-                                        <a href="index.php?controleur=modificationPublication&id=<?= $publication->getId()?>"></a>
-                                    <tr>
-                                            <th>Auteurs</th>
-                                            <th>Label</th>
-                                            <th>Annee</th>
-                                            <th>Statut</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <?php foreach($publication->getAuteurs() as $auteur) :?>
-                                                  <a href= "index.php?controleur=publication&action=publicationsChercheur&id=<?= $auteur->getId()?>">
-                                                    <?php echo $auteur->getNom() . ' ' . $auteur->getPrenom() . ' </br>' ?> 
-                                                  </a>
-                                                <?php endforeach;?>
-                                            </td>
-                                            <td><?php echo $publication->getRef();?></td>
-                                            <td><?php echo $publication->getAnnee();?></td>
-                                            <td><?php echo $publication->getStatut();?></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div id="morris-bar-chart"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-<?php endforeach; ?>
+            <?php if($publicationsAuteur != null) :?>
+              <?php foreach($publicationsAuteur as $publication) :?>
+                      <div class="col-lg-12">
+              <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <i class="fa fa-bar-chart-o fa-fw"></i>
+                      <?= $publication->getTitre() ?>
+                  </div>
+                  <!-- /.panel-heading -->
+                  <div class="panel-body">
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <div class="table-responsive">
+                                  <table class="table table-bordered table-hover table-striped">
+                                      <thead>
+                                          <a class='btn btn-primary glyphicon glyphicon-pencil' href="index.php?controleur=modificationPublication&id=<?= $publication->getId()?>" ></a>
+                                          <a href="index.php?controleur=modificationPublication&id=<?= $publication->getId()?>"></a>
+                                      <tr>
+                                              <th>Auteurs</th>
+                                              <th>Label</th>
+                                              <th>Annee</th>
+                                              <th>Statut</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr>
+                                              <td>
+                                                  <?php foreach($publication->getAuteurs() as $auteur) :?>
+                                                    <a href= "index.php?controleur=publication&action=publicationsChercheur&id=<?= $auteur->getId()?>">
+                                                      <?php echo $auteur->getNom() . ' ' . $auteur->getPrenom() . ' </br>' ?> 
+                                                    </a>
+                                                  <?php endforeach;?>
+                                              </td>
+                                              <td><?php echo $publication->getRef();?></td>
+                                              <td><?php echo $publication->getAnnee();?></td>
+                                              <td><?php echo $publication->getStatut();?></td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                          <div class="col-lg-12">
+                              <div id="morris-bar-chart"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  <?php endforeach; ?>
+<?php else: ?>
+  Vous n'avez rien publié pour le moment
 <?php  endif; ?>
 
       </div>
