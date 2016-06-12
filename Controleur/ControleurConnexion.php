@@ -16,6 +16,7 @@
         }
 
         public function connecter(){
+            print_r($_SESSION);
             if($this->requete->existeParametre("login") && $this->requete->existeParametre("mdp")){
                 $login = $this->requete->getParametre("login");
                 $mdp = $this->requete->getParametre("mdp");
@@ -23,10 +24,11 @@
                     $utilisateur = $this->utilisateur->getUtilisateur($login, $mdp);
                     $this->requete->getSession()->setAttribut("idUtilisateur", $utilisateur['utilisateur_id']);
                     $this->requete->getSession()->setAttribut("login", $utilisateur['login']);
-                    $this->rediriger("Publication");
+                    $idUtilisateur = $this->requete->getSession()->getAttribut('idUtilisateur');
+                    $this->rediriger('profil', null, $idUtilisateur);
                 }
                 else{
-                    $this->genererVue(array('msgErreur' => 'Login ou mot de passe incorrects'), "index");
+                    throw new Exception("Combinaison login mot de passe incorrect"); 
                 }
             }
             else{
