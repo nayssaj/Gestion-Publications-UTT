@@ -38,20 +38,11 @@
         public function getEquipe(){return ($this->equipe);}
 
 	//Retourne les publication écrits par les auteur sous forme d'objets	
-	public function getPublications($idChercheur = null, $categorie = null){
-            //On cherche toutes les publications écrites par l'auteur si il est précisé
-            if($idChercheur == null & $categorie != null){
-                $reqPublications = 'SELECT Publication.* FROM Publication WHERE Publication.categorie = ? ORDER BY Publication.annee DESC;';
-                $reponsePublications = $this->executerRequete($reqPublications, array($categorie));
-            }
-            elseif($categorie == null){
-                $reqPublications = 'SELECT Publication.* FROM Publication, redige WHERE Publication.id = redige.Publication_id AND redige.Auteur_id = ? ORDER BY Publication.annee DESC;';
-                $reponsePublications = $this->executerRequete($reqPublications, array($idChercheur));
-            }
-            else{
-                $reqPublications = 'SELECT Publication.* FROM Publication, redige WHERE Publication.id = redige.Publication_id AND redige.Auteur_id = ? AND Publication.categorie = ?  ORDER BY Publication.annee DESC;';
-                $reponsePublications = $this->executerRequete($reqPublications, array($idChercheur, $categorie));
-            }
+	public function getPublications($idChercheur = null, $categorie = null, $annee = null, $laboratoire = null){
+            $requete = $this->creerRequetePublication($idChercheur, $categorie, $annee, $laboratoire);
+            $requeteSQL= $requete[0];
+            $parametreRequetePublication = $requete[1];
+            $reponsePublications = $this->executerRequete($requeteSQL, $parametreRequetePublication);
             while($donneesPublication = $reponsePublications->fetch()){
                 //On cherche tous les auteurs de la publication trouvée
                 $reqAuteurs = 'SELECT Auteur.* FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id = ?';
@@ -101,4 +92,38 @@
             }
         }
 
+        public function creerRequetePublication($idChercheur = null, $categorie = null, $annee = null, $laboratoire = null){
+            if($idChercheur == null && $categorie == null && $annee == null){
+                throw new Exception("Aucun parametre de requete spécifié");
+            }
+            $debutRequete = 'SELECT DISTINCT Publication.* ';
+            $tablesRequete = 'FROM Publication';
+            $conditionsRequete = ' WHERE ';
+            $parametresRequete =array();
+
+            if($idChercheur != null){
+                $tablesRequete.= ', redige';
+                $conditionsRequete .= 'Publication.id = redige.Publication_id AND redige.Auteur_id = ? AND ';
+                $parametresRequete[] = $idChercheur;
+            }
+            if($categorie != null){
+                $conditionsRequete .= 'Publication.categorie = ? AND ';
+                $parametresRequete[] = $categorie;
+            }
+            if($annee != null){
+                $conditionsRequete .= 'Publication.annee >= ? AND ';
+                $parametresRequete[] = $annee;
+            }
+            if($laboratoire != null){
+                $tablesRequete .= ', redige, Auteur';
+                $conditionsRequete .= 'Publication.id = redige.Publication_id AND redige.Auteur_id = Auteur.id AND Auteur.equipe = ? AND ';
+                $parametresRequete[] = $laboratoire;
+            }
+            $requeteSQL = $debutRequete . $tablesRequete . $conditionsRequete;
+            $requeteSQL = substr($requeteSQL, 0, -4);
+            $finRequete ='ORDER BY Publication.annee DESC';
+            $requeteSQL .= $finRequete;
+            $requete = array($requeteSQL, $parametresRequete);
+            return $requete;
+        }
     }

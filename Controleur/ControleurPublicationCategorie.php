@@ -30,7 +30,7 @@
                     $publicationsCategories = array();
                     foreach($this->categories as $cle => $categorie){
                         $publicationsCategorie['titre'] = $categorie;
-                        $publicationsCategorie['publications'] = $this->chercheur->getPublications(null, $cle); 
+                        $publicationsCategorie['publications'] = $this->chercheur->getPublications(null, $cle, null); 
                         $publicationsCategories[] = $publicationsCategorie;
                     }
                     $donneesSpecifiques = array('publicationsCategories' => $publicationsCategories, 'titrePage' => $titrePage);
@@ -41,27 +41,9 @@
                 }
             }
 
-            public function publicationsChercheur(){
+            public function publicationsChercheurNom($prenom, $nom){
                 try{
-                    $idChercheur = $this->requete->getParametre('id');
-                    $nomChercheur = $this->chercheur->getChercheur($idChercheur)->getNom();
-                    $prenomChercheur = $this->chercheur->getChercheur($idChercheur)->getPrenom();
-                    $titrePage = 'Publications de ' . $prenomChercheur . ' ' .$nomChercheur;
-                    $donneesSpecifiques = array('publicationsAuteur' => $this->chercheur->getPublications($idChercheur), 'titrePage' => $titrePage);
-                    $this->genererVue($donneesSpecifiques, "index");
-
-                }
-                catch(Exception $e){
-                    $msgErreur = $e->getMessage();
-                    $this->genererVue($msgErreur);
-                }
-            }
-
-            public function publicationsChercheurNom(){
-                try{
-                    $prenomChercheur = $this->requete->getParametre('a1');
-                    $nomChercheur = $this->requete->getParametre('a2');
-                    $idChercheur = $this->chercheur->getChercheurNom($nomChercheur, $prenomChercheur);
+                    $idChercheur = $this->chercheur->getChercheurNom($nom, $prenom);
                     $nomChercheur = $this->chercheur->getChercheur($idChercheur)->getNom();
                     $prenomChercheur = $this->chercheur->getChercheur($idChercheur)->getPrenom();
                     $titrePage = 'Publications de ' . $prenomChercheur . ' ' .$nomChercheur;
@@ -80,6 +62,37 @@
                 catch(Exception $e){
                     $msgErreur = $e->getMessage();
                     $this->genererVue($msgErreur);
+                }
+            }
+
+            public function modeRecherche(){
+                if($this->requete->getParametre('type') == 1){
+                    $prenomChercheur = $this->requete->getParametre('a1');
+                    $nomChercheur = $this->requete->getParametre('a2');
+                    $this->publicationsChercheurNom($prenomChercheur, $nomChercheur);
+                }
+                elseif($this->requete->getParametre('type') == 2){
+                    $laboratoire = $this->requete->getParametre('a1');
+                    $annee = $this->requete->getParametre('a2');
+                    $this->publicationLaboratoire($annee, $laboratoire);
+                }
+
+            }
+
+            public function publicationLaboratoire($annee, $laboratoire){
+                try{
+                    $titrePage = "Publications de l'équipe " . $laboratoire . ' depuis ' . $annee;
+                    $publicationsCategories = array();
+                    foreach($this->categories as $cle => $categorie){
+                        $publicationsCategorie['titre'] = $categorie;
+                        $publicationsCategorie['publications'] = $this->chercheur->getPublications(null, $cle, $annee, $laboratoire);
+                        $publicationsCategories[] = $publicationsCategorie;
+                    }
+                    $donneesSpecifiques = array('publicationsCategories' => $publicationsCategories, 'titrePage' => $titrePage);
+                    $this->genererVue($donneesSpecifiques, "index");
+                }
+                catch(Exception $e){
+                    throw $e;
                 }
             }
         }
