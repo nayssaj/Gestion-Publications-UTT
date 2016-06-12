@@ -1,19 +1,27 @@
 <?php
 
         require_once 'Core/Modele.php';
-	require_once 'Classes/Chercheur.php';
+	require_once 'Classes/Chercheur_UTT.php';
 
 Class Administrateur extends Modele{
     
-    public function getUtilisateurs(){
-        $reqUtilisateurs = 'SELECT * FROM Comptes WHERE statut=utilisateur';
+    public function getUtilisateurs(){/*
+        unset($Utilisateurs);
+        $reqUtilisateurs = 'SELECT * FROM Comptes';
         $reponseUtilisateurs = $this->executerRequete($reqUtilisateurs);
         while($donneesUtilisateurs = $reponseUtilisateurs->fetch()){
-            $reqNom = 'SELECT nom,prenom FROM Auteur WHERE Auteur.id = Comptes.auteur_id';
+            $reqNom = 'SELECT nom,prenom,equipe FROM Auteur,Comptes WHERE Auteur.id = Comptes.utilisateur_id';
             $reponseNom = $this->executerRequete($reqNom);
             while($donneesNom = $reponseNom->fetch()){
-                $Utilisateurs[] = new Chercheur_UTT($donneesUtilisateurs['auteur_id'], $donneesNom['nom'], $donneesNom['prenom'], $donneesUtilisateurs['equipe'],$donneesUtilisateurs['login'],$donneesUtilisateurs['mdp']); 
+                $Utilisateurs[] = new Chercheur_UTT($donneesUtilisateurs['utilisateur_id'], $donneesNom['nom'], $donneesNom['prenom'], $donneesNom['equipe'],$donneesUtilisateurs['login'],$donneesUtilisateurs['mdp']); 
             }
+        }
+        return $Utilisateurs;
+    */
+        $reqUtilisateurs = 'SELECT utilisateur_id,nom,prenom,equipe,login,mdp FROM Auteur, Comptes WHERE Auteur.id = Comptes.utilisateur_id';
+        $reponseUtilisateurs = $this->executerRequete($reqUtilisateurs);
+        while($donneesUtilisateurs = $reponseUtilisateurs->fetch()){
+            $Utilisateurs[] = new Chercheur_UTT($donneesUtilisateurs['utilisateur_id'], $donneesUtilisateurs['nom'], $donneesUtilisateurs['prenom'], $donneesUtilisateurs['equipe'],$donneesUtilisateurs['login'],$donneesUtilisateurs['mdp']);
         }
         return $Utilisateurs;
     }

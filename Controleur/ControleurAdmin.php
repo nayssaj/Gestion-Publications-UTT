@@ -2,6 +2,7 @@
     require_once 'ControleurSecurise.php';
     require_once 'Classes/Publication.php';
     require_once 'Classes/Chercheur.php';
+    require_once 'Classes/Administrateur.php';
 
     class ControleurAdmin extends ControleurSecurise{
 
@@ -15,9 +16,13 @@
         }
 
         public function index(){
+            
+            $admin = new Administrateur();
+            $comptes = $admin->getUtilisateurs();
+            
             $nbPublications = $this->publication->getNombrePublications();
             $nbChercheurs = $this->chercheur->getNombreChercheurs();
             $login = $this->requete->getSession()->getAttribut('login');
-            $this->genererVue(array('nbPublications' => $nbPublications, 'nbChercheurs' => $nbChercheurs, 'login' => $login));
+            $this->genererVue(array('comptes' => $comptes,'nbPublications' => $nbPublications, 'nbChercheurs' => $nbChercheurs, 'login' => $login));
         }
     }
