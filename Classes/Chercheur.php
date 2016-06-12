@@ -37,10 +37,14 @@
 
         public function getEquipe(){return ($this->equipe);}
 
-	//Retourne les publication écrits par l'auteur sous forme d'objets	
-	public function getPublications($idChercheur, $categorie = null){
-            //On cherche toutes les publications écrites par l'auteur
-            if($categorie == null){
+	//Retourne les publication écrits par les auteur sous forme d'objets	
+	public function getPublications($idChercheur = null, $categorie = null){
+            //On cherche toutes les publications écrites par l'auteur si il est précisé
+            if($idChercheur == null & $categorie != null){
+                $reqPublications = 'SELECT Publication.* FROM Publication WHERE Publication.categorie = ? ORDER BY Publication.annee DESC;';
+                $reponsePublications = $this->executerRequete($reqPublications, array($categorie));
+            }
+            elseif($categorie == null){
                 $reqPublications = 'SELECT Publication.* FROM Publication, redige WHERE Publication.id = redige.Publication_id AND redige.Auteur_id = ? ORDER BY Publication.annee DESC;';
                 $reponsePublications = $this->executerRequete($reqPublications, array($idChercheur));
             }
@@ -62,10 +66,12 @@
                 $publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie']);
                 unset($idAuteurs);
             }
-            if (empty($publications))
+            if (empty($publications)){
                 return null;
-            else
+            }
+            else{
                 return $publications;
+            }
 	}
 
         public function getNombreChercheurs(){
@@ -94,4 +100,5 @@
                 throw new ChercheurAbsentException("Aucune publication trouvée pour ce chercheur");
             }
         }
+
     }

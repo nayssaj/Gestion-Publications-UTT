@@ -31,7 +31,7 @@
             <!-- /input-group -->
             </li>
             <li><a data-toggle="modal" data-target="#myModal"><i class="fa fa-question fa-fw"></i>Recherche Avancée</a></li>
-            <li><a href="index.php?controleur=publication"><i class="fa fa-book fa-fw"></i>Publications</a></li>
+            <li><a href="index.php?controleur=publicationCategorie"><i class="fa fa-book fa-fw"></i>Publications</a></li>
           </ul>
         </div>
         <!-- /.sidebar-collapse -->
@@ -48,42 +48,8 @@
             </button>
             <h4 class="modal-title" id="myModalLabel">Recherche avancée</h4>
           </div>
-            <form method="POST" action="index.php?controleur=publicationCategorie">
+            <form method="POST" action="index.php?controleur=publicationCategorie&action=publicationsChercheurNom">
                 <div class="modal-body">
-                <!--
-                <ul class="nav nav-tabs">
-                  <li class="active"><a data-toggle="tab" href="#home">Recherche Publications Chercheur</a></li>
-                  <li><a data-toggle="tab" href="#menu1">Recherche Laboratoire à partir d'une année</a></li>
-                  <li><a data-toggle="tab" href="#menu2">Collaborations extérieures d'un chercheur UTT</a></li>
-                  <li><a data-toggle="tab" href="#menu3">Liste des coauteurs</a></li>
-                </ul>
-                <div class="tab-content">
-                  <div id="home" class="tab-pane fade in active">
-                      <br/><h4>Publications Chercheur</h4><br/><br/>
-                          <input type="text" name="r-prenom" placeholder="Prenom">
-                          <input type="text" name="r-nom" placeholder="Nom">
-                          <input type="hidden" name="type" value="1">
-                  </div>
-                  <div id="menu1" class="tab-pane fade">
-                    <br/><h4>Laboratoire à partir d'une année</h4><br/><br/>
-                        <input type="text" name="recherche" placeholder="Laboratoire">
-                        <input type="text" name="Année" placeholder="Année">
-                        <input type="hidden" name="type" value="2">
-                  </div>
-                  <div id="menu2" class="tab-pane fade">
-                    <br/><h4>Collaborations extérieures</h4><br/><br/>
-                        <input type="text" name="r-prenomCollab" placeholder="Prenom">
-                        <input type="text" name="r-nomCollab" placeholder="Nom">
-                        <input type="hidden" name="type" value="3">
-                  </div>
-                    <div id="menu3" class="tab-pane fade">
-                    <br/><h4>Liste des coauteurs</h4><br/><br/>
-                        <input type="text" name="" placeholder="Prenom">
-                        <input type="text" name="" placeholder="Nom">
-                        <input type="hidden" name="type" value="4">
-                    </div>
-                </div>
-                -->
                 <br/><h4>Voici les différents types de recherche</h4><br/><br/>
                             
                 <div class="input-group">

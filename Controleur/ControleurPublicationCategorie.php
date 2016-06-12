@@ -9,25 +9,37 @@
 
             private $publications; 
             private $chercheur;
+            private $categories = array(
+                'RI' => 'Article dans des Revues Internationales',
+                'CI' => 'Article dans des Conférences Internationales', 
+                'RF' => 'Article dans des revues Française',
+                'CF' => 'Article dans des conférences Française',
+                'OS' => 'Ouvrage Scientifique', 
+                'TD' => 'Thèse de doctorat', 
+                'BV' => 'Brevet', 
+                'AP' => 'Autre Production');
             
             public function __construct(){
                 $this->chercheur = new Chercheur('1', 'michel', 'dupont', 'UTT', 'equipe'); 
                 $this->publications = new Publication('1', $this->chercheur, 'titre', 'ref', 'annee', 'statut', 'type');
             }
 
-            /*
             public function index(){
                 try{
-                    $donneesSpecifiques = array('publicationsAuteur' => $this->publications->getPublicationsRecentes(), 'titrePage' => 'Publications récemment ajoutées');
+                    $titrePage = "Publications des chercheurs de l'UTT";
+                    $publicationsCategories = array();
+                    foreach($this->categories as $cle => $categorie){
+                        $publicationsCategorie['titre'] = $categorie;
+                        $publicationsCategorie['publications'] = $this->chercheur->getPublications(null, $cle); 
+                        $publicationsCategories[] = $publicationsCategorie;
+                    }
+                    $donneesSpecifiques = array('publicationsCategories' => $publicationsCategories, 'titrePage' => $titrePage);
                     $this->genererVue($donneesSpecifiques);
-
                 }
                 catch(Exception $e){
-                    $msgErreur = $e->getMessage();
-                    $this->genererVue($msgErreur);
+                    throw $e;
                 }
             }
-             */
 
             public function publicationsChercheur(){
                 try{
@@ -45,17 +57,8 @@
                 }
             }
 
-            public function index(){
+            public function publicationsChercheurNom(){
                 try{
-                    $categories = array(
-                        'RI' => 'Article dans des Revues Internationales',
-                        'CI' => 'Article dans des Conférences Internationales', 
-                        'RF' => 'Article dans des revues Française',
-                        'CF' => 'Article dans des conférences Française',
-                        'OS' => 'Ouvrage Scientifique', 
-                        'TD' => 'Thèse de doctorat', 
-                        'BV' => 'Brevet', 
-                        'AP' => 'Autre Production');
                     $prenomChercheur = $this->requete->getParametre('a1');
                     $nomChercheur = $this->requete->getParametre('a2');
                     $idChercheur = $this->chercheur->getChercheurNom($nomChercheur, $prenomChercheur);
@@ -63,13 +66,13 @@
                     $prenomChercheur = $this->chercheur->getChercheur($idChercheur)->getPrenom();
                     $titrePage = 'Publications de ' . $prenomChercheur . ' ' .$nomChercheur;
                     $publicationsCategories = array();
-                    foreach($categories as $cle => $categorie){
+                    foreach($this->categories as $cle => $categorie){
                         $publicationsCategorie['titre'] = $categorie;
                         $publicationsCategorie['publications'] = $this->chercheur->getPublications($idChercheur, $cle); 
                         $publicationsCategories[] = $publicationsCategorie;
                     }
                     $donneesSpecifiques = array('publicationsCategories' => $publicationsCategories, 'titrePage' => $titrePage);
-                    $this->genererVue($donneesSpecifiques);
+                    $this->genererVue($donneesSpecifiques, "index");
                 }
                 catch(ChercheurAbsentException $e){
                     throw $e;
