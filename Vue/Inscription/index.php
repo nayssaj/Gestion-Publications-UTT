@@ -24,7 +24,7 @@
         <!-- /.col-lg-12 -->
     </div>
     <div id="contenu">
-        <form method="POST" action="vue/vueInscription.php">
+        <form method="POST" action="index.php?controleur=inscription&action=inscrire">
             <div class="col-lg-12">
                 <!-- /.panel -->
                 <div class="panel panel-default">
