@@ -31,6 +31,6 @@
                     $nouvelUtilisateur = new Chercheur_UTT('1', $nom, $prenom, $equipe, $login, $mdp); 
                     $nouvelUtilisateur->ajouterChercheur($nouvelUtilisateur);
                     $this->admin->ajouterUtilisateur($nouvelUtilisateur); 
-                    $this->rediriger('profil', null, $nouvelUtilisateur->getId());
+                    $this->rediriger('accueil');
                 }
         }
