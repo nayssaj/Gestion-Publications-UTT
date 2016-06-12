@@ -43,25 +43,4 @@
                     $this->genererVue($msgErreur);
                 }
             }
-
-            public function publicationsChercheurNom(){
-                try{
-                    $nomChercheur = $this->requete->getParametre('r-nom');
-                    $prenomChercheur = $this->requete->getParametre('r-prenom');
-                    $idChercheur = $this->chercheur->getChercheurNom($nomChercheur, $prenomChercheur);
-                    $nomChercheur = $this->chercheur->getChercheur($idChercheur)->getNom();
-                    $prenomChercheur = $this->chercheur->getChercheur($idChercheur)->getPrenom();
-                    $titrePage = 'Publications de ' . $prenomChercheur . ' ' .$nomChercheur;
-                    $donneesSpecifiques = array('publicationsAuteur' => $this->chercheur->getPublications($idChercheur), 'titrePage' => $titrePage);
-                    $this->genererVue($donneesSpecifiques, "index");
-                }
-                catch(ChercheurAbsentException $e){
-                    throw $e;
-                }
-                catch(Exception $e){
-                    $msgErreur = $e->getMessage();
-                    $this->genererVue($msgErreur);
-                }
-            }
         }
-

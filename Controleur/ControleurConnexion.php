@@ -16,7 +16,6 @@
         }
 
         public function connecter(){
-            print_r($_SESSION);
             if($this->requete->existeParametre("login") && $this->requete->existeParametre("mdp")){
                 $login = $this->requete->getParametre("login");
                 $mdp = $this->requete->getParametre("mdp");
