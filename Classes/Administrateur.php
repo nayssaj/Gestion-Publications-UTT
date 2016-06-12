@@ -39,26 +39,28 @@ Class Administrateur extends Modele{
             for($i=0;$i<=sizeof($Chercheur);$i++){
                 $idChercheur = $Chercheur[$i]->getId();
                 $getpubli = $Chercheur[$i]->getPublications($idChercheur);
-                $nbpublié =0;$nbRI =0;$nbCI =0;$nbCF =0;
-                foreach($getpubli as $a){
-                    $annees[] = $a->getAnnee();
-                    if($a->getStatut() == 'publie'){$nbpublié[i]+=1;}
-                    if($a->getType() === 'CI'){$nbCI[i]+=1;}
-                    if($a->getType() === 'CF'){$nbCF[i]+=1;}
-                    if($a->getType() === 'RI'){$nbRI[i]+=1;}
-                }
+                $nbpublié =array();$nbRI =array();$nbCI =array();$nbCF =array();
+                $nbpublié[$i] =0;$nbRI[$i] =0;$nbCI[$i] =0;$nbCF[$i] =0;
+                if(sizeof($getpubli)>0){
+                    foreach($getpubli as $a){
+                        $annees[] = $a->getAnnee();
+                        if($a->getStatut() === 'publie'){$nbpublié[$i]+=1;}
+                        if($a->getType() === 'CI'){$nbCI[$i]+=1;}
+                        if($a->getType() === 'CF'){$nbCF[$i]+=1;}
+                        if($a->getType() === 'RI'){$nbRI[$i]+=1;}
+                }}
                 $nbpublication[$i] = sizeof($getpubli);
                 $anneemax[$i] = max($annees);
-                $anneemin[$i] = min($annees);
-                echo $nbpublication[$i];
-                echo $anneemax[$i];
-                echo $anneemin[$i];
-                echo $nbpublié;
-            $pointsChercheur[$i] = ($nbpublication[$i]/($anneemax[$i] - $anneemin[$i])) * ($nbpublié/$nbpublication[$i]) * (($nbCI + $nbRI)/$nbpublication[$i]) * (($nbCI+$nbRI)/$nbpublication[$i]);        
-        $Résultat[i] = array($Chercheur[$i]->getNom(),$Chercheur[$i]->getPrenom(),$pointsChercheur[$i]);
+                $anneemin[$i] = min($annees);echo('<br/>');echo('<br/>');echo('<br/>');echo('<br/>');
+                echo $nbpublication[$i];echo('<br/>');
+                echo $anneemax[$i];echo('<br/>');
+                echo $anneemin[$i];echo('<br/>');
+                echo $nbpublié;echo('<br/>');echo('<br/>');echo('<br/>');echo('<br/>');
+            $pointsChercheur[$i] = ($nbpublication[$i]/($anneemax[$i] - $anneemin[$i] +1)) * ($nbpublié/$nbpublication[$i]) * (($nbCI + $nbRI)/$nbpublication[$i]) * (($nbCI+$nbRI)/$nbpublication[$i]);        
+        $Resultat[$i] = array($Chercheur[$i]->getNom(),$Chercheur[$i]->getPrenom(),$pointsChercheur[$i]);
         }
-        //return $Résultat;
-        print_r($Résultat);
+        return $Resultat;
+        //print_r($Resultat);
     }
 
     public function ajouterUtilisateur(Chercheur_UTT $nouvelUtilisateur){
