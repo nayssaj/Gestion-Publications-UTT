@@ -1,4 +1,4 @@
-<?php 
+hi<?php 
     $this->titreEntete = 'Administrateur';
     $this->stylesCss = '
     <!-- MetisMenu CSS -->
@@ -19,9 +19,9 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href='index.php?controleur=admin'><i class="fa fa-book fa-fw"></i> Liste des comptes</a></li>
-                        <li><a href="index.php?controleur=coherence"><i class="fa fa-question fa-fw"></i> Cohérence</a></li>
-                        <li><a href="index.php?controleur=statistiques"><i class="fa fa-bar-chart-o fa-fw"></i> Statistiques</a></li>
+                        <li><a href='http://localhost/Gestion-Publications-UTT/index.php?controleur=admin'><i class="fa fa-book fa-fw"></i> Liste des comptes</a></li>
+                        <li><a href="PagePublications.php"><i class="fa fa-question fa-fw"></i> Cohérence</a></li>
+                        <li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Statistiques</a></li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

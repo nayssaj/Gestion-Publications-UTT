@@ -4,7 +4,7 @@
     require_once 'Classes/Chercheur.php';
     require_once 'Classes/Administrateur.php';
 
-    class ControleurAdmin extends ControleurSecurise{
+    class ControleurCoherence extends ControleurSecurise{
 
         private $chercheur;
         private $publication;
