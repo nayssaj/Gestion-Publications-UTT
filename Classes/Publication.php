@@ -63,7 +63,7 @@
             if($reponsePublication->rowCount() == 1){
                 while($donneesPublication = $reponsePublication->fetch()){
                     //On cherche tous les auteurs de la publication trouvée
-                    $reqAuteurs = 'SELECT Auteur.* FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id = ?    ';
+                    $reqAuteurs = 'SELECT Auteur.* FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id = ? ORDER BY redige.place';
                     $reponseAuteurs = $this->executerRequete($reqAuteurs, array($donneesPublication['id']));
                     //On garde en mémoire la liste de tous les auteurs de la publication trouvée
                     //elle servira a créer l'objet publication associée à celle trouvée
@@ -90,7 +90,7 @@
             $reponsePublications = $this->executerRequete($reqPublications);
             while($donneesPublication = $reponsePublications->fetch()){
                 //On cherche tous les auteurs de la publication trouvée
-                $reqAuteurs = 'SELECT Auteur.* FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id = ?    ';
+                $reqAuteurs = 'SELECT Auteur.* FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id = ? ORDER BY redige.place';
                 $reponseAuteurs = $this->executerRequete($reqAuteurs, array($donneesPublication['id']));
                 //On garde en mémoire la liste de tous les auteurs de la publication trouvée
                 //elle servira a créer l'objet publication associée à celle trouvée

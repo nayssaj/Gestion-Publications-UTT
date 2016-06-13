@@ -30,13 +30,19 @@
                     $nouveauChercheur = new Chercheur(null, $noms[$i], $prenoms[$i], $organisations[$i], $laboratoires[$i]); 
                     $this->chercheur->ajouterChercheur($nouveauChercheur);
                     $this->chercheur->ajouterAuteurPublication($publicationPage, $nouveauChercheur);
+                    $this->chercheur->setPlaceAuteur($publicationPage, $nouveauChercheur, $i + 1); 
                 }
             }
+            echo '<pre>';
+            print_r($_POST);
+            echo '</pre>';
+            /*
             $nouveauTitre = $this->requete->getParametre('titre');
             $this->chercheur->modifierTitrePublication($publicationPage, $nouveauTitre);
             $nouveauStatut = $this->requete->getParametre('reference');
             $this->chercheur->modifierLabelPublication($publicationPage, $nouveauStatut);
             $this->rediriger('profil', null, $this->requete->getSession()->getAttribut('idUtilisateur')); 
+            */
         }
     }
 

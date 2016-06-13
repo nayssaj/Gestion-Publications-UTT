@@ -51,13 +51,13 @@
 		}
                 
 
-		public function modifierStatutPublication(Publication $publication, $statut){
+		public function modifierLabelPublication(Publication $publication, $label){
 			if(!$publication->verificationAuteur($this)){
 		            throw new Exception('Vous n\'etes pas auteur de ce fichier');	
 			}
-                        if($publication->getStatut() != $statut){
-			    $sql = 'UPDATE Publication SET statut = ? WHERE id = ?';
-			    $this->executerRequete($sql, array($statut, $publication->getId()));
+                        if($publication->getStatut() != $label){
+			    $sql = 'UPDATE Publication SET reference_publication = ? WHERE id = ?';
+			    $this->executerRequete($sql, array($label, $publication->getId()));
                         }
 		}
 
@@ -73,12 +73,17 @@
 
                 public function ajouterChercheur(Chercheur $chercheur){
                     //Verifier que l'auteur n'est pas déja présent dans la base
-                    $sql = 'INSERT INTO Auteur(id, organisation, equipe, nom, prenom) VALUES (?, ?, ?, ?, ?)';
-                    $this->executerRequete($sql, array(NULL, $chercheur->getOrganisation(), $chercheur->getEquipe(), $chercheur->getNom(), $chercheur->getPrenom()));
-                    $reqIdChercheur = 'SELECT LAST_INSERT_ID()';
-                    $repIdChercheur = $this->executerRequete($reqIdChercheur);
-                    $idChercheur = $repIdChercheur->fetch()[0];
-                    $chercheur->setId($idChercheur);
+                    if(!$this->verificationAuteurBase($chercheur)){
+                        $sql = 'INSERT INTO Auteur(id, organisation, equipe, nom, prenom) VALUES (?, ?, ?, ?, ?)';
+                        $this->executerRequete($sql, array(NULL, $chercheur->getOrganisation(), $chercheur->getEquipe(), $chercheur->getNom(), $chercheur->getPrenom()));
+                        $reqIdChercheur = 'SELECT LAST_INSERT_ID()';
+                        $repIdChercheur = $this->executerRequete($reqIdChercheur);
+                        $idChercheur = $repIdChercheur->fetch()[0];
+                        $chercheur->setId($idChercheur);
+                    }
+                    else{
+                        $chercheur->setId($this->verificationAuteurBase($chercheur));
+                    }
 		}
 
 		public function ajouterAuteurPublication(Publication $publication, Chercheur $chercheur){
@@ -103,16 +108,19 @@
 			}
 		}
 
-		public function modifierPublication(){}
+                public function setPlaceAuteur(Publication $publication, Chercheur $chercheur, $place){
+                    $sql = "UPDATE redige SET place = ? WHERE Publication_id = ? AND Auteur_id = ?";
+                    $resultat = $this->executerRequete($sql, array($place, $publication->getId(), $chercheur->getId()));
+                }
 
                 private function verificationAuteurBase(Chercheur $chercheur){
                     $sql= 'SELECT * FROM Auteur WHERE organisation = ? AND equipe = ? AND nom = ? AND prenom = ?';
-                    $resultat= $this->executerRequete($sql, array($chercheur->getOrganisation(), $chercheur->getEquipe(), $chercheur->getNom(), $chercheur->getPrenom()));
+                    $resultat = $this->executerRequete($sql, array($chercheur->getOrganisation(), $chercheur->getEquipe(), $chercheur->getNom(), $chercheur->getPrenom()));
                     $auteurPresent = $resultat->fetch();
                     if($auteurPresent)
                         return $auteurPresent['id'];
                     else        
-                        return -1;
+                        return 0;
                 }
     	}
 ?>
