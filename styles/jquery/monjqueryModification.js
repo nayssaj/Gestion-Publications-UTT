@@ -125,7 +125,7 @@ $('.B_aM1').on('click', function(){
   
   $('.submitnojs').on('mousedown', function () {//vérification à la validation de la page
       $(document).find('.btn-danger').each(function(){
-          $(this).closest('tr').remove();
+          //$(this).closest('tr').remove();
       });
   });
 
