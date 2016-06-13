@@ -1,7 +1,6 @@
 <?php
 
     require_once 'Core/Modele.php';
-require_once ('Classes/Conference.php');
 
     class Publication extends Modele{
 
@@ -11,8 +10,9 @@ require_once ('Classes/Conference.php');
         private $ref;
         private $annee;
         private $statut;
-    
-        public function __construct($id, $auteurs, $titre, $ref, $annee, $statut, $type) {
+        private $lieu;
+        
+        public function __construct($id, $auteurs, $titre, $ref, $annee, $statut, $type, $lieu =null) {
 		$this->id = $id;	
         	$this->auteurs = $auteurs;
 		$this->titre = $titre;
@@ -20,6 +20,7 @@ require_once ('Classes/Conference.php');
 		$this->annee = $annee;
 		$this->statut = $statut;
                 $this->type = $type;
+                $this->lieu = $lieu;
         }
     
 	public function getId(){return $this->id;}
@@ -42,6 +43,9 @@ require_once ('Classes/Conference.php');
         
         public function getType(){return $this->type;}
 	public function setType($type){$this->type = $type;}
+        
+        public function getLieu(){return $this->lieu;}
+	public function setLieu($lieu){$this->lieu = $lieu;}
 
 	public function verificationAuteur(Chercheur $auteurIncertain){
 		foreach($this->getAuteurs() as $auteurCertain){
@@ -96,7 +100,7 @@ require_once ('Classes/Conference.php');
                 //On viens créer un objet publication que l'on ajoute aux autres publication 
                 //potentiellement déja trouvées
                 if($donneesPublication['categorie'] === 'CI' || $donneesPublication['lieu'] === 'CF'){    
-                    $publications[] = new Conference($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie'] ,$donneesPublication['lieu']);
+                    $publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie'] ,$donneesPublication['lieu']);
                 }
             else{    
                 $publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie']);

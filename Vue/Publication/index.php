@@ -120,7 +120,7 @@
                                             <th>Label</th>
                                             <th>Annee</th>
                                             <th>Statut</th>
-                                            <?php if (isset($publication->lieu)){echo '<th>Lieu</th>';}?>
+                                            <?php if ($publication->getLieu() != null){echo '<th>Lieu</th>';}?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -135,7 +135,7 @@
                                             <td><?php echo $publication->getRef();?></td>
                                             <td><?php echo $publication->getAnnee();?></td>
                                             <td><?php echo $publication->getStatut();?></td>
-                                            <?php if (isset($publication->lieu)){echo'<td>'; echo $publication->getLieu();echo'</td>';}?>
+                                            <?php if ($publication->getLieu() != null){echo'<td>'; echo $publication->getLieu();echo'</td>';}?>
                                         </tr>
                                     </tbody>
                                 </table>
