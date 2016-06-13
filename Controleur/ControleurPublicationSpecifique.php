@@ -16,7 +16,7 @@
         
         public function index(){
             $publication2 = $this->publication1->getPublicationID($this->requete->getParametre('id'));
-            $this->genererVue(array('titrePage' => 'Informations spécifiques de : '.$publication2->getTitre(), 'publication' => $publication2, 'Auteur' => $publication2->getAuteurs()));
+            $this->genererVue(array('titrePage' => $publication2->getTitre(), 'publication' => $publication2, 'Auteur' => $publication2->getAuteurs()));
         }
     }
 

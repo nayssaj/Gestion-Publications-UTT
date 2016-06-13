@@ -1,5 +1,6 @@
 <?php 
-    $this->titreEntete = 'profil';
+    $this->titreEntete = 'Profil';
+    $this->script = "<script src='styles/jquery/monjqueryRecherche.js'></script>";
     $this->stylesCss = '
     <!-- MetisMenu CSS -->
     <link href="bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
@@ -13,7 +14,7 @@
     <link href="styles/css/Moncss.css" rel="stylesheet" type="text/css">';
 ?> 
 
- <nav>
+<nav>
       <!-- /.navbar-top-links -->
       <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
@@ -30,13 +31,67 @@
             <!-- /input-group -->
             </li>
             <li><a data-toggle="modal" data-target="#myModal"><i class="fa fa-question fa-fw"></i>Recherche Avancée</a></li>
-            <li><a href="index.php?controleur=publication"><i class="fa fa-book fa-fw"></i>Publications</a></li>
+            <li><a href="index.php?controleur=publicationCategorie"><i class="fa fa-book fa-fw"></i>Publications</a></li>
           </ul>
         </div>
         <!-- /.sidebar-collapse -->
       </div>
       <!-- /.navbar-static-side -->
     </nav>
+    <!-- Popup recherche-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Recherche avancée</h4>
+          </div>
+            <form method="POST" class="laaction" action="">
+                <div class="modal-body">
+                <br/><h4>Voici les différents types de recherche</h4><br/><br/>
+                            
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="radio" class="R1 R" name="type" value="1">
+                    </span>
+                    <label type="text" class="form-control">Recherche Publications Chercheur</label>
+                </div>
+                 <br/>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="radio" class="R2 R" name="type" value="2">
+                    </span>
+                    <label type="text" class="form-control">Recherche Laboratoire à partir d'une année</label>
+                </div>
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="radio" class="R3 R" name="type" value="3">
+                    </span>
+                    <label type="text" class="form-control">Collaborations extérieures d'un chercheur UTT</label>
+                </div>
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <input type="radio" class="R4 R" name="type" value="4">
+                    </span>
+                    <label type="text" class="form-control">Liste des coauteurs</label>
+                </div>                       
+              <br/><br/><br/>
+              <input type="text" name="a1" class="arg1" placeholder="Prenom">
+              <input type="text" name="a2" class="arg2" placeholder="Nom">
+          </div>
+                
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            <input type="submit" class="btn btn-primary" value="rechercher">
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
     <!-- Popup recherche-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -145,7 +200,9 @@
               <div class="panel panel-default">
                       <div class="panel-heading">
                           <i class="fa fa-bar-chart-o fa-fw"></i>
-                      <?= $publication->getTitre() ?>
+                      <a href= "index.php?controleur=publicationSpecifique&id=<?= $publication->getId()?>">
+                                <?= $publication->getTitre() ?> 
+                            </a>
                   </div>
                   <!-- /.panel-heading -->
                   <div class="panel-body">

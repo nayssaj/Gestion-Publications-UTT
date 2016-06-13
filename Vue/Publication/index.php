@@ -106,7 +106,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <?= $publication->getTitre() ?>
+                            <a href= "index.php?controleur=publicationSpecifique&id=<?= $publication->getId()?>">
+                                <?= $publication->getTitre() ?> 
+                            </a>
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
