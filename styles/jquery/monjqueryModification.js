@@ -105,7 +105,7 @@ $changements = 0;
         $changements+=1;
         $('.B_aP1').hide();
         if ($changements > 0){
-            $('.B_aM1').show();
+            //$('.B_aM1').show();
             $('.B_aP1').show();
         }
  });
