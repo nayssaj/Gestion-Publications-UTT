@@ -17,12 +17,17 @@
 
         public function index(){
             
-            $admin = new Administrateur();
-            $comptes = $admin->getUtilisateurs();
+            $monAdmin =new Administrateur();
+            $result = $monAdmin->detectionCoherenceDonnees();
             
-            $nbPublications = $this->publication->getNombrePublications();
-            $nbChercheurs = $this->chercheur->getNombreChercheurs();
-            $login = $this->requete->getSession()->getAttribut('login');
-            $this->genererVue(array('comptes' => $comptes,'nbPublications' => $nbPublications, 'nbChercheurs' => $nbChercheurs, 'login' => $login));
+            $TitreVide = $result[0];
+            $AuteurUTT = $result[1];
+            $TypeVide = $result[2];
+            $LieuVide = $result[3];
+            
+            //$nbPublications = $this->publication->getNombrePublications();
+            //$nbChercheurs = $this->chercheur->getNombreChercheurs();
+            //$login = $this->requete->getSession()->getAttribut('login');
+            $this->genererVue(array('TitreVide' => $TitreVide, 'AuteurUTT' => $AuteurUTT, 'TypeVide' => $TypeVide, 'LieuVide' => $LieuVide));
         }
     }

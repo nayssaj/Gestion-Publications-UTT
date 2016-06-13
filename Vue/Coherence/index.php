@@ -1,4 +1,4 @@
-hi<?php 
+<?php 
     $this->titreEntete = 'Administrateur';
     $this->stylesCss = '
     <!-- MetisMenu CSS -->
@@ -19,85 +19,32 @@ hi<?php
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li><a href='http://localhost/Gestion-Publications-UTT/index.php?controleur=admin'><i class="fa fa-book fa-fw"></i> Liste des comptes</a></li>
-                        <li><a href="PagePublications.php"><i class="fa fa-question fa-fw"></i> Cohérence</a></li>
-                        <li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Statistiques</a></li>
+                         <li><a href='index.php?controleur=admin'><i class="fa fa-book fa-fw"></i> Liste des comptes</a></li>
+                        <li><a href="index.php?controleur=coherence"><i class="fa fa-question fa-fw"></i> Cohérence</a></li>
+                        <li><a href="index.php?controleur=statistiques"><i class="fa fa-bar-chart-o fa-fw"></i> Statistiques</a></li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-        <!-- Popup recherche-->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">connexion</h4>
-          </div>
-            <form method="POST" action="PagePublications.php">
-              
-                <div class="modal-body"><ul class="nav nav-tabs">
-                  <li class="active"><a data-toggle="tab" href="#home">Recherche Publications Chercheur</a></li>
-                  <li><a data-toggle="tab" href="#menu1">Recherche Laboratoire à partir d'une année</a></li>
-                  <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-                </ul>
-                <div class="tab-content">
-                  <div id="home" class="tab-pane fade in active">
-                      <br/><h4>Recherche Publications Chercheur</h4><br/><br/>
-                          <input type="text" name="recherche">
-                  </div>
-                  <div id="menu1" class="tab-pane fade">
-                    <br/><h4>Recherche Laboratoire à partir d'une année</h4><br/><br/>
-                    <input type="text" name="recherche" placeholder="Laboratoire">
-                          <input type="text" name="Année" placeholder="Année">
-                  </div>
-                  <div id="menu2" class="tab-pane fade">
-                    <h3>Menu 2</h3>
-                    <p>Some content in menu 2.</p>
-                  </div>
-                </div>
-          </div>
-                
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-            <input type="submit" class="btn btn-primary" value="rechercher">
-          </div></form>
-        </div>
-      </div>
-    </div>
+        <?php //var_dump($TitreVide);var_dump($AuteurUTT);var_dump($TypeVide);var_dump($LieuVide);?>
     <div id="page-wrapper">
         <div class="row">
           <div class="col-lg-12">
-             <h1 class="page-header">Administration</h1><!-- ELEMENT SPECIFIQUE -->
+             <h1 class="page-header">Cohérence des données</h1><!-- ELEMENT SPECIFIQUE -->
           </div>
           <!-- /.col-lg-12 -->
         </div>
         <div id="contenu">
-            Il y a <?= $nbPublications ?> publications enregistrées sur le site, écrites par <?= $nbChercheurs ?> chercheurs.</br> 
             <!--<a id="lienDeco" href="index.php?controleur=connexion&action=deconnecter">Se déconnecter</a>-->
             
-            
-            <?php foreach($comptes as $compte) :?>
+            <!--Erreur TitreVide -->
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-bar-chart-o fa-fw"></i>
-                        Voici le compte <?= $compte->getId(); ?>
-                    </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="table-responsive">
-                                <!-- les infos de l'auteur-->
-                                <div class="col-lg-12">
-            <!-- /.panel -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                        Informations du compte
+                        Les publications avec des titres vides
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -107,21 +54,23 @@ hi<?php
                                 <table class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Nom</th>
-                                            <th>Prenom</th>
-                                            <th>Equipe</th>
-                                            <th>login</th>
-                                            <th>Mdp</th>
+                                            <th>Id</th>
+                                            <th>Référence</th>
+                                            <th>Année</th>
+                                            <th>Catégorie</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php if(sizeof($TitreVide>0)) :?>
+                                        <?php foreach($TitreVide as $TV) :?>
                                         <tr>
-                                            <td><?= $compte->getNom(); ?></td>
-                                            <td><?= $compte->getPrenom(); ?></td>
-                                            <td><?= $compte->getEquipe(); ?></td>
-                                            <td><?= $compte->getLogin(); ?></td>
-                                            <td><?= $compte->getMdp(); ?></td>
+                                            <td><?= $TV->getId(); ?></td>
+                                            <td><?= $TV->getRef(); ?></td>
+                                            <td><?= $TV->getAnnee(); ?></td>
+                                            <td><?= $TV->getCategorie(); ?></td>
                                         </tr>
+                                    <?php endforeach; ?>
+                                    <?php endif;?>    
                                     </tbody>
                                 </table>
                             </div>
@@ -130,15 +79,13 @@ hi<?php
                             <div id="morris-bar-chart"></div>
                         </div></div></div></div></div>
     <!-- On passe sur la partie suivante avec toutes les publications de l'auteur 1-->
-        <?php if(sizeof($compte->getPublications($compte->getId()))>0) :?>
-        <?php foreach($compte->getPublications($compte->getId()) as $publication) :?>
         <div class="col-lg-12">
             <?php //foreach($compte->getPublications($compte->getId()) as $publication ) :?>
             <!-- /.panel -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-bar-chart-o fa-fw"></i>
-                        Publication
+                        Liste des auteurs UTT qui ne participent pas à une équipe de l'UTT
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -148,25 +95,23 @@ hi<?php
                                 <table class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Auteurs</th>
-                                            <th>Label</th>
-                                            <th>Annee</th>
-                                            <th>Statut</th>
+                                            <th>Id</th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Equipe</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php if(sizeof($AuteurUTT>0)) :?>
+                                        <?php foreach($AuteurUTT as $AU) :?>
                                         <tr>
-                                            <td>
-                                                <?php foreach($publication->getAuteurs() as $auteur) :?>
-                                                  <a href= "index.php?controleur=publication&action=publicationsChercheur&id=">
-                                                    <?php echo $auteur->getNom() . ' ' . $auteur->getPrenom() . ' </br>' ?> 
-                                                  </a>
-                                                <?php endforeach; ?>
-                                            </td>
-                                            <td><?php echo $publication->getRef();?></td>
-                                            <td><?php echo $publication->getAnnee();?></td>
-                                            <td><?php echo $publication->getStatut();?></td>
+                                            <td><?= $AU->getId(); ?></td>
+                                            <td><?= $AU->getNom(); ?></td>
+                                            <td><?= $AU->getPrenom(); ?></td>
+                                            <td><?= $AU->getEquipe(); ?></td>
                                         </tr>
+                                    <?php endforeach; ?>
+                                    <?php endif;?>    
                                     </tbody>
                                 </table>
                             </div>
@@ -174,16 +119,105 @@ hi<?php
                         <div class="col-lg-12">
                             <div id="morris-bar-chart"></div>
                         </div></div></div></div></div>
-    <?php endforeach; ?>
-    <?php endif; ?>                        
-                            </div></div></div></div></div></div>
-    <?php endforeach; ?>
+    <!-- Erreur suivante-->
+    <div class="col-lg-12">
+            <?php //foreach($compte->getPublications($compte->getId()) as $publication ) :?>
+            <!-- /.panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        La liste des catégories qui n'ont pas une catégorie homologuée
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Titre</th>
+                                            <th>Référence</th>
+                                            <th>Année</th>
+                                            <th>Statut</th>
+                                            <th>Categorie</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php if(sizeof($TypeVide>0)) :?>
+                                        <?php foreach($TypeVide as $TYV) :?>
+                                        <tr>
+                                            <td><?= $TYV->getId(); ?></td>
+                                            <td><?= $TYV->getTitre(); ?></td>
+                                            <td><?= $TYV->getRef(); ?></td>
+                                            <td><?= $TYV->getAnnee(); ?></td>
+                                            <td><?= $TYV->getStatut(); ?></td>
+                                            <td><?= $TYV->getType(); ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    <?php endif;?> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div id="morris-bar-chart"></div>
+                        </div></div></div></div></div>
+    
+    
+    <!-- Erreur suivante-->
+    
+    
+    <div class="col-lg-12">
+            <?php //foreach($compte->getPublications($compte->getId()) as $publication ) :?>
+            <!-- /.panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        Les Conférences qui ont un lieu vide
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Titre</th>
+                                            <th>Référence</th>
+                                            <th>Année</th>
+                                            <th>Statut</th>
+                                            <th>Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php if(sizeof($LieuVide>0)) :?>
+                                        <?php foreach($LieuVide as $LIV) :?>
+                                        <tr>
+                                            <td><?= $LIV->getId(); ?></td>
+                                            <td><?= $LIV->getTitre(); ?></td>
+                                            <td><?= $LIV->getRef(); ?></td>
+                                            <td><?= $LIV->getAnnee(); ?></td>
+                                            <td><?= $LIV->getStatut(); ?></td>
+                                            <td><?= $LIV->getType(); ?></td>
+                                        </tr>
+                                    <?php endforeach;?>
+                                    <?php endif;?> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div id="morris-bar-chart"></div>
+                        </div></div></div></div></div>
+        
+            </div>
         
         
-        
-        
-        
-        </div>
+       
        <div class="row">
                 <div class="col-lg-2">
                 </div>

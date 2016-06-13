@@ -28,6 +28,42 @@ Class Administrateur extends Modele{
     
     function detectionCoherenceDonnees(){
         
+        //$admin = new Administrateur();
+        //$comptes = $admin->getUtilisateurs();
+        //$chercheur->getPublications();
+        
+        $TitreVide =array();$AuteurUTT =array();$TypeVide =array();$LieuVide =array();
+        //erreurs titres vides
+        $reqTitreVide = 'SELECT * FROM Publication WHERE Publication.titre_article IS null ';
+            $reponseTitreVide = $this->executerRequete($reqTitreVide);
+            while($donneesTitreVide = $reponseTitreVide->fetch()){
+                $TitreVide[] = new Publication($donneesTitreVide['id'],null,$donneesTitreVide['titre_article'],$donneesTitreVide['reference_publication'],$donneesTitreVide['annee'],$donneesTitreVide['statut'],$donneesTitreVide['categorie'],$donneesTitreVide['lieu']); 
+            }
+            //return $TitreVide;
+        //erreurs auteur vide
+            $reqAuteurUTT = "SELECT * FROM Auteur WHERE organisation = 'UTT' and (equipe != 'CREIDD' AND equipe != 'ERA' AND equipe != 'GAMMA3' AND equipe != 'LASMIS' AND equipe != 'LM2S' AND equipe != 'LNIO' AND equipe != 'LOSI' AND equipe != 'tech-CICO')";
+            $reponseAuteurUTT = $this->executerRequete($reqAuteurUTT);
+            while($donneesAuteurUTT = $reponseAuteurUTT->fetch()){
+                $AuteurUTT[] =  new Chercheur($donneesAuteurUTT['id'],$donneesAuteurUTT['nom'],$donneesAuteurUTT['prenom'],$donneesAuteurUTT['organisation'],$donneesAuteurUTT['equipe']); 
+            }
+        //erreurs type vide
+        $reqTypeVide = "SELECT * FROM Publication WHERE categorie != 'CI' AND categorie != 'CF' AND categorie != 'RI' AND categorie != 'RF' AND categorie != 'OS' AND categorie != 'TD' AND categorie != 'BV' AND categorie != 'AP'";
+            $reponseTypeVide = $this->executerRequete($reqTypeVide);
+            while($donneesTypeVide = $reponseTypeVide->fetch()){
+                $TypeVide[] = new Publication($donneesTypeVide['id'],null,$donneesTypeVide['titre_article'],$donneesTypeVide['reference_publication'],$donneesTypeVide['annee'],$donneesTypeVide['statut'],$donneesTypeVide['categorie'],$donneesTypeVide['lieu']); 
+            }
+        //erreurs type CI || CF avec avec aucun lieu
+        $reqLieuVide = "SELECT * FROM Publication WHERE (categorie = 'CI' OR categorie = 'CF') AND lieu IS null ";
+            $reponseLieuVide = $this->executerRequete($reqLieuVide);
+            while($donneesLieuVide = $reponseLieuVide->fetch()){
+                $LieuVide[] = new Publication($donneesLieuVide['id'],null,$donneesLieuVide['titre_article'],$donneesLieuVide['reference_publication'],$donneesLieuVide['annee'],$donneesLieuVide['statut'],$donneesLieuVide['categorie'],$donneesLieuVide['lieu']); 
+            }
+            
+            
+            $result= array($TitreVide,$AuteurUTT,$TypeVide,$LieuVide);
+            return $result;
+            
+            
     }
     function statistiquesChercheurs(){
         //me faut :  //nbpublication-OK annéemax anneemin nbpublié nbCI  nbRI nb CF 

@@ -10,8 +10,9 @@
         private $ref;
         private $annee;
         private $statut;
-    
-        public function __construct($id, $auteurs, $titre, $ref, $annee, $statut, $type) {
+        private $lieu;
+        
+        public function __construct($id, $auteurs, $titre, $ref, $annee, $statut, $type, $lieu =null) {
 		$this->id = $id;	
         	$this->auteurs = $auteurs;
 		$this->titre = $titre;
@@ -19,6 +20,7 @@
 		$this->annee = $annee;
 		$this->statut = $statut;
                 $this->type = $type;
+                $this->lieu = $lieu;
         }
     
 	public function getId(){return $this->id;}
@@ -41,6 +43,9 @@
         
         public function getType(){return $this->type;}
 	public function setType($type){$this->type = $type;}
+        
+        public function getLieu(){return $this->lieu;}
+	public function setLieu($lieu){$this->lieu = $lieu;}
 
 	public function verificationAuteur(Chercheur $auteurIncertain){
 		foreach($this->getAuteurs() as $auteurCertain){
@@ -93,9 +98,14 @@
                     $idAuteurs[] = new Chercheur($donneesAuteurs['id'], $donneesAuteurs['nom'], $donneesAuteurs['prenom'], $donneesAuteurs['organisation'], $donneesAuteurs['equipe']);
                 }
                 //On viens créer un objet publication que l'on ajoute aux autres publication 
-                //potentiellement déja trouvées 
+                //potentiellement déja trouvées
+                if($donneesPublication['categorie'] === 'CI' || $donneesPublication['lieu'] === 'CF'){    
+                    $publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie'] ,$donneesPublication['lieu']);
+                }
+            else{    
                 $publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie']);
-                 unset($idAuteurs);
+                }
+                unset($idAuteurs);
             }
             return $publications;
         }           
