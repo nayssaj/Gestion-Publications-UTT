@@ -11,10 +11,14 @@
             $this->chercheur = new Chercheur('1', 'michel', 'dupont', 'UTT', 'equipe');
         }
 
-        public function index(){
+        public function index(){}
+
+        public function coAuteur(){
             $nomChercheur = $this->requete->getParametre('a2');
             $prenomChercheur = $this->requete->getParametre('a1');
-            $titrePage = 'Co-Auteurs de ' . $prenomChercheur . ' '. $nomChercheur;
-            $this->genererVue(array('titrePage' => $titrePage));
+            $titrePage = 'Co-Auteurs des publications de  ' . $prenomChercheur . ' '. $nomChercheur;
+            $auteurs = $this->chercheur->coAuteurs($this->chercheur->getChercheurNom($nomChercheur, $prenomChercheur));
+            $donneesSpecifiques = array('titrePage' => $titrePage, 'auteurs' => $auteurs);
+            $this->genererVue($donneesSpecifiques, "index");
         }
     }

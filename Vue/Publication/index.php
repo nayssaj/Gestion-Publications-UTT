@@ -48,7 +48,7 @@
             </button>
             <h4 class="modal-title" id="myModalLabel">Recherche avancée</h4>
           </div>
-            <form method="POST" class="laaction" action="index.php?controleur=publicationCategorie&action=modeRecherche">
+            <form method="POST" class="laaction" action="">
                 <div class="modal-body">
                 <br/><h4>Voici les différents types de recherche</h4><br/><br/>
                             

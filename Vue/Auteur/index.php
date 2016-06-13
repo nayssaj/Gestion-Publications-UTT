@@ -1,5 +1,5 @@
 <?php 
-    $this->titreEntete = 'Statistiques';
+    $this->titreEntete = 'Auteurs';
     $this->stylesCss = '
     <!-- MetisMenu CSS -->
     <link href="bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
@@ -112,16 +112,19 @@
                                             <table class="table table-bordered table-hover table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nom</th>
-                                                        <th>Prenom</th>
+                                                        <th>Chercheur</th>
                                                         <th>Organisation</th>
                                                         <th>Laboratoire</th>
-                                                        <th>Publications communes</th>
+                                                        <th>Nombre de publications communes</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php foreach($auteurs as $auteur) :?>
                                                         <tr>
+                                                            <td><?= $auteur[0]->getPrenom() . ' ' . $auteur[0]->getNom() ?></td>
+                                                            <td><?= $auteur[0]->getOrganisation() ?></td>
+                                                            <td><?= $auteur[0]->getEquipe() ?></td>
+                                                            <td><?= $auteur[1] ?></td>
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>

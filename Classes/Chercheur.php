@@ -80,6 +80,19 @@
             return $chercheur;
         }
 
+        public function coAuteurs($idChercheur){
+            $sql = 'SELECT Auteur.*, COUNT( * ) FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Auteur_id != ? AND redige.Publication_id IN (SELECT redige.Publication_id FROM redige WHERE redige.Auteur_id = ?) GROUP BY Auteur.id ORDER BY COUNT(*) DESC';
+            $resultat = $this->executerRequete($sql, array($idChercheur, $idChercheur));
+            while($donneesAuteur = $resultat->fetch()){
+                //$donneesAuteur = $auteur[
+                $auteur = new Chercheur($donneesAuteur['id'], $donneesAuteur['nom'], $donneesAuteur['prenom'], $donneesAuteur['organisation'], $donneesAuteur['equipe']); 
+                $nombreCoPublication = $donneesAuteur['COUNT( * )'];
+                $auteurCompte = array($auteur, $nombreCoPublication);
+                $auteurs[] = $auteurCompte;
+            } 
+            return $auteurs;
+        }
+
         public function getChercheurNom($nom, $prenom){
             $sql = 'SELECT id FROM Auteur WHERE nom = ? AND prenom = ?';
             $resultat = $this->executerRequete($sql, array($nom, $prenom));

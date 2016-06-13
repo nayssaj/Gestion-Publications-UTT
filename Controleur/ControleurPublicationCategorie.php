@@ -41,9 +41,11 @@
                 }
             }
 
-            public function publicationsChercheurNom($prenom, $nom){
+            public function publicationsChercheurNom(){
                 try{
-                    $idChercheur = $this->chercheur->getChercheurNom($nom, $prenom);
+                    $prenomChercheur = $this->requete->getParametre('a1');
+                    $nomChercheur = $this->requete->getParametre('a2');
+                    $idChercheur = $this->chercheur->getChercheurNom($nomChercheur, $prenomChercheur);
                     $nomChercheur = $this->chercheur->getChercheur($idChercheur)->getNom();
                     $prenomChercheur = $this->chercheur->getChercheur($idChercheur)->getPrenom();
                     $titrePage = 'Publications de ' . $prenomChercheur . ' ' .$nomChercheur;
@@ -65,22 +67,10 @@
                 }
             }
 
-            public function modeRecherche(){
-                if($this->requete->getParametre('type') == 1){
-                    $prenomChercheur = $this->requete->getParametre('a1');
-                    $nomChercheur = $this->requete->getParametre('a2');
-                    $this->publicationsChercheurNom($prenomChercheur, $nomChercheur);
-                }
-                elseif($this->requete->getParametre('type') == 2){
+            public function publicationsLaboratoire(){
+                try{
                     $laboratoire = $this->requete->getParametre('a1');
                     $annee = $this->requete->getParametre('a2');
-                    $this->publicationLaboratoire($annee, $laboratoire);
-                }
-
-            }
-
-            public function publicationLaboratoire($annee, $laboratoire){
-                try{
                     $titrePage = "Publications de l'équipe " . $laboratoire . ' depuis ' . $annee;
                     $publicationsCategories = array();
                     foreach($this->categories as $cle => $categorie){
