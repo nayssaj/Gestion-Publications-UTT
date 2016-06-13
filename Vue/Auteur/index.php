@@ -1,6 +1,5 @@
 <?php 
-    $this->titreEntete = 'Publications';
-    $this->script = "<script src='styles/jquery/monjqueryRecherche.js'></script>";
+    $this->titreEntete = 'Statistiques';
     $this->stylesCss = '
     <!-- MetisMenu CSS -->
     <link href="bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
@@ -10,11 +9,13 @@
     <link href="bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="bootstrap/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Alertes JS -->
     <link href="styles/css/Moncss.css" rel="stylesheet" type="text/css">';
-?> 
+ ?> 
 
- <nav>
+<nav>
       <!-- /.navbar-top-links -->
       <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
@@ -31,7 +32,7 @@
             <!-- /input-group -->
             </li>
             <li><a data-toggle="modal" data-target="#myModal"><i class="fa fa-question fa-fw"></i>Recherche Avancée</a></li>
-            <li><a href="index.php?controleur=publication"><i class="fa fa-book fa-fw"></i>Publications</a></li>
+            <li><a href="index.php?controleur=publicationCategorie"><i class="fa fa-book fa-fw"></i>Publications</a></li>
           </ul>
         </div>
         <!-- /.sidebar-collapse -->
@@ -48,7 +49,7 @@
             </button>
             <h4 class="modal-title" id="myModalLabel">Recherche avancée</h4>
           </div>
-            <form method="POST" action="index.php?controleur=publication&action=publicationsChercheurNom">
+            <form method="POST" action="index.php?controleur=publicationCategorie&action=modeRecherche">
                 <div class="modal-body">
                 <br/><h4>Voici les différents types de recherche</h4><br/><br/>
                             
@@ -93,71 +94,45 @@
       </div>
     </div>
     <div id="page-wrapper">
-      <div class="row">
-        <div class="col-lg-12">
-           <h1 class="page-header"><?= $titrePage ?></h1><!-- ELEMENT SPECIFIQUE -->
-        </div>
-        <!-- /.col-lg-12 -->
-      </div>
-      <div id="contenu">
-      <?php foreach($publicationsCategories as $publicationCategorie): ?>
-        <?php if(isset($publicationCategorie['publications'])): ?>
-        <h3><?= $publicationCategorie['titre'] ?></h3>
-          <?php foreach($publicationCategorie['publications'] as $publication) :?>
-              <div class="col-lg-12">
-              <!-- /.panel -->
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          <i class="fa fa-bar-chart-o fa-fw"></i>
-                      <?= $publication->getTitre() ?>
-                  </div>
-                  <!-- /.panel-heading -->
-                  <div class="panel-body">
-                      <div class="row">
-                          <div class="col-lg-12">
-                              <div class="table-responsive">
-                                  <table class="table table-bordered table-hover table-striped">
-                                      <thead>
-                                          <tr>
-                                              <th>Auteurs</th>
-                                              <th>Label</th>
-                                              <th>Annee</th>
-                                              <th>Statut</th>
-                                          </tr>
-                                      </thead>
-                                      <tbody>
-                                          <tr>
-                                              <td>
-                                                  <?php foreach($publication->getAuteurs() as $auteur) :?>
-                                                    <a href= "index.php?controleur=publication&action=publicationsChercheur&id=<?= $auteur->getId()?>">
-                                                      <?php echo $auteur->getNom() . ' ' . $auteur->getPrenom() . ' </br>' ?> 
-                                                    </a>
-                                                  <?php endforeach; ?>
-                                              </td>
-                                              <td><?php echo $publication->getRef();?></td>
-                                              <td><?php echo $publication->getAnnee();?></td>
-                                              <td><?php echo $publication->getStatut();?></td>
-                                          </tr>
-                                      </tbody>
-                                  </table>
-                              </div>
-                          </div>
-                          <div class="col-lg-12">
-                              <div id="morris-bar-chart"></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-  <?php endforeach; ?>
-<?php endif; ?>
-<?php endforeach; ?>
-
-
-      </div>
         <div class="row">
-                <div class="col-lg-2">
+          <div class="col-lg-12">
+             <h1 class="page-header"><?= $titrePage ?></h1><!-- ELEMENT SPECIFIQUE -->
+          </div>
+          <!-- /.col-lg-12 -->
+        </div>
+        <div id="contenu">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nom</th>
+                                                        <th>Prenom</th>
+                                                        <th>Organisation</th>
+                                                        <th>Laboratoire</th>
+                                                        <th>Publications communes</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach($auteurs as $auteur) :?>
+                                                        <tr>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
     </div>
-    <!-- /#page-wrapper -->

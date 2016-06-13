@@ -7,23 +7,36 @@
     class ControleurModificationPublication extends ControleurSecurise{
 
         private $chercheur;
-        private $publication1;
+        private $publication;
         
         function __Construct(){    
             $this->chercheur = new Chercheur_UTT('1', 'michel', 'dupont', 'UTT', 'equipe', 'login', 'mdp');
-            $this->publication1 = new Publication('1', array($this->chercheur), 'titre', 'ref', 'annee', 'statut', 'type');
+            $this->publication = new Publication('1', array($this->chercheur), 'titre', 'ref', 'annee', 'statut', 'type');
         }
         
         public function index(){
-            $publication2 = $this->publication1->getPublicationID($this->requete->getParametre('id'));
-            $this->genererVue(array('titrePage' => 'Modifier une publication', 'publication' => $publication2, 'auteurs_publi' => $publication2->getAuteurs()));
+            $publicationPage = $this->publication->getPublicationID($this->requete->getParametre('id'));
+            $this->genererVue(array('titrePage' => 'Modifier une publication', 'publication' => $publicationPage, 'auteurs_publi' => $publicationPage->getAuteurs()));
         }
 
         public function modificationPublication(){
-            $publication2 = $this->publication1->getPublicationID($this->requete->getParametre('id'));
+            $publicationPage = $this->publication->getPublicationID($this->requete->getParametre('id'));
+            if($this->requete->existeParametre('nom')){
+                $noms = $this->requete->getParametre('nom');
+                $prenoms = $this->requete->getParametre('prenom');
+                $organisations = $this->requete->getParametre('organisation');
+                $laboratoires = $this->requete->getParametre('departement');
+                for($i = 0; $i < count($noms); $i++){
+                    $nouveauChercheur = new Chercheur(null, $noms[$i], $prenoms[$i], $organisations[$i], $laboratoires[$i]); 
+                    $this->chercheur->ajouterChercheur($nouveauChercheur);
+                    $this->chercheur->ajouterAuteurPublication($publicationPage, $nouveauChercheur);
+                }
+            }
             $nouveauTitre = $this->requete->getParametre('titre');
-            $this->chercheur->modifierTitrePublication($publication2, $nouveauTitre);
-            $this->rediriger('profil', null, '1'); 
+            $this->chercheur->modifierTitrePublication($publicationPage, $nouveauTitre);
+            $nouveauStatut = $this->requete->getParametre('reference');
+            $this->chercheur->modifierLabelPublication($publicationPage, $nouveauStatut);
+            $this->rediriger('profil', null, $this->requete->getSession()->getAttribut('idUtilisateur')); 
         }
     }
 

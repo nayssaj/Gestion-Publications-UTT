@@ -85,9 +85,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div id="morris-bar-chart"></div>
                         </div></div></div></div></div>
                             </div></div></div></div></div></div>
         
