@@ -1,6 +1,7 @@
 <?php
 
     require_once 'Core/Modele.php';
+require_once ('Classes/Conference.php');
 
     class Publication extends Modele{
 
@@ -93,9 +94,14 @@
                     $idAuteurs[] = new Chercheur($donneesAuteurs['id'], $donneesAuteurs['nom'], $donneesAuteurs['prenom'], $donneesAuteurs['organisation'], $donneesAuteurs['equipe']);
                 }
                 //On viens créer un objet publication que l'on ajoute aux autres publication 
-                //potentiellement déja trouvées 
+                //potentiellement déja trouvées
+                if($donneesPublication['categorie'] === 'CI' || $donneesPublication['lieu'] === 'CF'){    
+                    $publications[] = new Conference($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie'] ,$donneesPublication['lieu']);
+                }
+            else{    
                 $publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie']);
-                 unset($idAuteurs);
+                }
+                unset($idAuteurs);
             }
             return $publications;
         }           
