@@ -48,7 +48,6 @@
               <li><a href="index.php?controleur=publication">Parcourir les publications</a></li>
               <?php if (isset($_SESSION['idUtilisateur'])): ?>
                 <li><a href="index.php?controleur=ajoutPublication">Ajouter un article</a></li>
-                <li><a href="index.php?controleur=modificationPublication">Modifier un article</a></li>
                 <li><a href="index.php?controleur=admin">Administration</a></li>
               <?php endif; ?>
             </ul>
