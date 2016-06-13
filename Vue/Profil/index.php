@@ -98,7 +98,7 @@
         <!-- /.col-lg-12 -->
       </div>
         <br/>
-            <h3>Vos Informations</h3>
+            <h3>Informations du compte</h3>
             <hr>
             <br/>
       <div id="contenu">

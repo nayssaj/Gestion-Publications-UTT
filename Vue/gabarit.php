@@ -67,7 +67,7 @@
                 <i class="fa fa-caret-down"></i>
               </a>
               <ul class="dropdown-menu dropdown-user">
-                <li><a href="index.php?controleur=profil&id=<?=$_SESSION['idUtilisateur']?>"><i class="fa fa-user fa-fw"></i> Mon Profil</a></li>
+                <li><a href="index.php?controleur=profil"><i class="fa fa-user fa-fw"></i> Mon Profil</a></li>
                 <li class="divider"></li>
                 <li><a href="index.php?controleur=connexion&action=deconnecter"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
               </ul>
