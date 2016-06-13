@@ -10,10 +10,10 @@
             private $chercheur;
 
             public function __construct(){
+                $this->chercheur = new Chercheur('1', 'michel', 'dupont', 'UTT', 'equipe');
             }
             
             public function index(){
-                $this->chercheur = new Chercheur('1', 'michel', 'dupont', 'UTT', 'equipe');
                 $idChercheur = $this->requete->getSession()->getAttribut('idUtilisateur');
                 $nomChercheur = $this->chercheur->getChercheur($idChercheur)->getNom();
                 $prenomChercheur = $this->chercheur->getChercheur($idChercheur)->getPrenom();

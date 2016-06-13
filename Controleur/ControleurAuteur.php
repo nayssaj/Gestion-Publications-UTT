@@ -14,7 +14,6 @@
         public function index(){
             $nomChercheur = $this->requete->getParametre('a2');
             $prenomChercheur = $this->requete->getParametre('a1');
-            echo $nomChercheur;
             $titrePage = 'Co-Auteurs de ' . $prenomChercheur . ' '. $nomChercheur;
             $this->genererVue(array('titrePage' => $titrePage));
         }
