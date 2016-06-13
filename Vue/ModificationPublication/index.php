@@ -59,8 +59,9 @@
                                                     <td><label class="fa fa-bars"></label></td>
                                                     <td><input class="form-control" type="text" value="<?= $a_p->getNom() ?>" name="nom[]" readonly></td>
                                                     <td><input class="form-control" type="text" value="<?= $a_p->getPrenom() ?>" name="prenom[]" readonly></td>
-                                                    <td><input class="form-control Maorga" type="text" value="<?= $a_p->getOrganisation() ?>" value="" name="organisation[]" readonly></td>
-                                                    <td><input class="form-control" type="text" value="<?= $a_p->getEquipe() ?>" value="" name="departement[]" readonly></td>
+                                                    <td><input class="form-control Maorga" type="text" value="<?= $a_p->getOrganisation() ?>" name="organisation[]" readonly></td>
+                                                    <td><input class="form-control" type="text" value="<?= $a_p->getEquipe() ?>" name="departement[]" readonly></td>
+                                                    <td><input class="form-control suppr" type="hidden" value="non" name="supprimer[]" readonly></td>
                                                     <td><label class="btn btn-primary B_aM2 glyphicon glyphicon-trash"></label></td>
                                                     </tr>
                                                 <?php endforeach; ?>
