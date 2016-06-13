@@ -95,7 +95,7 @@ Class Administrateur extends Modele{
                 $part1 = round((20*($nbpublication[$i]/($anneemax[$i] - $anneemin[$i] +1))), 1);
                 $part2 = round((20*($nbpublie[$i]/$nbpublication[$i])), 1);
                 $part3 = round((20*(($nbCI[$i] + $nbRI[$i])/$nbpublication[$i])), 1);
-                $part4 = round((20*(($nbCI[$i]+$nbRI[$i])/$nbpublication[$i])), 1);
+                $part4 = round((20*(($nbCI[$i] + $nbCF[$i])/$nbpublication[$i])), 1);
         //$pointsChercheur[$i] = ($nbpublication[$i]/($anneemax[$i] - $anneemin[$i] +1)) * ($nbpublie/$nbpublication[$i]) * (($nbCI + $nbRI)/$nbpublication[$i]) * (($nbCI+$nbRI)/$nbpublication[$i]);        
         $pointsChercheur[$i] = $part1 + $part2 + $part3 + $part4;
         $Resultat[$i] = array($Chercheur[$i]->getNom(),$Chercheur[$i]->getPrenom(),$Chercheur[$i]->getOrganisation(),$pointsChercheur[$i]);
