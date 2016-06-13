@@ -102,7 +102,6 @@
       <div id="contenu">
       <?php foreach($publicationsCategories as $publicationCategorie): ?>
         <?php if(isset($publicationCategorie['publications'])): ?>
-          
         <h3><?= $publicationCategorie['titre'] ?></h3>
           <?php foreach($publicationCategorie['publications'] as $publication) :?>
               <div class="col-lg-12">

@@ -16,7 +16,7 @@
         public function existeParametre($nom){
             return (isset($this->parametres[$nom]) && $this->parametres[$nom] != '');
         }
-        
+
         //Renvoi la valeur du parametre demandé
         //Lève une exception si le parametre est introuvable
         public function getParametre($nom){
