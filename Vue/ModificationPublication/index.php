@@ -54,14 +54,16 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="auteur-origin" >
-                                                <?php foreach($auteurs_publi as $a_p){ echo('
-                                                    <tr><td><label class="fa fa-bars"></label></td>
-                                                    <td><input class="form-control" type="text" value="'.$a_p->getNom().'" name="nom[]" disabled></td>
-                                                    <td><input class="form-control" type="text" value="'.$a_p->getPrenom().'" name="prenom[]" disabled></td>
-                                                    <td><input class="form-control Maorga" type="text" value="'.$a_p->getOrganisation().'" value="" name="organisation[]" disabled></td>
-                                                    <td><input class="form-control" type="text" value="'.$a_p->getEquipe().'" value="" name="departement[]" disabled></td>
+                                                <?php foreach($auteurs_publi as $a_p): ?>
+                                                    <tr>
+                                                    <td><label class="fa fa-bars"></label></td>
+                                                    <td><input class="form-control" type="text" value="<?= $a_p->getNom() ?>" name="nom[]" readonly></td>
+                                                    <td><input class="form-control" type="text" value="<?= $a_p->getPrenom() ?>" name="prenom[]" readonly></td>
+                                                    <td><input class="form-control Maorga" type="text" value="<?= $a_p->getOrganisation() ?>" value="" name="organisation[]" readonly></td>
+                                                    <td><input class="form-control" type="text" value="<?= $a_p->getEquipe() ?>" value="" name="departement[]" readonly></td>
                                                     <td><label class="btn btn-primary B_aM2 glyphicon glyphicon-trash"></label></td>
-                                                    </tr>');}?>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table><script>$("#sort3 tbody").sortable();</script>
                                     </div>
@@ -147,14 +149,14 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th>Lien de la publication<br/></th>
+                                                        <th>Label<br/></th>
                                                         <th>Catégorie<br/></th>
                                                         <th class="conf">Lieu</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td><input class="form-control" type="text" name="reference" disabled></td>
+                                                        <td><input class="form-control" type="text" name="reference"></td>
                                                         <td>
                                                             <select class="form-control Maclass" name="categorie" disabled>
                                                                 <option value ="RI">Article dans les revues internationales</option>
