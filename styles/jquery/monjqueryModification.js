@@ -132,15 +132,15 @@ $('.B_aM1').on('click', function(){
 $(document).on('click','.B_aM2' ,function(){
         //$('.auteur-origin').find('tr').prev().remove();
         if($(this).hasClass("btn-primary")){
-            $(".suppr").val('oui');
-            console.log($(".suppr").val());
+            $(this).closest('tr').find('.sup').val("oui");
             $(this).removeClass("btn-primary");
             $(this).addClass("btn-danger");
         }
         else{
-            $(".suppr").val('non');
-            console.log($(".suppr").val());
+            //$(".suppr").val('non');
+            $(this).closest('tr').find('.sup').val("non");
             $(this).removeClass("btn-danger");
             $(this).addClass("btn-primary");
         }
+      
 }); 

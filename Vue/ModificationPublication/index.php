@@ -61,7 +61,7 @@
                                                     <td><input class="form-control" type="text" value="<?= $a_p->getPrenom() ?>" name="prenom[]" readonly></td>
                                                     <td><input class="form-control Maorga" type="text" value="<?= $a_p->getOrganisation() ?>" name="organisation[]" readonly></td>
                                                     <td><input class="form-control" type="text" value="<?= $a_p->getEquipe() ?>" name="departement[]" readonly></td>
-                                                    <td><input class="form-control suppr" type="hidden" value="non" name="supprimer[]"></td>
+                                                    <td><input value="non" class="form-control sup" type="hidden" name="supprimer[]"></td>
                                                     <td><label class="btn btn-primary B_aM2 glyphicon glyphicon-trash"></label></td>
                                                     </tr>
                                                 <?php endforeach; ?>
