@@ -94,6 +94,7 @@
                 $reponseAuteurs = $this->executerRequete($reqAuteurs, array($donneesPublication['id']));
                 //On garde en mémoire la liste de tous les auteurs de la publication trouvée
                 //elle servira a créer l'objet publication associée à celle trouvée
+                $idAuteurs = array();
                 while($donneesAuteurs = $reponseAuteurs->fetch()){
                     $idAuteurs[] = new Chercheur($donneesAuteurs['id'], $donneesAuteurs['nom'], $donneesAuteurs['prenom'], $donneesAuteurs['organisation'], $donneesAuteurs['equipe']);
                 }

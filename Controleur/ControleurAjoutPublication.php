@@ -14,7 +14,8 @@
 
                 //Affiche le formlaire d'ajout
 		public function index(){
-                        $this->genererVue(array('titrePage' => 'Ajouter une publication'));
+                    $utilisateur = $this->chercheurUTT->getChercheur($this->requete->getSession()->getAttribut('idUtilisateur'));
+                    $this->genererVue(array('titrePage' => 'Ajouter une publication', 'nomDefaut' => $utilisateur->getNom(), 'prenomDefaut' => $utilisateur->getPrenom(), 'organisationDefaut' => $utilisateur->getOrganisation(), 'laboratoireDefaut' => $utilisateur->getEquipe()));
                 }
 
                 //Ajoute une publication dans la base correspondant aux données du formulaire 
@@ -42,6 +43,6 @@
                         $lieu = null;
 
                     $this->chercheurUTT->ajoutPublication($auteurs, $titre, $reference, $annee, $categorie, $lieu, $statut);
-                    $this->executerAction('index');
+                    $this->rediriger('publication');
         }
     }

@@ -17,7 +17,7 @@ $('.R2').on('click',function(){
 $('.R3').on('click',function(){
     $(".arg1").attr("placeholder", "Prénom");
     $(".arg2").attr("placeholder", "Nom");
-    $(".laaction").get(0).setAttribute('action', 'index.php?controleur=auteur&action=coAuteurs');
+    $(".laaction").get(0).setAttribute('action', 'index.php?controleur=publication&action=publicationsExterieures');
 });
 $('.R4').on('click',function(){
     $(".arg1").attr("placeholder", "Prénom");

@@ -57,10 +57,10 @@
                                     </thead>
                                     <tbody class="auteur-origin" >      
                                         <tr>
-                                            <td><input class="form-control verif" type="text" placeholder="Lemercier" value="" name="nom[]"></td>
-                                            <td><input class="form-control verif" type="text" placeholder="Marc" value="" name="prenom[]"></td>
-                                            <td><input class="form-control verif Maorga" type="text" placeholder="UTT" value="" name="organisation[]"></td>
-                                            <td><input class="form-control verif" type="text" placeholder="tech-CICO" value="" name="departement[]"></td>
+                                            <td><input class="form-control verif" type="text" value="<?= $nomDefaut ?>"  readonly name="nom[]"></td>
+                                            <td><input class="form-control verif" type="text" readonly value="<?= $prenomDefaut ?>" name="prenom[]"></td>
+                                            <td><input class="form-control verif Maorga" type="text" readonly value="<?= $organisationDefaut ?>" name="organisation[]"></td>
+                                            <td><input class="form-control verif" type="text" readonly value="<?= $laboratoireDefaut?>" name="departement[]"></td>
                                         </tr>   
                                     </tbody>
                                 </table>

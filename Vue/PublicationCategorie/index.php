@@ -31,7 +31,7 @@
             <!-- /input-group -->
             </li>
             <li><a data-toggle="modal" data-target="#myModal"><i class="fa fa-question fa-fw"></i>Recherche Avancée</a></li>
-            <li><a href="index.php?controleur=publication"><i class="fa fa-book fa-fw"></i>Publications</a></li>
+            <li><a href="index.php?controleur=publicationCategorie"><i class="fa fa-book fa-fw"></i>Publications</a></li>
           </ul>
         </div>
         <!-- /.sidebar-collapse -->

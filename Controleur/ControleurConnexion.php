@@ -23,8 +23,14 @@
                     $utilisateur = $this->utilisateur->getUtilisateur($login, $mdp);
                     $this->requete->getSession()->setAttribut("idUtilisateur", $utilisateur['utilisateur_id']);
                     $this->requete->getSession()->setAttribut("login", $utilisateur['login']);
+                    $this->requete->getSession()->setAttribut("droit", $utilisateur['droit_utilisateur']);
                     $idUtilisateur = $this->requete->getSession()->getAttribut('idUtilisateur');
-                    $this->rediriger('profil', null, $idUtilisateur);
+                    if($utilisateur['droit_utilisateur'] == 0){
+                        $this->rediriger('profil', null, $idUtilisateur);
+                    }
+                    else{
+                        $this->rediriger('admin');
+                    }
                 }
                 else{
                     throw new Exception("Combinaison login mot de passe incorrect"); 

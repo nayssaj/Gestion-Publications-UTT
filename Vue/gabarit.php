@@ -48,7 +48,6 @@
               <li><a href="index.php?controleur=publication">Parcourir les publications</a></li>
               <?php if (isset($_SESSION['idUtilisateur'])): ?>
                 <li><a href="index.php?controleur=ajoutPublication">Ajouter un article</a></li>
-                <li><a href="index.php?controleur=admin">Administration</a></li>
               <?php endif; ?>
             </ul>
           </li>
@@ -66,6 +65,10 @@
                 <i class="fa fa-caret-down"></i>
               </a>
               <ul class="dropdown-menu dropdown-user">
+                <?php if($_SESSION['droit'] == 1): ?>
+                <li><a href="index.php?controleur=admin"><i class="fa fa-university" aria-hidden="true"></i>
+Administration</a></li>
+                <?php endif; ?>
                 <li><a href="index.php?controleur=profil"><i class="fa fa-user fa-fw"></i> Mon Profil</a></li>
                 <li class="divider"></li>
                 <li><a href="index.php?controleur=connexion&action=deconnecter"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>

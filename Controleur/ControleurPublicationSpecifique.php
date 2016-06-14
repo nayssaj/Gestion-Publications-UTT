@@ -1,10 +1,10 @@
 <?php
 
-    require_once 'Controleur/ControleurSecurise.php';
+    require_once 'Core/Controleur.php';
     require_once 'Classes/Publication.php';
     require_once 'Classes/Chercheur_UTT.php';
 
-    class ControleurPublicationSpecifique extends ControleurSecurise{
+    class ControleurPublicationSpecifique extends Controleur{
 
         private $chercheur;
         private $publication1;

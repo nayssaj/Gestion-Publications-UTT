@@ -42,6 +42,9 @@
             }
 
             public function publicationsChercheurNom(){
+                if(!($this->requete->existeParametre('a1') && $this->requete->existeParametre('a2'))){
+                    throw new Exception("Paramètre de requete manquant");
+                }
                 try{
                     $prenomChercheur = $this->requete->getParametre('a1');
                     $nomChercheur = $this->requete->getParametre('a2');
@@ -68,6 +71,9 @@
             }
 
             public function publicationsLaboratoire(){
+                if(!($this->requete->existeParametre('a1') && $this->requete->existeParametre('a2'))){
+                    throw new Exception("Paramètre de requete manquant");
+                }
                 try{
                     $laboratoire = $this->requete->getParametre('a1');
                     $annee = $this->requete->getParametre('a2');

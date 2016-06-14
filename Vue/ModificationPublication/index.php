@@ -61,7 +61,7 @@
                                                     <td><input class="form-control" type="text" value="<?= $a_p->getPrenom() ?>" name="prenom[]" readonly></td>
                                                     <td><input class="form-control Maorga" type="text" value="<?= $a_p->getOrganisation() ?>" name="organisation[]" readonly></td>
                                                     <td><input class="form-control" type="text" value="<?= $a_p->getEquipe() ?>" name="departement[]" readonly></td>
-                                                    <td><input value="non" class="form-control sup" type="hidden" name="supprimer[]"></td>
+                                                    <td><input value="false" class="form-control sup" type="hidden" name="supprimer[]"></td>
                                                     <td><label class="btn btn-primary B_aM2 glyphicon glyphicon-trash"></label></td>
                                                     </tr>
                                                 <?php endforeach; ?>
@@ -96,7 +96,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td><input class="form-control TITRE" type="text" name="titre"></td>
+                                                        <td><input class="form-control TITRE" type="text" name="titre" value="<?= $titrePublication ?>"></td>
                                                         <td>
                                                             <select class="form-control" name="annee" disabled>
                                                                 <option value ="2016">2016</option>
@@ -157,7 +157,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td><input class="form-control" type="text" name="reference"></td>
+                                                        <td><input class="form-control" type="text" name="reference" value ="<?= $labelPublication ?>"></td>
                                                         <td>
                                                             <select class="form-control Maclass" name="categorie" disabled>
                                                                 <option value ="RI">Article dans les revues internationales</option>

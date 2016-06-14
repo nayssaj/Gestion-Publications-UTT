@@ -49,6 +49,7 @@
                 $reponseAuteurs = $this->executerRequete($reqAuteurs, array($donneesPublication['id'])); 
                 //On garde en mémoire la liste de tous les auteurs de la publication trouvée
                 //elle servira a créer l'objet publication associée à celle trouvée
+                $idAuteurs = array();
                 while($donneesAuteurs = $reponseAuteurs->fetch()){
                     $idAuteurs[] = new Chercheur($donneesAuteurs['id'], $donneesAuteurs['nom'], $donneesAuteurs['prenom'], $donneesAuteurs['organisation'], $donneesAuteurs['equipe']); 
                 }
@@ -89,8 +90,14 @@
                 $nombreCoPublication = $donneesAuteur['COUNT( * )'];
                 $auteurCompte = array($auteur, $nombreCoPublication);
                 $auteurs[] = $auteurCompte;
-            } 
-            return $auteurs;
+            }
+            if (empty($auteurs)){
+                throw new Excpetion("Aucun co auteur trouvé pour ce chercheur");    
+            }
+            else{
+                echo 'ici';
+                return $auteurs;
+            }
         }
 
         public function getChercheurNom($nom, $prenom){
@@ -102,6 +109,32 @@
             }
             else{
                 throw new ChercheurAbsentException("Aucune publication trouvée pour ce chercheur");
+            }
+        }
+
+        public function getPublisExterieures($nom, $prenom){
+            $sql = "SELECT Publication.* FROM Publication, redige, Auteur WHERE Publication.id IN (SELECT redige.Publication_id FROM redige,Publication WHERE redige.Auteur_id IN (SELECT Auteur.id FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Auteur_id != ? AND Auteur.organisation != 'UTT' AND redige.Publication_id IN (SELECT redige.Publication_id FROM redige WHERE redige.Auteur_id = ?)GROUP BY Auteur.id)GROUP BY Publication.id)GROUP BY Publication.id";
+            $resultat = $this->executerRequete($sql, array($nom, $prenom));
+            while($donneesPublication = $resultat->fetch()){
+                //On cherche tous les auteurs de la publication trouvée
+                $reqAuteurs = 'SELECT Auteur.* FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Publication_id = ? ORDER BY redige.place';
+                $reponseAuteurs = $this->executerRequete($reqAuteurs, array($donneesPublication['id'])); 
+                //On garde en mémoire la liste de tous les auteurs de la publication trouvée
+                //elle servira a créer l'objet publication associée à celle trouvée
+                $idAuteurs = array();
+                while($donneesAuteurs = $reponseAuteurs->fetch()){
+                    $idAuteurs[] = new Chercheur($donneesAuteurs['id'], $donneesAuteurs['nom'], $donneesAuteurs['prenom'], $donneesAuteurs['organisation'], $donneesAuteurs['equipe']); 
+                }
+                //On viens créer un objet publication que l'on ajoute aux autres publication 
+                //potentiellement déja trouvées 
+                $publications[] = new Publication($donneesPublication['id'], $idAuteurs, $donneesPublication['titre_article'], $donneesPublication['reference_publication'], $donneesPublication['annee'], $donneesPublication['statut'], $donneesPublication['categorie']);
+                unset($idAuteurs);
+            }
+            if (empty($publications)){
+                throw new Exception("Aucune publication trouvée");
+            }
+            else{
+                return $publications;
             }
         }
 

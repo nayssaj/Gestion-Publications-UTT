@@ -14,6 +14,9 @@
         public function index(){}
 
         public function coAuteur(){
+            if(!($this->requete->existeParametre('a1') && $this->requete->existeParametre('a2'))){
+                    throw new Exception("Paramètre de requete manquant");
+            }
             $nomChercheur = $this->requete->getParametre('a2');
             $prenomChercheur = $this->requete->getParametre('a1');
             $titrePage = 'Co-Auteurs des publications de  ' . $prenomChercheur . ' '. $nomChercheur;

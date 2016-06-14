@@ -16,7 +16,7 @@
         
         public function index(){
             $publicationPage = $this->publication->getPublicationID($this->requete->getParametre('id'));
-            $this->genererVue(array('titrePage' => 'Modifier une publication', 'publication' => $publicationPage, 'auteurs_publi' => $publicationPage->getAuteurs()));
+            $this->genererVue(array('titrePage' => 'Modifier une publication', 'titrePublication' => $publicationPage->getTitre(), 'publication' => $publicationPage, 'auteurs_publi' => $publicationPage->getAuteurs(), 'labelPublication' => $publicationPage->getRef()));
         }
 
         public function modificationPublication(){
@@ -26,23 +26,30 @@
                 $prenoms = $this->requete->getParametre('prenom');
                 $organisations = $this->requete->getParametre('organisation');
                 $laboratoires = $this->requete->getParametre('departement');
+                $suppression = $this->requete->getParametre('supprimer');
                 for($i = 0; $i < count($noms); $i++){
                     $nouveauChercheur = new Chercheur(null, $noms[$i], $prenoms[$i], $organisations[$i], $laboratoires[$i]); 
-                    $this->chercheur->ajouterChercheur($nouveauChercheur);
-                    $this->chercheur->ajouterAuteurPublication($publicationPage, $nouveauChercheur);
-                    $this->chercheur->setPlaceAuteur($publicationPage, $nouveauChercheur, $i + 1); 
+                    if($this->chercheur->verificationAuteurBase($nouveauChercheur)){
+                        $idChercheur = $this->chercheur->verificationAuteurBase($nouveauChercheur);
+                        $nouveauChercheur = $this->chercheur->getChercheur($idChercheur);
+                    }
+                    if(!strcmp('true',$suppression[$i])){
+                        $this->chercheur->retirerAuteur($publicationPage, $nouveauChercheur);
+                    }
+                    else{
+                        $this->chercheur->ajouterChercheur($nouveauChercheur);
+                        $this->chercheur->ajouterAuteurPublication($publicationPage, $nouveauChercheur);
+                        $this->chercheur->setPlaceAuteur($publicationPage, $nouveauChercheur, $i + 1); 
+                    }
                 }
             }
-            echo '<pre>';
-            print_r($_POST);
-            echo '</pre>';
-            /*
             $nouveauTitre = $this->requete->getParametre('titre');
             $this->chercheur->modifierTitrePublication($publicationPage, $nouveauTitre);
-            $nouveauStatut = $this->requete->getParametre('reference');
-            $this->chercheur->modifierLabelPublication($publicationPage, $nouveauStatut);
+            $nouveauLabel = $this->requete->getParametre('reference');
+            $this->chercheur->modifierLabelPublication($publicationPage, $nouveauLabel);
+            $nouveauStatut = $this->requete->getParametre('statut');
+            $this->chercheur->modifierStatutPublication($publicationPage, $nouveauStatut);
             $this->rediriger('profil', null, $this->requete->getSession()->getAttribut('idUtilisateur')); 
-            */
         }
     }
 
