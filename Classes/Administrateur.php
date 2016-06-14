@@ -105,12 +105,13 @@ Class Administrateur extends Modele{
     }
 
     public function ajouterUtilisateur(Chercheur_UTT $nouvelUtilisateur){
-        $sql = 'INSERT INTO Comptes VALUES(?, ?, ?);';
+        $sql = 'INSERT INTO Comptes VALUES(?, ?, ?, ?);';
         $this->executerRequete($sql, 
             array(
                 $nouvelUtilisateur->getID(),
                 $nouvelUtilisateur->getLogin(),
                 $nouvelUtilisateur->getMdp(),
+                0
             ));
     }
 }
