@@ -58,9 +58,6 @@
                 
 
 		public function modifierLabelPublication(Publication $publication, $label){
-			if(!$publication->verificationAuteur($this)){
-		            throw new Exception('Vous n\'etes pas auteur de ce fichier');	
-			}
                         if($publication->getStatut() != $label){
 			    $sql = 'UPDATE Publication SET reference_publication = ? WHERE id = ?';
 			    $this->executerRequete($sql, array($label, $publication->getId()));
@@ -68,9 +65,6 @@
 		}
 
 		public function modifierStatutPublication(Publication $publication, $statut){
-			if(!$publication->verificationAuteur($this)){
-		            throw new Exception('Vous n\'etes pas auteur de ce fichier');	
-			}
                         if($publication->getStatut() != $statut){
 			    $sql = 'UPDATE Publication SET statut = ? WHERE id = ?';
 			    $this->executerRequete($sql, array($statut, $publication->getId()));
@@ -78,9 +72,6 @@
 		}
 
 		public function modifierTitrePublication(Publication $publication, $titre){
-			if(!$publication->verificationAuteur($this)){
-		            throw new Exception('Vous n\'etes pas auteur de ce fichier');	
-			}
 			if($publication->getTitre() != $titre){
 			    $sql = 'UPDATE Publication SET titre_article = ? WHERE id = ?';
 			    $this->executerRequete($sql, array($titre, $publication->getId()));
@@ -103,9 +94,6 @@
 		}
 
 		public function ajouterAuteurPublication(Publication $publication, Chercheur $chercheur){
-			if(!$publication->verificationAuteur($this)){
-		            throw new Exception('Vous n\'etes pas auteur de ce fichier');	
-			}
 			//On verifie que l'auteur n'est pas déja indiqué dans la liste des auteurs
 			if(!$publication->verificationAuteur($chercheur)){
 			    $sql = 'INSERT INTO redige(Publication_id, Auteur_id, place) VALUES (?, ?, ?)';

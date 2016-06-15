@@ -59,7 +59,7 @@
                         $publicationsCategories[] = $publicationsCategorie;
                     }
                     $donneesSpecifiques = array('publicationsCategories' => $publicationsCategories, 'titrePage' => $titrePage);
-                    $this->genererVue($donneesSpecifiques, "index");
+                    //$this->genererVue($donneesSpecifiques, "index");
                 }
                 catch(ChercheurAbsentException $e){
                     throw $e;
