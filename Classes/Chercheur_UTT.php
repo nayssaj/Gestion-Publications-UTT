@@ -102,9 +102,6 @@
 		}
 
 		public function retirerAuteur(Publication $publication, Chercheur $chercheur){
-			if(!$publication->verificationAuteur($this)){
-			    throw new Exception('Vous n\'etes pas auteur de ce fichier');	
-			}
 			//On verifie que l'auteur est bien présent 
 			if($publication->verificationAuteur($chercheur)){
 			    $sql = 'DELETE FROM redige WHERE Auteur_id = ? AND Publication_id = ?'; 
