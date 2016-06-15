@@ -15,8 +15,14 @@
         }
         
         public function index(){
+            $auteurPublication = $this->chercheur->getChercheur($this->requete->getSession()->getAttribut('idUtilisateur'));
             $publicationPage = $this->publication->getPublicationID($this->requete->getParametre('id'));
-            $this->genererVue(array('titrePage' => 'Modifier une publication', 'titrePublication' => $publicationPage->getTitre(), 'publication' => $publicationPage, 'auteurs_publi' => $publicationPage->getAuteurs(), 'labelPublication' => $publicationPage->getRef()));
+            if($publicationPage->verificationAuteur($auteurPublication)){
+                $this->genererVue(array('titrePage' => 'Modifier une publication', 'titrePublication' => $publicationPage->getTitre(), 'publication' => $publicationPage, 'auteurs_publi' => $publicationPage->getAuteurs(), 'labelPublication' => $publicationPage->getRef()));
+            }
+            else{
+                throw new Exception("Vous n'etes pas auteur de ce fichier");
+            }
         }
 
         public function modificationPublication(){
