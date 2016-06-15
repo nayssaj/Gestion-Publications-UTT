@@ -25,7 +25,7 @@
             $contenu = $this->genererFichier($this->fichier, $donneesSpecifiques);
             //On définit une variable locale accessible par la vue pour la racine Web
             //Il s'agit du chemin vers le site sur le serveur web
-            //Nécéssaire pour les url de type controleur/action/id
+            //Nécéssaire pour la réécriture d'url
             $racineWeb = Configuration::get("racineWeb", "/");
             //Generation du gabarit commun utilisant la partie spécifique
             $vue = $this->genererFichier('Vue/gabarit.php',
@@ -43,14 +43,9 @@
         //Genere un fichier vue et renvoi le resultat produit
         private function genererFichier($fichier, $donnees){
             if(file_exists($fichier)){
-                //Rend les éléments du tableau $donnees accessibles dans la vue
                 extract($donnees);
-                //Demarrage de la temporisation de sortie
                 ob_start();
-                //Inclut le fichier vue
-                //Son resultat est placé dans le tampon de sortie
                 require $fichier;
-                //Arret de la temporisation et renvoi du tampon de sortie
                 return ob_get_clean();
             }
             else{

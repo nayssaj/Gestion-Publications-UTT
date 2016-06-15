@@ -9,7 +9,7 @@
 		private $chercheurUTT;
 
 		public function __construct(){
-		    $this->chercheurUTT = new Chercheur_UTT(1, 'michel', 'dupont', 'UTT', 'equipe', 'login', 'mdp');	
+		    $this->chercheurUTT = new Chercheur_UTT(null, 'nom', 'prenom', 'UTT', 'equipe', 'login', 'mdp');	
 		}
 
                 //Affiche le formlaire d'ajout

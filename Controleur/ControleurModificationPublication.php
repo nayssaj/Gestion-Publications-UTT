@@ -10,8 +10,8 @@
         private $publication;
         
         function __Construct(){    
-            $this->chercheur = new Chercheur_UTT('1', 'michel', 'dupont', 'UTT', 'equipe', 'login', 'mdp');
-            $this->publication = new Publication('1', array($this->chercheur), 'titre', 'ref', 'annee', 'statut', 'type');
+            $this->chercheur = new Chercheur_UTT(null, 'nom', 'prenom', 'UTT', 'equipe', 'login', 'mdp');
+            $this->publication = new Publication(null, array($this->chercheur), 'titre', 'ref', 'annee', 'statut', 'type');
         }
         
         public function index(){

@@ -10,7 +10,7 @@
             private $chercheur;
 
             public function __construct(){
-                $this->chercheur = new Chercheur('1', 'michel', 'dupont', 'UTT', 'equipe');
+                $this->chercheur = new Chercheur(null, 'nom', 'prenom', 'UTT', 'equipe');
             }
             
             public function index(){

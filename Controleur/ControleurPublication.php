@@ -11,8 +11,8 @@
             private $chercheur;
             
             public function __construct(){
-                $this->chercheur = new Chercheur('1', 'michel', 'dupont', 'UTT', 'equipe'); 
-                $this->publications = new Publication('1', $this->chercheur, 'titre', 'ref', 'annee', 'statut', 'type');
+                $this->chercheur = new Chercheur(null, 'nom', 'prenom', 'UTT', 'equipe'); 
+                $this->publications = new Publication(null, $this->chercheur, 'titre', 'ref', 'annee', 'statut', 'type');
             }
 
             public function index(){

@@ -38,7 +38,7 @@
         //Les classes dérivées doivent implémenter cette action par défaut 
         public abstract function index();
 
-        //Génère la vue associée au controleur courant
+        //Génère la vue associée au controleur 
         protected function genererVue($donneesVue = array(), $action = null){
             //Utilisation de l'action actuelle par défaut
             $actionVue = $this->action;

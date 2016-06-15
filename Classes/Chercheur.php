@@ -7,7 +7,6 @@
 
     class Chercheur extends Modele{
     
-
 	private $id;
         private $nom;
 	private $prenom;
@@ -37,10 +36,13 @@
 
         public function getEquipe(){return ($this->equipe);}
 
-	//Retourne les publication écrits par les auteur sous forme d'objets	
+	//Retourne les publication selectionnées selon 4 critères sous forme d'objets	
 	public function getPublications($idChercheur = null, $categorie = null, $annee = null, $laboratoire = null){
+            //On crée la requete correspondant aux paramètres donnés en arguments
             $requete = $this->creerRequetePublication($idChercheur, $categorie, $annee, $laboratoire);
+            //Contient un string correspondant a la requete
             $requeteSQL= $requete[0];
+            //Contient les arguments liés a la requete
             $parametreRequetePublication = $requete[1];
             $reponsePublications = $this->executerRequete($requeteSQL, $parametreRequetePublication);
             while($donneesPublication = $reponsePublications->fetch()){
@@ -66,6 +68,7 @@
             }
 	}
 
+        //Donne le nombre de chercheurs dans la base
         public function getNombreChercheurs(){
             $sql = 'SELECT count(*) as nbChercheurs FROM Auteur';
             $resultat = $this->executerRequete($sql);
@@ -73,6 +76,7 @@
             return $ligne['nbChercheurs'];
         }
 
+        //Renvoi un objet chercheur correspondant a l'ID fournies
         public function getChercheur($id){
             $sql = 'SELECT * FROM Auteur WHERE id = ?';
             $resultat = $this->executerRequete($sql, array($id));
@@ -81,6 +85,7 @@
             return $chercheur;
         }
 
+        //Renvoi la liste des auteurs ayant rédigés une publication avec le chercheur donné
         public function coAuteurs($idChercheur){
             $sql = 'SELECT Auteur.*, COUNT( * ) FROM redige, Auteur WHERE Auteur.id = redige.Auteur_id AND redige.Auteur_id != ? AND redige.Publication_id IN (SELECT redige.Publication_id FROM redige WHERE redige.Auteur_id = ?) GROUP BY Auteur.id ORDER BY COUNT(*) DESC';
             $resultat = $this->executerRequete($sql, array($idChercheur, $idChercheur));
@@ -99,6 +104,7 @@
             }
         }
 
+        //Renvoi l'id d'un chercheur a partir de son nom et prenom
         public function getChercheurNom($nom, $prenom){
             $sql = 'SELECT id FROM Auteur WHERE nom = ? AND prenom = ?';
             $resultat = $this->executerRequete($sql, array($nom, $prenom));
@@ -137,6 +143,7 @@
             }
         }
 
+        //Crée une requete personalisée en fonction des paramètres fournis
         public function creerRequetePublication($idChercheur = null, $categorie = null, $annee = null, $laboratoire = null){
             if($idChercheur == null && $categorie == null && $annee == null){
                 throw new Exception("Aucun parametre de requete spécifié");

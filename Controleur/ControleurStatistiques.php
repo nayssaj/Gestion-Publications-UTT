@@ -10,7 +10,7 @@
         private $publication;
 
         public function __construct(){
-            $this->chercheur = new Chercheur(null, 'michel', 'dupont', 'UTT', 'equipe');
+            $this->chercheur = new Chercheur(null, 'nom', 'prenom', 'UTT', 'equipe');
             $auteurs = array($this->chercheur);
             $this->publication = new Publication(null, $auteurs, 'titre', 'ref', 'annee', 'statut', 'type'); 
         }

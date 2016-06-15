@@ -22,6 +22,7 @@
             		$this->mdp= $mdp;
         	}
 
+                //Ajoute une publication a la table publication
 		public function ajoutPublication($auteurs, $titre_article, $reference_publication, $annee, $categorie, $lieu = null, $statut){
                         $publicationInseree = new Publication(null, $auteurs, $titre_article, $reference_publication, $annee, $statut, $categorie, $lieu);
                         if($this->verificationPublicationBase($publicationInseree)){
@@ -34,7 +35,6 @@
                         $reqIdPublication = 'SELECT LAST_INSERT_ID()'; 
                         $idPublications = $this->executerRequete($reqIdPublication);
                         $idPublication = $idPublications->fetch()[0];
-                        //On insère dans la table rédige les couples idAuteur/idPublication
                         $place = 1;
 			foreach($auteurs as $auteur){
                             //On verifie que l'auteur n'est pas déja présent dans la BDD
@@ -46,10 +46,11 @@
                                 $idAuteurs = $this->executerRequete($reqIdAuteur);
                                 $idAuteur = $idAuteurs->fetch()[0];
                             }
-                            //Si il ne l'est pas on recupère son id
+                            //Si il l'est on recupère son id
                             else{
                                 $idAuteur = $this->verificationAuteurBase($auteur);
                             }
+                        //On insère dans la table rédige les couples idAuteur/idPublication
 		            $reqInsRedige = 'INSERT INTO redige(Publication_id, Auteur_id, place) VALUES(?, ?, ?)'; 
 			    $this->executerRequete($reqInsRedige, array($idPublication, $idAuteur, $place));
                             $place++;
@@ -78,6 +79,7 @@
 			}
 		}
 
+                //Ajoute un chercheur a la table auteur
                 public function ajouterChercheur(Chercheur $chercheur){
                     //Verifier que l'auteur n'est pas déja présent dans la base
                     if(!$this->verificationAuteurBase($chercheur)){
@@ -93,6 +95,7 @@
                     }
 		}
 
+                //Ajoute un auteur a une publication
 		public function ajouterAuteurPublication(Publication $publication, Chercheur $chercheur){
 			//On verifie que l'auteur n'est pas déja indiqué dans la liste des auteurs
 			if(!$publication->verificationAuteur($chercheur)){

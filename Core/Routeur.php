@@ -8,7 +8,7 @@
         //Route une requete entrante : execute l'action associée
         public function routerRequete(){
             try{
-                //Fusion des parametres GET et POST de la requete
+                //On récupère les paramètres de GET et POST
                 $requete = new Requete(array_merge($_GET, $_POST));  
                 $controleur = $this->creerControleur($requete);
                 $action = $this->creerAction($requete);
