@@ -53,8 +53,10 @@
             $this->chercheur->modifierTitrePublication($publicationPage, $nouveauTitre);
             $nouveauLabel = $this->requete->getParametre('reference');
             $this->chercheur->modifierLabelPublication($publicationPage, $nouveauLabel);
-            $nouveauStatut = $this->requete->getParametre('statut');
-            $this->chercheur->modifierStatutPublication($publicationPage, $nouveauStatut);
+            if($this->requete->existeParametre('satut')){
+                $nouveauStatut = $this->requete->getParametre('statut');
+                $this->chercheur->modifierStatutPublication($publicationPage, $nouveauStatut);
+            }
             $this->rediriger('profil', null, $this->requete->getSession()->getAttribut('idUtilisateur')); 
         }
     }
