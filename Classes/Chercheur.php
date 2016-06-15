@@ -103,7 +103,6 @@
             $sql = 'SELECT id FROM Auteur WHERE nom = ? AND prenom = ?';
             $resultat = $this->executerRequete($sql, array($nom, $prenom));
             $chercheurID = $resultat->fetch();
-            print_r($chercheurID);
             if(isset($chercheurID['id'])){
                 return $chercheurID['id'];
             }
